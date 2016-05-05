@@ -1,13 +1,5 @@
-/helloWorld/
-/GarageDoorOpener/
-/Main.class
-/MainTests.class
-/MainTests4.class
-/MainTests1.class
-/GarageDoorOpener.class
-/GarageDoorOpenerTest.class
-/Gara.class
-/GarageDoorOpenerTests.class
-/GarageDoorOpener$STATE.class
+/.DS_Store
 /GarageDoorOpener$STATES.class
-/GarageDoorOpener$ENUM_STATES.class
+/GarageDoorOpener.class
+/GarageDoorOpenerTests.class
+/Main.class
