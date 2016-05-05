@@ -8,25 +8,36 @@ public class CodeSort {
 	}
 	
 	public ArrayList<String> sort() {
-		return putIncludeStatementsFirst(this.program);
+		this.program = initializeVariablesBeforeUse(this.program);
+    this.program = putIncludeStatementsFirst(this.program);
+		return this.program;
 	}
 	
-	private ArrayList<String> putIncludeStatementsFirst(ArrayList<String> program) {
-		ArrayList<String> includeStatements = new ArrayList<String>();
+  private ArrayList<String> putIncludeStatementsFirst(ArrayList<String> program) {
+    return putStatementsWithKeywordFirst(program, "#include");
+  }
+  
+  private ArrayList<String> initializeVariablesBeforeUse(ArrayList<String> program) {
+    return putStatementsWithKeywordFirst(program, "var ");
+  }
+  
+  private ArrayList<String> putStatementsWithKeywordFirst(ArrayList<String> program, String keyword) {
+		ArrayList<String> keywordStatements = new ArrayList<String>();
 		ArrayList<String> otherStatements = new ArrayList<String>();
 		for (String statement : program) {
-			if (isIncludeStatement(statement)) {
-				includeStatements.add(statement);
+			if (statement.contains(keyword)) {
+			  keywordStatements.add(statement);
 			} else {
 				otherStatements.add(statement);
 			}
 		}
-		includeStatements.addAll(otherStatements);
-		return includeStatements;
+		return append(keywordStatements, otherStatements);
 	}
-	
-	private boolean isIncludeStatement(String statement) {
-		String keyword = "#include";
-		return statement.contains(keyword);
-	}
+  
+  private ArrayList<String> append(ArrayList<String> leadingArray, ArrayList<String> trailingArray) {
+    ArrayList<String> newArray = new ArrayList<String>();
+    newArray.addAll(leadingArray);
+    newArray.addAll(trailingArray);
+    return newArray;
+  }
 }
