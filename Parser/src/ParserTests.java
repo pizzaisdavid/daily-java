@@ -7,7 +7,7 @@ import org.junit.Test;
 public class ParserTests {
 
   @Test
-  public void split_Comma() {
+  public void comma() {
     ArrayList<String> output;
     
     output = Parser.parse("This,is,David", ",");
