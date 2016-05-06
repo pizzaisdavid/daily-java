@@ -5,27 +5,38 @@ import java.util.Arrays;
 
 import org.junit.Test;
 
-public class ParserTests {
+import org.junit.runner.RunWith;
+import org.junit.runners.Suite;
 
-  @Test
-  public void comma() {
-    String[] expected = {"This", "is", "David"};
-    String input = "This,is,David";
-    String delimiter = ",";
-    
-    ArrayList<String> output = Parser.parse(input, delimiter);
-    
-    assertEquals(Arrays.asList(expected), output);
-  }
+@RunWith(Suite.class)
+@Suite.SuiteClasses({
+   ParserTests.Parse.class
+})
+
+public class ParserTests {
   
-  @Test
-  public void trim() {
-    String[] expected = {"This", "is", "David"};
-    String input = "This,   is,   David";
-    String delimiter = ",";
+  public static class Parse {
+
+    @Test
+    public void comma() {
+      String[] expected = {"This", "is", "David"};
+      String input = "This,is,David";
+      String delimiter = ",";
+      
+      ArrayList<String> output = Parser.parse(input, delimiter);
+      
+      assertEquals(Arrays.asList(expected), output);
+    }
     
-    ArrayList<String> output = Parser.parse(input, delimiter);
-    
-    assertEquals(Arrays.asList(expected), output);
+    @Test
+    public void trim() {
+      String[] expected = {"This", "is", "David"};
+      String input = "This,   is,   David";
+      String delimiter = ",";
+      
+      ArrayList<String> output = Parser.parse(input, delimiter);
+      
+      assertEquals(Arrays.asList(expected), output);
+    }
   }
 }
