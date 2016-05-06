@@ -4,11 +4,33 @@ import java.util.Arrays;
 import java.util.List;
 
 public class Parser {
+  
+  ArrayList<String> rawLines;
+  
+  public Parser(String[] list) {
+    this.rawLines = new ArrayList<String>(Arrays.asList(list));
+  }
+
+  public Parser(ArrayList<String> arrayList) {
+    this.rawLines = arrayList;
+  }
+  
+  public ArrayList<ArrayList<String>> parse(String delimiter) {
+    ArrayList<ArrayList<String>> parsed = new ArrayList<ArrayList<String>>();
+    for (String line: this.rawLines) {
+      parsed.add(parse(line, delimiter));
+    }
+    return parsed;
+  }
 
   public static ArrayList<String> parse(String line, String delimiter) {
     ArrayList<String> parsed = split(line, delimiter);
     ArrayList<String> trimmed = trim(parsed);
     return trimmed;
+  }
+  
+  public static void file(String filename) {
+    // TODO make this or something
   }
   
   private static ArrayList<String> split(String string, String delimiter) {
