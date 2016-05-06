@@ -41,10 +41,13 @@ public class ParserTests {
     
     @Test
     public void list() {
-      ArrayList<ArrayList<String>> expected = new ArrayList<ArrayList<String>>();
-      expected.add(new ArrayList<String>(Arrays.asList("0.0", "0.1", "0.2")));
-      expected.add(new ArrayList<String>(Arrays.asList("1.0", "1.1", "1.2")));
-      expected.add(new ArrayList<String>(Arrays.asList("2.0", "2.1", "2.2")));
+      ArrayList<ArrayList<String>> expected = new ArrayList<ArrayList<String>>(
+        Arrays.asList(
+          new ArrayList<String>(Arrays.asList("0.0", "0.1", "0.2")),
+          new ArrayList<String>(Arrays.asList("1.0", "1.1", "1.2")),
+          new ArrayList<String>(Arrays.asList("2.0", "2.1", "2.2"))
+        )
+      );
       String[] input = {
           "0.0, 0.1, 0.2",
           "1.0, 1.1, 1.2",
