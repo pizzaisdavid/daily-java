@@ -1,6 +1,7 @@
 import static org.junit.Assert.*;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 import org.junit.Test;
 
@@ -8,17 +9,23 @@ public class ParserTests {
 
   @Test
   public void comma() {
-    ArrayList<String> output;
+    String[] expected = {"This", "is", "David"};
+    String input = "This,is,David";
+    String delimiter = ",";
     
-    output = Parser.parse("This,is,David", ",");
-    assertEquals("This", output.get(0));
-    assertEquals("is", output.get(1));
-    assertEquals("David", output.get(2));
+    ArrayList<String> output = Parser.parse(input, delimiter);
     
-    output = Parser.parse("This, is, David", ",");
-    assertEquals("This", output.get(0));
-    assertEquals("is", output.get(1));
-    assertEquals("David", output.get(2));
+    assertEquals(Arrays.asList(expected), output);
   }
-
+  
+  @Test
+  public void trim() {
+    String[] expected = {"This", "is", "David"};
+    String input = "This,   is,   David";
+    String delimiter = ",";
+    
+    ArrayList<String> output = Parser.parse(input, delimiter);
+    
+    assertEquals(Arrays.asList(expected), output);
+  }
 }
