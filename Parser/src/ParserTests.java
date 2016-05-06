@@ -41,6 +41,10 @@ public class ParserTests {
     
     @Test
     public void list() {
+      ArrayList<ArrayList<String>> expected = new ArrayList<ArrayList<String>>();
+      expected.add(new ArrayList<String>(Arrays.asList("0.0", "0.1", "0.2")));
+      expected.add(new ArrayList<String>(Arrays.asList("1.0", "1.1", "1.2")));
+      expected.add(new ArrayList<String>(Arrays.asList("2.0", "2.1", "2.2")));
       String[] input = {
           "0.0, 0.1, 0.2",
           "1.0, 1.1, 1.2",
@@ -49,9 +53,7 @@ public class ParserTests {
       String delimiter = ",";
       Parser parser = new Parser(input);
       ArrayList<ArrayList<String>> output = parser.parse(delimiter);
-      assertEquals(Arrays.asList("0.0", "0.1", "0.2"), output.get(0));
-      assertEquals(Arrays.asList("1.0", "1.1", "1.2"), output.get(1));
-      assertEquals(Arrays.asList("2.0", "2.1", "2.2"), output.get(2));
+      assertEquals(expected, output);
     }
   }
 }
