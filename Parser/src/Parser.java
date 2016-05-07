@@ -6,13 +6,13 @@ import java.util.List;
 public class Parser {
   
   ArrayList<String> rawLines;
-  
-  public Parser(String[] list) {
-    this.rawLines = new ArrayList<String>(Arrays.asList(list));
-  }
-
+ 
   public Parser(ArrayList<String> arrayList) {
     this.rawLines = arrayList;
+  }
+  
+  public Parser(File file) {
+    this.rawLines = file.lines();
   }
   
   public ArrayList<ArrayList<String>> parse(String delimiter) {
@@ -27,10 +27,6 @@ public class Parser {
     ArrayList<String> parsed = split(line, delimiter);
     ArrayList<String> trimmed = trim(parsed);
     return trimmed;
-  }
-  
-  public static void file(String filename) {
-    // TODO make this or something
   }
   
   private static ArrayList<String> split(String string, String delimiter) {
