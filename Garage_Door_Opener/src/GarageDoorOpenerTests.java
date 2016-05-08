@@ -8,36 +8,37 @@ public class GarageDoorOpenerTests {
 	
   private class SpecializationGarageDoor extends GarageDoorOpener {
 
-    private State output;
+    private ArrayList<State> outputs;
     
     public SpecializationGarageDoor(ArrayList<String> commands) {
       super(commands);
     }
     
     protected void printStatus(State status) {
-      this.output = status;
+      if (this.outputs == null) {
+        this.outputs = new ArrayList<State>();
+      }
+      this.outputs.add(status);
     }
     
     protected void printCommand(String command) {
       // Don't print things during testing.
     }
     
-    public void validate(GarageDoorOpener.State input) {
-      assertEquals(input, this.output);
+    public void validate(ArrayList<GarageDoorOpener.State> input) {
+      assertEquals(input, this.outputs);
     }
   }
 
 	@Test
 	public void startingStateIsClosed() {
-	  ArrayList<String> expected = new ArrayList<String>();
-	  expected.add("CLOSED");
-	  
+	  ArrayList<GarageDoorOpener.State> expected = new ArrayList<GarageDoorOpener.State>(
+	    Arrays.asList(GarageDoorOpener.State.CLOSED)
+	  );	  
 		ArrayList<String> commands = new ArrayList<String>(
-		    Arrays.asList("click")
-		    );
-		
+		  Arrays.asList("button_clicked")
+		);
 		SpecializationGarageDoor opener = new SpecializationGarageDoor(commands);
-		
-		opener.validate(GarageDoorOpener.State.CLOSED);
+		opener.validate(expected);
 	}
 }
