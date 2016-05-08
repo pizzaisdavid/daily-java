@@ -1,10 +1,10 @@
 package com.mycompany.daily;
 
 /**
- * Hello world!
- *
+ * mvn compile  
+ * mvn exec:java -Dexec.mainClass="com.mycompany.daily.Main"
  */
-public class App 
+public class Main 
 {
     public static void main( String[] args )
     {
