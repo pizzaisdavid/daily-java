@@ -8,7 +8,6 @@ public class CandyBag {
   
   ArrayList<String> items;
   Map<String, Integer> statisitcs = new HashMap<String, Integer>();
-
   
   public CandyBag(ArrayList<String> items) {
     this.items = items;

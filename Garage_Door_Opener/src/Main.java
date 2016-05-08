@@ -1,28 +1,23 @@
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class Main {
 
 	public static void main(String[] args) {
-		ArrayList<String> inputCommands =  new ArrayList<String>();
-		inputCommands.add("button_clicked");
-		inputCommands.add("cycle_complete");
-		inputCommands.add("button_clicked");
-		inputCommands.add("button_clicked");
-		inputCommands.add("button_clicked");
-		inputCommands.add("button_clicked");
-		inputCommands.add("button_clicked");
-		inputCommands.add("cycle_complete");
+		ArrayList<String> commands =  new ArrayList<String>(
+		  Arrays.asList(
+	      "button_clicked",
+	      "cycle_complete",
+	      "button_clicked",
+	      "button_clicked",
+	      "button_clicked",
+	      "button_clicked",
+	      "button_clicked",
+	      "cycle_complete"
+		  )
+		);
 		
-		GarageDoorOpener opener = new GarageDoorOpener();
-		opener.setInput(inputCommands);
-		opener.process();
-		ArrayList<String> outputResults = opener.getOutputResults();
-
-		for (int i = 0; i < inputCommands.size(); i++) {;
-			System.out.println("Door: " + outputResults.get(i));
-			System.out.println("> " + inputCommands.get(i) + ".");
-		}
-		System.out.println("Door: " + outputResults.get(outputResults.size() - 1));
+		GarageDoorOpener opener = new GarageDoorOpener(commands);
 	}
 }
 

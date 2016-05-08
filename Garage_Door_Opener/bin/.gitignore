@@ -3,3 +3,9 @@
 /GarageDoorOpener.class
 /GarageDoorOpenerTests.class
 /Main.class
+/GarageDoorOpener$State.class
+/GarageDoorOpener$States.class
+/GarageDoorOpener$STATE.class
+/GarageDoorOpenerTests$MockGarageDoor.class
+/GarageDoorOpenerTests$State.class
+/GarageDoorOpenerTests$SpecializationGarageDoor.class
