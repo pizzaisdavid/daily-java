@@ -41,15 +41,15 @@ public class ParserTests {
     
     class StubFile extends TextFile {
       
-      private ArrayList<String> input;
+      private ArrayList<String> content;
 
       public StubFile(String filePath, ArrayList<String> input) {
         super(filePath);
-        this.input = input;
+        this.content = input;
       }
 
       public ArrayList<String> lines() {
-        return this.input;
+        return this.content;
       }
     }
     
@@ -69,9 +69,9 @@ public class ParserTests {
           "2.0, 2.1, 2.2"
         )
       );
-      StubFile file = new StubFile("test.txt", content);
+      StubFile input = new StubFile("test.txt", content);
       String delimiter = ",";
-      Parser parser = new Parser(file);
+      Parser parser = new Parser(input);
       ArrayList<ArrayList<String>> output = parser.parse(delimiter);
       assertEquals(expected, output);
     }
