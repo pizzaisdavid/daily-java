@@ -11,8 +11,7 @@ import org.junit.runners.Suite;
 @RunWith(Suite.class)
 @Suite.SuiteClasses({
   ParserTests.parse.class,
-  ParserTests.initialize.class,
-  ParserTests.object.class
+  ParserTests.initialize.class
 })
 
 public class ParserTests {
@@ -44,11 +43,8 @@ public class ParserTests {
       
       private ArrayList<String> input;
 
-      public StubFile(String filePath) {
+      public StubFile(String filePath, ArrayList<String> input) {
         super(filePath);
-      }
-      
-      public void setLines(ArrayList<String> input) {
         this.input = input;
       }
 
@@ -59,33 +55,25 @@ public class ParserTests {
     
     @Test
     public void list() {
-      ArrayList<ArrayList<String>> expected = new ArrayList<ArrayList<String>>();
-      ArrayList<String> content = new ArrayList<String>();
-      StubFile file = new StubFile("test.txt");
+      ArrayList<ArrayList<String>> expected = new ArrayList<ArrayList<String>>(
+        Arrays.asList(
+          new ArrayList<String>(Arrays.asList("0.0", "0.1", "0.2")),
+          new ArrayList<String>(Arrays.asList("1.0", "1.1", "1.2")),
+          new ArrayList<String>(Arrays.asList("2.0", "2.1", "2.2"))
+        )
+      );
+      ArrayList<String> content = new ArrayList<String>(
+        Arrays.asList(
+          "0.0, 0.1, 0.2",
+          "1.0, 1.1, 1.2",
+          "2.0, 2.1, 2.2"
+        )
+      );
+      StubFile file = new StubFile("test.txt", content);
       String delimiter = ",";
-
-      expected.add(new ArrayList<String>(Arrays.asList("0.0", "0.1", "0.2")));
-      expected.add(new ArrayList<String>(Arrays.asList("1.0", "1.1", "1.2")));
-      expected.add(new ArrayList<String>(Arrays.asList("2.0", "2.1", "2.2")));
-      content.add("0.0, 0.1, 0.2");
-      content.add("1.0, 1.1, 1.2");
-      content.add("2.0, 2.1, 2.2");
-
-      file.setLines(content);
       Parser parser = new Parser(file);
-      
       ArrayList<ArrayList<String>> output = parser.parse(delimiter);
-      
       assertEquals(expected, output);
     }
-  }
-  
-  public static class object {
-    
-    @Test
-    public void test() {
-      // TODO make an arrayList of custom objects.
-    }
-    
   }
 }
