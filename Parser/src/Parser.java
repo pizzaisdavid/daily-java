@@ -6,10 +6,6 @@ import java.util.List;
 public class Parser {
   
   ArrayList<String> rawLines;
- 
-  public Parser(ArrayList<String> arrayList) {
-    this.rawLines = arrayList;
-  }
   
   public Parser(File file) {
     this.rawLines = file.lines();
