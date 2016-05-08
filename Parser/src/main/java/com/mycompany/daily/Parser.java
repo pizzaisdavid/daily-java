@@ -1,4 +1,4 @@
-
+package main.java.com.mycompany.daily;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;

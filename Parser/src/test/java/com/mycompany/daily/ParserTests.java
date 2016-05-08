@@ -1,9 +1,14 @@
+package test.java.com.mycompany.daily;
+
 import static org.junit.Assert.*;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 
 import org.junit.Test;
+
+import main.java.com.mycompany.daily.Parser;
+import main.java.com.mycompany.daily.TextFile;
 
 public class ParserTests {
   
