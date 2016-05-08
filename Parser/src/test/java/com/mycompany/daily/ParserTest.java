@@ -10,7 +10,7 @@ import org.junit.Test;
 import main.java.com.mycompany.daily.Parser;
 import main.java.com.mycompany.daily.TextFile;
 
-public class ParserTests {
+public class ParserTest {
   
   public static class parse {
 
