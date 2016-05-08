@@ -4,17 +4,27 @@ import java.util.ArrayList;
 public class GarageDoorOpener {
   enum State {CLOSED, OPENING, OPEN, CLOSING, STOPPED_WHILE_CLOSING, STOPPED_WHILE_OPENING}
 	private String BUTTON_CLICKED = "button_clicked";
+	private State status;
 			
   public GarageDoorOpener(ArrayList<String> commands) {
-		State status = State.CLOSED;
-		for (String command : commands) {
-		  printStatus(status);
-		  printCommand(command);
-			status = processState(status, command);
-		}
+		this(commands, State.CLOSED);
 	}
+  
+  protected GarageDoorOpener(ArrayList<String> commands, State status) {
+    this.status = status;
+    process(commands);
+  }
+  
+  private void process(ArrayList<String> commands) {
+    for (String command : commands) {
+      printStatus(status);
+      printCommand(command);
+      status = processState(status, command);
+    }
+    printStatus(status);
+  }
 
-  public State processState(State status, String command) {
+  private State processState(State status, String command) {
 	  switch (status) {
   	  case CLOSED:
   	    return doorInClosedState();
@@ -28,8 +38,9 @@ public class GarageDoorOpener {
   	    return doorInStoppedWhileClosingState();
   	  case STOPPED_WHILE_OPENING:
   	    return doorInStoppedWhileOpeningState();
+  	  default:
+  	    return status;
 	  }
-    return status;
 	}
 	
 	public State doorInClosedState() {
