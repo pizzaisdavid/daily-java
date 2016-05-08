@@ -2,7 +2,7 @@ import static org.junit.Assert.*;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-
+import main.java.com.mycompany.daily.Parser;
 import org.junit.Test;
 
 public class MainTests {

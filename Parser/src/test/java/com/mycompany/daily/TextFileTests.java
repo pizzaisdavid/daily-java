@@ -1,3 +1,4 @@
+package test.java.com.mycompany.daily;
 import static org.junit.Assert.*;
 
 import org.junit.Test;

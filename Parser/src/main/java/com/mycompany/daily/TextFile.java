@@ -1,3 +1,4 @@
+package main.java.com.mycompany.daily;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
