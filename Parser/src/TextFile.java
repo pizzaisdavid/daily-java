@@ -6,23 +6,33 @@ import java.util.Scanner;
 public class TextFile {
   
   private String filePath;
+  private ArrayList<String> content;
   
   public TextFile(String filePath) {
     this.filePath = filePath;
+    this.content = new ArrayList<String>();
   }
   
   public ArrayList<String> lines() {
-    ArrayList<String> content = new ArrayList<String>();
     try {
-      Scanner s = new Scanner(new File(this.filePath));
-      while (s.hasNextLine()){
-        content.add(s.nextLine());
-      }
-      s.close();
-      return content;
+      return load(this.filePath);
     } catch (FileNotFoundException e) {
       e.printStackTrace();
       return new ArrayList<String>();
     }
+  }
+  
+  public ArrayList<String> load(String filePath) throws FileNotFoundException {
+    this.content.clear();
+    Scanner scanner = createScanner(filePath);
+    while (scanner.hasNextLine()){
+      this.content.add(scanner.nextLine());
+    }
+    scanner.close();
+    return this.content;
+  }
+  
+  public Scanner createScanner(String filePath) throws FileNotFoundException {
+    return new Scanner(new File(filePath));
   }
 }
