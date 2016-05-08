@@ -23,7 +23,7 @@ public class Person {
       }
   }
   
-  public boolean isAlive(Calendar comparison) {
+  public boolean wasAliveDuring(Calendar comparison) {
     return comparison.after(this.birth) && comparison.before(this.death);
   }
 }

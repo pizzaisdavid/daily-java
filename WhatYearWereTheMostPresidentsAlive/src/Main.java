@@ -20,7 +20,7 @@ public class Main {
       Calendar year = Calendar.getInstance();
       year.set(Calendar.YEAR, i);
       for (Person p : presidents) {
-        if (p.isAlive(year)) {
+        if (p.wasAliveDuring(year)) {
           count++;
         }
       }
