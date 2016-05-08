@@ -35,4 +35,24 @@ public class CandyBag {
   public int count() {
     return this.items.size();
   }
+  
+  public String toString() {
+    int total = count();
+    String message = "total: " + total + "\n";
+    for (Map.Entry<String, Integer> entry : this.statisitcs.entrySet()) {
+      message += entryToString(entry, total) + "\n";
+    }
+    return message;
+  }
+  
+  private String entryToString(Map.Entry<String, Integer> entry, int total) {
+    String name = entry.getKey();
+    int candyCount = entry.getValue();
+    double precentage = percent(candyCount, total);
+    return String.format("name: %s, count: %d, precent: %f", name, candyCount, precentage);
+  }
+  
+  private double percent(int amount, int total) {
+    return (double) amount / (double) total;
+  }
 }
