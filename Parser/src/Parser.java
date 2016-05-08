@@ -7,7 +7,7 @@ public class Parser {
   
   ArrayList<String> rawLines;
   
-  public Parser(File file) {
+  public Parser(TextFile file) {
     this.rawLines = file.lines();
   }
   

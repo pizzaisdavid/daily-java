@@ -40,7 +40,7 @@ public class ParserTests {
   
   public static class initialize {
     
-    class StubFile extends File {
+    class StubFile extends TextFile {
       
       private ArrayList<String> input;
 
