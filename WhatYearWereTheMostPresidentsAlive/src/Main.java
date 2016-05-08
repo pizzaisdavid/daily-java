@@ -10,8 +10,8 @@ public class Main {
     ArrayList<ArrayList<String>> parsed = parser.parse(delimiter);
     parsed.remove(0);
     ArrayList<Person> presidents = new ArrayList<Person>();
-    for (ArrayList<String> x : parsed) {
-      Person president = new Person(x.get(0), x.get(1), x.get(3));
+    for (ArrayList<String> rawData : parsed) {
+      Person president = new Person(rawData.get(1), rawData.get(3));
       presidents.add(president);
     }
     

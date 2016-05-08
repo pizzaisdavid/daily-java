@@ -4,12 +4,10 @@ import java.util.Calendar;
 
 public class Person {
   
-  private String name;
   private Calendar birth;
   private Calendar death;
   
-  public Person(String name, String birth, String death) {
-    this.name = name;
+  public Person(String birth, String death) {
     this.birth = parseDate(birth);
     this.death = parseDate(death);
   }
@@ -25,7 +23,7 @@ public class Person {
       }
   }
   
-  public boolean isAlive(Calendar year) {
-    return year.after(this.birth) && year.before(this.death);
+  public boolean isAlive(Calendar comparison) {
+    return comparison.after(this.birth) && comparison.before(this.death);
   }
 }
