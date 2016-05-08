@@ -3,10 +3,16 @@ import static org.junit.Assert.*;
 import java.util.Calendar;
 
 import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.junit.runners.Suite;
 
 public class PersonTests {
+  
+  public static class initialization {
+    
+    @Test
+    public void emptyStrings() {
+      new Person("", "");
+    }
+  }
 
   public static class isAlive {
 
@@ -21,10 +27,12 @@ public class PersonTests {
     @Test
     public void wasNotAliveDuring() {
       Person person = new Person("March 1 1995", "March 1 2016");
-      Calendar year = Calendar.getInstance();
-      year.set(Calendar.YEAR, 2200);
-      assertFalse(person.wasAliveDuring(year));
+      Calendar beforeBirth = Calendar.getInstance();
+      Calendar afterDeath = Calendar.getInstance();
+      beforeBirth.set(Calendar.YEAR, 1990);
+      afterDeath.set(Calendar.YEAR, 2100);
+      assertFalse(person.wasAliveDuring(beforeBirth));
+      assertFalse(person.wasAliveDuring(afterDeath));  
     }
   }
-
 }
