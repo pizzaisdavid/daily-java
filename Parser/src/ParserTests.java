@@ -5,15 +5,6 @@ import java.util.Arrays;
 
 import org.junit.Test;
 
-import org.junit.runner.RunWith;
-import org.junit.runners.Suite;
-
-@RunWith(Suite.class)
-@Suite.SuiteClasses({
-  ParserTests.parse.class,
-  ParserTests.initialize.class
-})
-
 public class ParserTests {
   
   public static class parse {
