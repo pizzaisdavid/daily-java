@@ -14,5 +14,12 @@
       <version>3.8.1</version>
       <scope>test</scope>
     </dependency>
+    <dependency>
+      <groupId>Parser</groupId>
+      <artifactId>Parser</artifactId>
+      <version>0.0.1-SNAPSHOT</version>
+      <scope>compile</scope>
+    </dependency>
+    
   </dependencies>
 </project>
