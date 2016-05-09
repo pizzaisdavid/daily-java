@@ -8,46 +8,37 @@ import java.util.Arrays;
 import org.junit.Test;
 
 import main.java.com.mycompany.daily.Parser;
-import main.java.com.mycompany.daily.TextFile;
 
 public class ParserTest {
+  
+  public static ArrayList<String> make(String... strings) {
+    ArrayList<String> expected = new ArrayList<String>();
+    for (String string : strings) {
+      expected.add(string);
+    }
+    return expected;
+  }
   
   public static class parse {
 
     @Test
     public void comma() {
-      String[] expected = {"This", "is", "David"};
+      ArrayList<String>expected = make("This", "is", "David");
       String input = "This,is,David";
       String delimiter = ",";
-      ArrayList<String> output = Parser.parse(input, delimiter);
-      assertEquals(Arrays.asList(expected), output);
+      assertEquals(expected, Parser.parse(input, delimiter));
     }
     
     @Test
     public void trim() {
-      String[] expected = {"This", "is", "David"};
+      ArrayList<String>expected = make("This", "is", "David");
       String input = "This,   is,   David";
       String delimiter = ",";
-      ArrayList<String> output = Parser.parse(input, delimiter);
-      assertEquals(Arrays.asList(expected), output);
+      assertEquals(expected, Parser.parse(input, delimiter));
     }
   }
   
-  public static class initialize {
-    
-    class StubFile extends TextFile {
-      
-      private ArrayList<String> content;
-
-      public StubFile(String filePath, ArrayList<String> input) {
-        super(filePath);
-        this.content = input;
-      }
-
-      public ArrayList<String> lines() {
-        return this.content;
-      }
-    }
+  public static class arrayList {
     
     @Test
     public void list() {
@@ -58,18 +49,12 @@ public class ParserTest {
           new ArrayList<String>(Arrays.asList("2.0", "2.1", "2.2"))
         )
       );
-      ArrayList<String> content = new ArrayList<String>(
-        Arrays.asList(
-          "0.0, 0.1, 0.2",
-          "1.0, 1.1, 1.2",
-          "2.0, 2.1, 2.2"
-        )
+      ArrayList<String> content = make(
+        "0.0, 0.1, 0.2",
+        "1.0, 1.1, 1.2",
+        "2.0, 2.1, 2.2"
       );
-      StubFile input = new StubFile("test.txt", content);
-      String delimiter = ",";
-      Parser parser = new Parser(input);
-      ArrayList<ArrayList<String>> output = parser.parse(delimiter);
-      assertEquals(expected, output);
+      assertEquals(expected, Parser.parse(content));
     }
   }
 }

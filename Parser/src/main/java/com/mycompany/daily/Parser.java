@@ -5,18 +5,18 @@ import java.util.List;
 
 public class Parser {
   
-  ArrayList<String> rawLines;
-  
-  public Parser(TextFile file) {
-    this.rawLines = file.lines();
+  public static ArrayList<ArrayList<String>> parse(ArrayList<String> lines) {
+    String DEFAULT_SEPARATOR = ",";
+    return parse(lines, DEFAULT_SEPARATOR);
   }
-  
-  public ArrayList<ArrayList<String>> parse(String delimiter) {
-    ArrayList<ArrayList<String>> parsed = new ArrayList<ArrayList<String>>();
-    for (String line: this.rawLines) {
-      parsed.add(parse(line, delimiter));
+
+  public static ArrayList<ArrayList<String>> parse(ArrayList<String> rawLines, String delimiter) {
+    ArrayList<ArrayList<String>> parsedLines = new ArrayList<ArrayList<String>>();
+    for (String line : rawLines) {
+      ArrayList<String> parsedLine = parse(line, delimiter);
+      parsedLines.add(parsedLine);
     }
-    return parsed;
+    return parsedLines;
   }
 
   public static ArrayList<String> parse(String line, String delimiter) {
