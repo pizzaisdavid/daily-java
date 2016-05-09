@@ -25,6 +25,14 @@ public class TextFileTest {
     
   }
   
+  public String makeTestFile(String...strings) {
+    String file = "";
+    for (String string : strings) {
+      file += string + "\n";
+    }
+    return file;
+  }
+  
   private class SpecializationTextFile extends TextFile {
     
     public boolean throwFileNotFoundException;
@@ -58,9 +66,9 @@ public class TextFileTest {
   
   @Test
   public void tset() {
+    // TODO rename
     ArrayList<String> expected = make("1", "2");
-    String input = "1\n" +
-                   "2";
+    String input = makeTestFile("1", "2");
     SpecializationTextFile file = makeFile(input);
     assertEquals(expected, file.getLines());
   }
