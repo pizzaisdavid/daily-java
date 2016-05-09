@@ -7,9 +7,8 @@ public class Main {
   
   public static void main(String[] args) {
     TextFile file = new TextFile("pres.txt");
-    Parser parser = new Parser(file);
-    String delimiter = ",";
-    ArrayList<ArrayList<String>> parsed = parser.parse(delimiter);
+    ArrayList<String> lines = file.getLines();
+    ArrayList<ArrayList<String>> parsed = Parser.parse(lines);
     parsed.remove(0);
     ArrayList<Person> presidents = new ArrayList<Person>();
     for (ArrayList<String> rawData : parsed) {
