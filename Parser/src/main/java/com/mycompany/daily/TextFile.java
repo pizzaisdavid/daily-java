@@ -6,34 +6,37 @@ import java.util.Scanner;
 
 public class TextFile {
   
-  private String filePath;
-  private ArrayList<String> content;
+  private String relativePath;
   
-  public TextFile(String filePath) {
-    this.filePath = filePath;
-    this.content = new ArrayList<String>();
+  public TextFile(String relativePath) {
+    this.relativePath = relativePath;
   }
   
-  public ArrayList<String> lines() {
+  public ArrayList<String> getLines() {
     try {
-      return load(this.filePath);
+      return load(this.relativePath);
     } catch (FileNotFoundException e) {
-      e.printStackTrace();
-      return new ArrayList<String>();
+      return noFileFound(e);
     }
   }
   
-  public ArrayList<String> load(String filePath) throws FileNotFoundException {
-    this.content.clear();
-    Scanner scanner = createScanner(filePath);
+  protected ArrayList<String> load(String path) throws FileNotFoundException {
+    ArrayList<String> content = new ArrayList<String>();
+    Scanner scanner = createScanner(path);
     while (scanner.hasNextLine()){
-      this.content.add(scanner.nextLine());
+      content.add(scanner.nextLine());
     }
     scanner.close();
-    return this.content;
+    return content;
   }
   
-  public Scanner createScanner(String filePath) throws FileNotFoundException {
-    return new Scanner(new File(filePath));
+  protected Scanner createScanner(String path) throws FileNotFoundException {
+    return new Scanner(new File(path));
+  }
+  
+  protected ArrayList<String> noFileFound(FileNotFoundException e) {
+    e.printStackTrace();
+    // TODO what should is return?
+    return null;
   }
 }
