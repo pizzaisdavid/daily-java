@@ -2,7 +2,6 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 import java.util.ArrayList;
-import java.util.Arrays;
 
 public class GarageDoorOpenerTests {
 	
@@ -33,10 +32,38 @@ public class GarageDoorOpenerTests {
       assertEquals(expected, this.outputs);
     }
   }
+  
+  public ArrayList<GarageDoorOpener.State> makeStates(GarageDoorOpener.State...states) {
+    ArrayList<GarageDoorOpener.State> expected = new ArrayList<GarageDoorOpener.State>();
+    for (GarageDoorOpener.State state: states) {
+      expected.add(state);
+    }
+    return expected;
+  }
+  
+  public ArrayList<String> buttonClicked() {
+    return makeCommands("button_clicked");
+  }
+  
+  public ArrayList<String> cycleComplete() {
+    return makeCommands("cycle_complete");
+  }
+  
+  public ArrayList<String> makeCommands(String...commands) {
+    ArrayList<String> expected = new ArrayList<String>();
+    for (String command: commands) {
+      expected.add(command);
+    }
+    return expected;
+  }
+  
+  public SpecializationGarageDoor makeOpener(ArrayList<String> commands, GarageDoorOpener.State status) {
+    return new SpecializationGarageDoor(commands, status);
+  }
 
 	@Test
 	public void startingStateIsClosed() {
-    ArrayList<GarageDoorOpener.State> expected = makeStateArrayList(
+    ArrayList<GarageDoorOpener.State> expected = makeStates(
 	    GarageDoorOpener.State.CLOSED
 	  );	  
 		ArrayList<String> commands = new ArrayList<String>();
@@ -46,16 +73,14 @@ public class GarageDoorOpenerTests {
 	
 	@Test
   public void completeUninterruptedCycle() {
-    ArrayList<GarageDoorOpener.State> expected = makeStateArrayList(
+    ArrayList<GarageDoorOpener.State> expected = makeStates(
       GarageDoorOpener.State.CLOSED,
       GarageDoorOpener.State.OPENING,
       GarageDoorOpener.State.OPEN
 	  );  
-	  ArrayList<String> commands = new ArrayList<String>(
-	    Arrays.asList(
-        "button_clicked",
-        "cycle_complete"
-	    )
+	  ArrayList<String> commands = makeCommands(
+	    "button_clicked",
+      "cycle_complete"
 	  );
 	  SpecializationGarageDoor opener = new SpecializationGarageDoor(commands);
     opener.validate(expected);
@@ -63,7 +88,7 @@ public class GarageDoorOpenerTests {
   
   @Test
   public void setDifferentStartingState() {
-    ArrayList<GarageDoorOpener.State> expected = makeStateArrayList(
+    ArrayList<GarageDoorOpener.State> expected = makeStates(
       GarageDoorOpener.State.CLOSING
     ); 
     ArrayList<String> commands = new ArrayList<String>();
@@ -73,7 +98,7 @@ public class GarageDoorOpenerTests {
   
   @Test
   public void interruptedWhileClosing() {
-    ArrayList<GarageDoorOpener.State> expected = makeStateArrayList(
+    ArrayList<GarageDoorOpener.State> expected = makeStates(
       GarageDoorOpener.State.CLOSING,
       GarageDoorOpener.State.STOPPED_WHILE_CLOSING
     ); 
@@ -84,7 +109,7 @@ public class GarageDoorOpenerTests {
   
   @Test
   public void interruptedWhileOpening() {
-    ArrayList<GarageDoorOpener.State> expected = makeStateArrayList(
+    ArrayList<GarageDoorOpener.State> expected = makeStates(
       GarageDoorOpener.State.OPENING,
       GarageDoorOpener.State.STOPPED_WHILE_OPENING
     ); 
@@ -95,7 +120,7 @@ public class GarageDoorOpenerTests {
   
   @Test
   public void changeFromStoppedWhileOpeningToClosing() {
-    ArrayList<GarageDoorOpener.State> expected = makeStateArrayList(
+    ArrayList<GarageDoorOpener.State> expected = makeStates(
       GarageDoorOpener.State.STOPPED_WHILE_OPENING,
       GarageDoorOpener.State.CLOSING
     ); 
@@ -106,7 +131,7 @@ public class GarageDoorOpenerTests {
   
   @Test
   public void changeFromStoppedWhileClosingToOpening() {
-    ArrayList<GarageDoorOpener.State> expected = makeStateArrayList(
+    ArrayList<GarageDoorOpener.State> expected = makeStates(
       GarageDoorOpener.State.STOPPED_WHILE_CLOSING,
       GarageDoorOpener.State.OPENING
     ); 
@@ -117,7 +142,7 @@ public class GarageDoorOpenerTests {
   
   @Test
   public void changeFromOpenToClosing() {
-    ArrayList<GarageDoorOpener.State> expected = makeStateArrayList(
+    ArrayList<GarageDoorOpener.State> expected = makeStates(
         GarageDoorOpener.State.OPEN,
         GarageDoorOpener.State.CLOSING
       );
@@ -126,24 +151,14 @@ public class GarageDoorOpenerTests {
     opener.validate(expected);
   }
   
-  public ArrayList<GarageDoorOpener.State> makeStateArrayList(GarageDoorOpener.State...states) {
-    ArrayList<GarageDoorOpener.State> expected = new ArrayList<GarageDoorOpener.State>();
-    for (GarageDoorOpener.State state: states) {
-      expected.add(state);
-    }
-    return expected;
-  }
-  
-  public ArrayList<String> buttonClicked() {
-    return new ArrayList<String>(
-      Arrays.asList(
-        "button_clicked"
-      )
-    );
-  }
-  
-  public SpecializationGarageDoor makeOpener(ArrayList<String> commands, GarageDoorOpener.State status) {
-    return new SpecializationGarageDoor(commands, status);
-    
+  @Test
+  public void changeFromClosingToClosed() {
+    ArrayList<GarageDoorOpener.State> expected = makeStates(
+        GarageDoorOpener.State.CLOSING,
+        GarageDoorOpener.State.CLOSED
+      );
+    ArrayList<String> commands = cycleComplete();
+    SpecializationGarageDoor opener = makeOpener(commands, GarageDoorOpener.State.CLOSING);
+    opener.validate(expected);
   }
 }
