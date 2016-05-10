@@ -1,4 +1,4 @@
-package com.mycompany.daily.nodeDegrees;
+package com.mycompany.daily;
 
 import junit.framework.Test;
 import junit.framework.TestCase;

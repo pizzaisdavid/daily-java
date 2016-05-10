@@ -1,4 +1,4 @@
-package com.mycompany.daily.nodeDegrees;
+package com.mycompany.daily;
 
 /**
  * Hello world!
