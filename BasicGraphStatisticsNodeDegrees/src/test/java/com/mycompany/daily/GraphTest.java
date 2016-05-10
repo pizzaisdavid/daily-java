@@ -1,4 +1,4 @@
-package BasicGraphStatisticsNodeDegrees.BasicGraphStatisticsNodeDegrees;
+package test.java.com.mycompany.daily;
 
 import static org.junit.Assert.*;
 
