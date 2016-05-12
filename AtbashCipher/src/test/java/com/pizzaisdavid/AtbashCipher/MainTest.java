@@ -4,26 +4,25 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
-public class AppTest {
+public class MainTest {
 
   @Test
   public void test() {
-    assertEquals('z', App.encrypt('a'));
+    assertEquals('z', Main.encrypt('a'));
   }
   
   @Test
   public void preserveCase() {
-    assertEquals('Z', App.encrypt('A'));
+    assertEquals('Z', Main.encrypt('A'));
   }
   
   @Test
   public void symbol() {
-    assertEquals('/', App.encrypt('/'));
+    assertEquals('/', Main.encrypt('/'));
   }
   
   @Test
   public void cipherTest() {
-    assertEquals("draziw", App.encrypt("wizard"));
+    assertEquals("draziw", Main.encrypt("wizard"));
   }
-
 }

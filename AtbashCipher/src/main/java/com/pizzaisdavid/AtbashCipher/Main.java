@@ -1,10 +1,13 @@
 package com.pizzaisdavid.AtbashCipher;
 
-public class App 
+public class Main 
 {
     public static void main( String[] args )
     {
+        System.out.println(encrypt("foobar"));  
         System.out.println(encrypt("wizard"));
+        System.out.println(encrypt("/r/dailyprogrammer"));
+        System.out.println(encrypt("gsrh rh zm vcznkov lu gsv zgyzhs xrksvi"));
     }
     
     public static String encrypt(String message) {
