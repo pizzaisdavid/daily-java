@@ -1,9 +1,5 @@
 package com.pizzaisdavid.AtbashCipher;
 
-/**
- * Hello world!
- *
- */
 public class App 
 {
     public static void main( String[] args )
@@ -11,15 +7,28 @@ public class App
         System.out.println( "Hello World!" );
     }
     
-    public static char substitution(char letter) {
+    public static String encrypt(String message) {
+      char[] letters = message.toCharArray();
+      String encryptedMessage = "";
+      for (char letter : letters) {
+        encryptedMessage += encrypt(letter);
+      }
+      return encryptedMessage;
+    }
+    
+    public static char encrypt(char letter) {
+      char encryptedLetter = lookupCorrespondingCharacter(letter);      
+      if (Character.isUpperCase(letter)) {
+        return Character.toUpperCase(encryptedLetter);
+      }
+      return encryptedLetter;
+    }
+    
+    private static char lookupCorrespondingCharacter(char letter) {
       String ALPHABET = "abcdefghijklmnopqrstuvwxyz";
       String CHIPHER = "zyxwvutsrqponmlkjihgfedcba";
-      char temp = Character.toLowerCase(letter);
-      int position = ALPHABET.indexOf(temp);
-      char encode = CHIPHER.charAt(position);
-      if (Character.isUpperCase(letter)) {
-        return Character.toUpperCase(encode);
-      }
-      return encode;
+      letter = Character.toLowerCase(letter);
+      int position = ALPHABET.indexOf(letter);
+      return CHIPHER.charAt(position);
     }
 }
