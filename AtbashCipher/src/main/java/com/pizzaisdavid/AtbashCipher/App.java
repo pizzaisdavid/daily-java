@@ -4,7 +4,7 @@ public class App
 {
     public static void main( String[] args )
     {
-        System.out.println( "Hello World!" );
+        System.out.println(encrypt("wizard"));
     }
     
     public static String encrypt(String message) {
@@ -16,18 +16,26 @@ public class App
       return encryptedMessage;
     }
     
-    public static char encrypt(char letter) {
-      char encryptedLetter = lookupCorrespondingCharacter(letter);      
-      if (Character.isUpperCase(letter)) {
-        return Character.toUpperCase(encryptedLetter);
+    public static char encrypt(char character) {
+      char encryptedCharacter = lookupCorrespondingCharacter(character);      
+      if (Character.isUpperCase(character)) {
+        return Character.toUpperCase(encryptedCharacter);
       }
-      return encryptedLetter;
+      return encryptedCharacter;
     }
     
-    private static char lookupCorrespondingCharacter(char letter) {
-      String ALPHABET = "abcdefghijklmnopqrstuvwxyz";
-      String CHIPHER = "zyxwvutsrqponmlkjihgfedcba";
-      letter = Character.toLowerCase(letter);
+    private static char lookupCorrespondingCharacter(char character) {
+      character = Character.toLowerCase(character);
+      try {
+        return atbashCipher(character);
+      } catch (StringIndexOutOfBoundsException e) {
+        return character;
+      }
+    }
+    
+    private static char atbashCipher(char letter) {
+      final String ALPHABET = "abcdefghijklmnopqrstuvwxyz";
+      final String CHIPHER = "zyxwvutsrqponmlkjihgfedcba";
       int position = ALPHABET.indexOf(letter);
       return CHIPHER.charAt(position);
     }

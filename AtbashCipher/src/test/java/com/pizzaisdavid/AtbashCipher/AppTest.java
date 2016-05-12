@@ -17,6 +17,11 @@ public class AppTest {
   }
   
   @Test
+  public void symbol() {
+    assertEquals('/', App.encrypt('/'));
+  }
+  
+  @Test
   public void cipherTest() {
     assertEquals("draziw", App.encrypt("wizard"));
   }
