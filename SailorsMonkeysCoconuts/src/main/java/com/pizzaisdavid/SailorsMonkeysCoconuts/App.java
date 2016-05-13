@@ -1,42 +1,31 @@
 package com.pizzaisdavid.SailorsMonkeysCoconuts;
 
-public class App 
+public class App
 {
-    public static void main( String[] args )
-    {
-        System.out.println("noth");
-    }
-    
-    public static int getCoconutCountFromBeforeGoingToSleep(int numberOfSailors) {
-      double multiplier = calculateFairShare(numberOfSailors);
-      int countAfterWakingUp = 2;
-      while (true) {
-        double possibleCountBeforeGoingToSleep = (double) countAfterWakingUp;
-        for (int i = 0; i <= numberOfSailors; i++) {
-          if (isWholeNumber(possibleCountBeforeGoingToSleep)) {
-            possibleCountBeforeGoingToSleep = payMonkeyTax(possibleCountBeforeGoingToSleep);
-            if (i == numberOfSailors) {
-              return (int) possibleCountBeforeGoingToSleep;
-            }
-            possibleCountBeforeGoingToSleep *= multiplier;
-          } else {
-            break;
+
+  public static void main( String[] args )
+  {
+    System.out.println(getOriginalCoconutCount(5));
+  }
+  
+  public static int getOriginalCoconutCount(int sailorCount) {
+    CoconutCount coconutCount = new CoconutCount(sailorCount);
+    int startingAmount = 2;
+    while (true) {
+      coconutCount.set(startingAmount);
+      for (int i = 1; i <= sailorCount; i++) {
+        coconutCount.payMonkeyTax();
+        coconutCount.removeSailorsFairShare();
+        if (coconutCount.isWholeNumber()) {
+          if (i == sailorCount) {
+            return startingAmount;
           }
+        } else {
+          break;
         }
-        countAfterWakingUp++;
       }
+      startingAmount++;
     }
-    
-    public static double calculateFairShare(int sailors) {
-      return (double) sailors / (double) (sailors - 1);
-    }
-    
-    public static boolean isWholeNumber(double d) {
-      return (d % 1) == 0;
-    }
-    
-    public static double payMonkeyTax(double d) {
-      final int AMOUNT_TO_PAY_MONKEY = 1;
-      return d + AMOUNT_TO_PAY_MONKEY;
-    }
+  }
+ 
 }
