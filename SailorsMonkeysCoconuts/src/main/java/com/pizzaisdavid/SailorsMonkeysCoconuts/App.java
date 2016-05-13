@@ -15,6 +15,8 @@ public class App
       coconutCount.set(startingAmount);
       for (int i = 1; i <= sailorCount; i++) {
         coconutCount.payMonkeyTax();
+        //TODO Monkey.takeTax(coconutCount);
+        //TODO Sailor.takeFairShare(coconutCount);
         coconutCount.removeSailorsFairShare();
         if (coconutCount.isWholeNumber()) {
           if (i == sailorCount) {
