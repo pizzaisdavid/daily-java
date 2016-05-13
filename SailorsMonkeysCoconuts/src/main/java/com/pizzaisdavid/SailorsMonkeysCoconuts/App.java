@@ -4,26 +4,26 @@ public class App
 {
     public static void main( String[] args )
     {
-        System.out.println("");
+        System.out.println("noth");
     }
     
-    public static int getStartingCoconutCount(int numberOfSailors) {
+    public static int getCoconutCountFromBeforeGoingToSleep(int numberOfSailors) {
       double multiplier = calculateFairShare(numberOfSailors);
       int countAfterWakingUp = 2;
       while (true) {
-        double countBeforeGoingToSleep = (double) countAfterWakingUp;
+        double possibleCountBeforeGoingToSleep = (double) countAfterWakingUp;
         for (int i = 0; i <= numberOfSailors; i++) {
-          if (i == numberOfSailors) {
-            return (int) countBeforeGoingToSleep;
-          } 
-          countBeforeGoingToSleep *= multiplier;
-          if (isWholeNumber(countBeforeGoingToSleep)) {
-            countBeforeGoingToSleep = payMonkeyTax(countBeforeGoingToSleep);
+          if (isWholeNumber(possibleCountBeforeGoingToSleep)) {
+            possibleCountBeforeGoingToSleep = payMonkeyTax(possibleCountBeforeGoingToSleep);
+            if (i == numberOfSailors) {
+              return (int) possibleCountBeforeGoingToSleep;
+            }
+            possibleCountBeforeGoingToSleep *= multiplier;
           } else {
-            countAfterWakingUp++;
             break;
           }
         }
+        countAfterWakingUp++;
       }
     }
     
