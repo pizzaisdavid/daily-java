@@ -1,9 +1,6 @@
 package com.pizzaisdavid.SailorsMonkeysCoconuts;
 
 public class Monkey {
-  
-  public Monkey() {
-  }
 
   public static CoconutPile takeTax(CoconutPile coconutPile) {
     final double AMOUNT_TO_PAY_MONKEY = 1;
