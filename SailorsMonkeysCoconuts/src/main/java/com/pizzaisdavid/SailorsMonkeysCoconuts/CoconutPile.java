@@ -1,22 +1,25 @@
 package com.pizzaisdavid.SailorsMonkeysCoconuts;
 
-public class CoconutCount {
+public class CoconutPile {
   public double total;
   private double fairShareRatio;
   
-  public CoconutCount(int sailorCount) {
+  public CoconutPile(int sailorCount) {
     final int INDIVIDUAL_PERSON = 1;
     this.fairShareRatio = (double) INDIVIDUAL_PERSON / (double) sailorCount;
     this.total = 1;
   }
   
-  public void set(int startingAmount) {
-    this.total = (double) startingAmount;
+  public double getTotal() {
+    return this.total;
   }
   
-  public void payMonkeyTax() {
-    final double AMOUNT_TO_PAY_MONKEY = 1;
-    this.total -= AMOUNT_TO_PAY_MONKEY;
+  public void setTotal(int total) {
+    this.total = (double) total;
+  }
+  
+  public void setTotal(double total) {
+    this.total = total;
   }
   
   public void removeSailorsFairShare() {

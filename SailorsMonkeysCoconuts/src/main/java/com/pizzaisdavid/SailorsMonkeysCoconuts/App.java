@@ -5,20 +5,19 @@ public class App
 
   public static void main( String[] args )
   {
-    System.out.println(getOriginalCoconutCount(5));
+    System.out.println(getOriginalCoconutPile(5));
   }
   
-  public static int getOriginalCoconutCount(int sailorCount) {
-    CoconutCount coconutCount = new CoconutCount(sailorCount);
+  public static int getOriginalCoconutPile(int sailorCount) {
+    CoconutPile coconutPile = new CoconutPile(sailorCount);
     int startingAmount = 2;
     while (true) {
-      coconutCount.set(startingAmount);
+      coconutPile.setTotal(startingAmount);
       for (int i = 1; i <= sailorCount; i++) {
-        coconutCount.payMonkeyTax();
-        //TODO Monkey.takeTax(coconutCount);
-        //TODO Sailor.takeFairShare(coconutCount);
-        coconutCount.removeSailorsFairShare();
-        if (coconutCount.isWholeNumber()) {
+        coconutPile = Monkey.takeTax(coconutPile);
+        //TODO Sailor.takeFairShare(coconutPile);
+        coconutPile.removeSailorsFairShare();
+        if (coconutPile.isWholeNumber()) {
           if (i == sailorCount) {
             return startingAmount;
           }
