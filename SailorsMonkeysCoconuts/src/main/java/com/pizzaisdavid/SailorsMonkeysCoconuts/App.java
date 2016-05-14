@@ -9,14 +9,14 @@ public class App
   }
   
   public static int getOriginalCoconutPile(int sailorCount) {
-    CoconutPile coconutPile = new CoconutPile(sailorCount);
+    CoconutPile coconutPile = new CoconutPile();
+    Sailor sailor = new Sailor(sailorCount);
     int startingAmount = 2;
     while (true) {
       coconutPile.setTotal(startingAmount);
       for (int i = 1; i <= sailorCount; i++) {
-        coconutPile = Monkey.takeTax(coconutPile);
-        //TODO Sailor.takeFairShare(coconutPile);
-        coconutPile.removeSailorsFairShare();
+        coconutPile = Monkey.takeTax(coconutPile); // TODO pass by reference?
+        coconutPile = sailor.takeFairShare(coconutPile); // TODO pass by reference?
         if (coconutPile.isWholeNumber()) {
           if (i == sailorCount) {
             return startingAmount;
