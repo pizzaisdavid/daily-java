@@ -19,11 +19,7 @@ public class CoconutPile {
     this.total = total;
   }
   
-  public boolean isDecimal() {
-    return isWholeNumber() == false;
-  }
-  
-  public  boolean isWholeNumber() {
-    return (this.total % 1) == 0;
+  public  boolean isDecimal() {
+    return this.total % 1 != 0;
   }
 }
