@@ -10,14 +10,4 @@ public class AppTest {
   public void test() {
     assertEquals(3121, App.getOriginalCoconutPile(5));
   }
-  
-  @Test
-  public void calculateFairShare() {
-    
-  }
-  
-  @Test
-  public void isWholeNumber() {
-
-  }
 }

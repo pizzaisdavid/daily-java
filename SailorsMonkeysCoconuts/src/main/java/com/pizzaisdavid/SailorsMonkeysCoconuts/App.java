@@ -18,8 +18,8 @@ public class App
     }
   }
   
-  public static boolean isAbleToDivvyUpCoconutPileEvenly(double coconutCount, int sailorCount) {
-    CoconutPile pile = new CoconutPile();
+  private static boolean isAbleToDivvyUpCoconutPileEvenly(double coconutCount, int sailorCount) {
+    CoconutPile pile = new CoconutPile(coconutCount);
     Sailor sailor = new Sailor(sailorCount);
     for (int i = 0; i < sailorCount; i++) {
       Monkey.takeBribe(pile);
