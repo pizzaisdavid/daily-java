@@ -10,20 +10,22 @@ import org.junit.Test;
 
 import main.java.com.mycompany.daily.TextFile;
 
+
+class SpecializationTextFile extends TextFile {
+  
+  private String content;
+  
+  public SpecializationTextFile(String relativePath, String content) {
+    super(relativePath);
+    this.content = content;
+  }
+
+  protected Scanner createScanner(String filePath) throws FileNotFoundException {
+    return new Scanner(this.content);
+  }
+}
+
 public class TextFileTest {
-  
-  public ArrayList<String> make(String... strings) {
-    ArrayList<String> expected = new ArrayList<String>();
-    for (String string : strings) {
-      expected.add(string);
-    }
-    return expected;
-  }
-  
-  public SpecializationTextFile makeFile(String input) {
-    return new SpecializationTextFile("test.txt", input);
-    
-  }
   
   public String makeTestFile(String...strings) {
     String file = "";
@@ -33,44 +35,11 @@ public class TextFileTest {
     return file;
   }
   
-  private class SpecializationTextFile extends TextFile {
-    
-    public boolean throwFileNotFoundException;
-    private String content;
-    
-    public SpecializationTextFile(String relativePath, String content) {
-      this(relativePath);
-      this.content = content;
-    }
-    
-    public SpecializationTextFile(String relativePath) {
-      super(relativePath);
-      this.throwFileNotFoundException = false;
-    }
-
-    protected Scanner createScanner(String filePath) throws FileNotFoundException {
-      if (this.throwFileNotFoundException) {
-        throw new FileNotFoundException();
-      } else {
-        return new Scanner(this.content);
-      }
-    }
-  }
-
   @Test
-  public void fileNotFound() {
-    SpecializationTextFile file = makeFile(null);
-    file.throwFileNotFoundException = true;
-    file.getLines();
-  }
-  
-  @Test
-  public void tset() {
-    // TODO rename
-    ArrayList<String> expected = make("1", "2");
+  public void getLines() {
+    ArrayList<String> expected = JunitHelper.make("1", "2");
     String input = makeTestFile("1", "2");
-    SpecializationTextFile file = makeFile(input);
+    SpecializationTextFile file = new SpecializationTextFile("test.txt", input);
     assertEquals(expected, file.getLines());
   }
-  
 }

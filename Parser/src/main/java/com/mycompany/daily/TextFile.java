@@ -36,7 +36,6 @@ public class TextFile {
   
   protected ArrayList<String> noFileFound(FileNotFoundException e) {
     e.printStackTrace();
-    // TODO what should is return?
     return null;
   }
 }
