@@ -11,22 +11,25 @@ public class App
   public static int getOriginalCoconutPile(int sailorCount) {
     CoconutPile coconutPile = new CoconutPile();
     Sailor sailor = new Sailor(sailorCount);
-    int startingAmount = 2;
+    int i = 0;
     while (true) {
-      coconutPile.setTotal(startingAmount);
-      for (int i = 1; i <= sailorCount; i++) {
-        Monkey.takeTax(coconutPile); // TODO pass by reference?
-        sailor.takeFairShare(coconutPile); // TODO pass by reference?
-        if (coconutPile.isWholeNumber()) {
-          if (i == sailorCount) {
-            return startingAmount;
-          }
-        } else {
-          break;
-        }
+      coconutPile.setAmount(i);
+      if (isAbleToDivvyUpCoconutPileEvenly(coconutPile, sailor)){
+        return i;
       }
-      startingAmount++;
+      i++;
     }
   }
- 
+  
+  public static boolean isAbleToDivvyUpCoconutPileEvenly(CoconutPile coconutPile, Sailor sailor) {
+    int sailorCount = sailor.getCount();
+    for (int i = 1; i <= sailorCount; i++) {
+      Monkey.takeBribe(coconutPile);
+      sailor.takeFairShare(coconutPile);
+      if (coconutPile.isDecimal()) {
+        return false;
+      }
+    }
+    return true;
+  }
 }
