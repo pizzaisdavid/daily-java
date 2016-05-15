@@ -15,8 +15,8 @@ public class App
     while (true) {
       coconutPile.setTotal(startingAmount);
       for (int i = 1; i <= sailorCount; i++) {
-        coconutPile = Monkey.takeTax(coconutPile); // TODO pass by reference?
-        coconutPile = sailor.takeFairShare(coconutPile); // TODO pass by reference?
+        Monkey.takeTax(coconutPile); // TODO pass by reference?
+        sailor.takeFairShare(coconutPile); // TODO pass by reference?
         if (coconutPile.isWholeNumber()) {
           if (i == sailorCount) {
             return startingAmount;

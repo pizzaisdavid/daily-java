@@ -9,12 +9,11 @@ public class Sailor {
     this.fairShareRatio = (double) INDIVIDUAL_PERSON / (double) sailorCount;
   }
   
-  public CoconutPile takeFairShare(CoconutPile coconutPile) {
+  public void takeFairShare(CoconutPile coconutPile) {
     double total = coconutPile.getTotal();
     double sailorsFairShare = total * this.fairShareRatio;
     double remainingAmount = total - sailorsFairShare;
     coconutPile.setTotal(remainingAmount);
-    return coconutPile;
   }
 
 }
