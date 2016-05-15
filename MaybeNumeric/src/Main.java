@@ -7,7 +7,8 @@ public class Main {
 	}
 	
 	public static boolean isNumeric(String possibleNumber) {
-	  if (possibleNumber == "." ||
+	  if (possibleNumber == null ||
+	      possibleNumber == "." ||
 	      possibleNumber == "") {
 	    return false;
 	  }

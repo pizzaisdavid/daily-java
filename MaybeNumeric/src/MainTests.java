@@ -6,21 +6,26 @@ public class MainTests {
 
 	@Test
 	public void isWholeNumber() {
-		assertEquals(true, Main.isNumeric("234"));
+		assertTrue(Main.isNumeric("234"));
+    assertTrue(Main.isNumeric("0"));
 	}
 	
 	@Test
 	public void isString() {
-		assertEquals(false, Main.isNumeric("This is a sentence."));
-		assertEquals("Blank string.", false, Main.isNumeric(""));
-
+		assertFalse(Main.isNumeric("This is a sentence."));
+		assertFalse("Blank string.", Main.isNumeric(""));
+		assertFalse("Just a peroid", Main.isNumeric("."));
+    assertFalse("Two periods.", Main.isNumeric("2.."));
 	}
+	
+	 @Test
+	  public void isNull() {
+	    assertFalse(Main.isNumeric(null));
+	  }
 	
 	@Test
 	public void isDecmial () {
-		assertEquals(true, Main.isNumeric("23.4"));
-		assertEquals("Two periods.", false, Main.isNumeric("2.."));
-    assertEquals("Peroid then number.", true, Main.isNumeric(".2"));
-    assertEquals("Just a peroid", false, Main.isNumeric("."));
+		assertTrue(Main.isNumeric("23.4"));
+    assertTrue("Peroid then number.", Main.isNumeric(".2"));
 	}
 }
