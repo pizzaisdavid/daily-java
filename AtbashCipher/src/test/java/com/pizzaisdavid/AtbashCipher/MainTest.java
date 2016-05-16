@@ -7,22 +7,34 @@ import org.junit.Test;
 public class MainTest {
 
   @Test
-  public void test() {
+  public void initialize() {
+    @SuppressWarnings("unused")
+    Main main = new Main();
+    Main.main(null);
+  }
+  
+  @Test
+  public void cipherCharacter() {
     assertEquals('z', Main.encrypt('a'));
   }
   
   @Test
-  public void preserveCase() {
+  public void preserveCaseCharacter() {
     assertEquals('Z', Main.encrypt('A'));
   }
   
   @Test
-  public void symbol() {
+  public void preserveSymbol() {
     assertEquals('/', Main.encrypt('/'));
   }
   
   @Test
-  public void cipherTest() {
+  public void cipherString() {
     assertEquals("draziw", Main.encrypt("wizard"));
+  }
+  
+  @Test
+  public void preserveCaseString() {
+    assertEquals("Draziw", Main.encrypt("Wizard"));
   }
 }
