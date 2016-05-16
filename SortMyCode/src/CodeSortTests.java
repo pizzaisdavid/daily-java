@@ -1,15 +1,17 @@
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+
 import java.util.ArrayList;
+
 import org.junit.Test;
 
-import test.java.com.mycompany.daily.JunitHelper;
+import com.pizzaisdavid.JunitHelper.JunitHelper;
 
 public class CodeSortTests {
 
 	@Test
 	public void sort_putIncludeStatementFirst() {
-		ArrayList<String> expected = JunitHelper.make("#include <iostream>", "}");
-    ArrayList<String> program = JunitHelper.make("}", "#include <iostream>");
+		ArrayList<String> expected = JunitHelper.arrayList.make("#include <iostream>", "}");
+    ArrayList<String> program = JunitHelper.arrayList.make("}", "#include <iostream>");
 		CodeSort code = new CodeSort(program);
 		ArrayList<String> output = code.sort();
 		assertEquals(expected, output);
@@ -17,8 +19,8 @@ public class CodeSortTests {
 	
 	@Test
 	public void sort_initializeVariablesBeforeUse() {
-	  ArrayList<String> expected = JunitHelper.make("var sum = 0;", "sum + i = sum;");
-	  ArrayList<String> program = JunitHelper.make("sum + i = sum;", "var sum = 0;");
+	  ArrayList<String> expected = JunitHelper.arrayList.make("var sum = 0;", "sum + i = sum;");
+	  ArrayList<String> program = JunitHelper.arrayList.make("sum + i = sum;", "var sum = 0;");
 	  CodeSort code = new CodeSort(program);
 	  ArrayList<String> output = code.sort();
 	  assertEquals(expected, output);
@@ -26,7 +28,7 @@ public class CodeSortTests {
 	
 	@Test
   public void sort() {
-    ArrayList<String> program = JunitHelper.make(
+    ArrayList<String> program = JunitHelper.arrayList.make(
       "sum + i = sum;",
       "var sum = 0;",
       "}",

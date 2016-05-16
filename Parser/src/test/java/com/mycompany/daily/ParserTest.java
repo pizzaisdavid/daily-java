@@ -9,6 +9,8 @@ import org.junit.Test;
 
 import main.java.com.mycompany.daily.Parser;
 
+import com.pizzaisdavid.JunitHelper.JunitHelper;
+
 public class ParserTest {
   
   @Test
@@ -19,7 +21,7 @@ public class ParserTest {
   
   @Test
   public void comma() {
-    ArrayList<String>expected = JunitHelper.make("This", "is", "David");
+    ArrayList<String>expected = JunitHelper.arrayList.make("This", "is", "David");
     String input = "This,is,David";
     String delimiter = ",";
     assertEquals(expected, Parser.parse(input, delimiter));
@@ -27,7 +29,7 @@ public class ParserTest {
   
   @Test
   public void trim() {
-    ArrayList<String>expected =  JunitHelper.make("This", "is", "David");
+    ArrayList<String>expected =  JunitHelper.arrayList.make("This", "is", "David");
     String input = "This,   is,   David";
     String delimiter = ",";
     assertEquals(expected, Parser.parse(input, delimiter));
@@ -42,7 +44,7 @@ public class ParserTest {
         new ArrayList<String>(Arrays.asList("2.0", "2.1", "2.2"))
       )
     );
-    ArrayList<String> content =  JunitHelper.make(
+    ArrayList<String> content =  JunitHelper.arrayList.make(
       "0.0, 0.1, 0.2",
       "1.0, 1.1, 1.2",
       "2.0, 2.1, 2.2"

@@ -10,6 +10,7 @@ import org.junit.Test;
 
 import main.java.com.mycompany.daily.TextFile;
 
+import com.pizzaisdavid.JunitHelper.JunitHelper;
 
 class SpecializationTextFile extends TextFile {
   
@@ -37,7 +38,7 @@ public class TextFileTest {
   
   @Test
   public void getLines() {
-    ArrayList<String> expected = JunitHelper.make("1", "2");
+    ArrayList<String> expected = JunitHelper.arrayList.make("1", "2");
     String input = makeTestFile("1", "2");
     SpecializationTextFile file = new SpecializationTextFile("test.txt", input);
     assertEquals(expected, file.getLines());
