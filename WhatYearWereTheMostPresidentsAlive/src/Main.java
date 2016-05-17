@@ -8,8 +8,7 @@ public class Main {
   public static void main(String[] args) {
     TextFile file = new TextFile("pres.txt");
     ArrayList<String> lines = file.getLines();
-    ArrayList<ArrayList<String>> parsed = Parser.parse(lines);
-    parsed.remove(0);
+    ArrayList<ArrayList<String>> parsed = Parser.parseExcludingHeader(lines);
     ArrayList<Person> presidents = new ArrayList<Person>();
     for (ArrayList<String> rawData : parsed) {
       Person president = new Person(rawData.get(1), rawData.get(3));

@@ -21,7 +21,7 @@ public class ParserTest {
   
   @Test
   public void comma() {
-    ArrayList<String>expected = JunitHelper.arrayList.make("This", "is", "David");
+    ArrayList<String> expected = JunitHelper.arrayList.make("This", "is", "David");
     String input = "This,is,David";
     String delimiter = ",";
     assertEquals(expected, Parser.parse(input, delimiter));
@@ -29,7 +29,7 @@ public class ParserTest {
   
   @Test
   public void trim() {
-    ArrayList<String>expected =  JunitHelper.arrayList.make("This", "is", "David");
+    ArrayList<String> expected = JunitHelper.arrayList.make("This", "is", "David");
     String input = "This,   is,   David";
     String delimiter = ",";
     assertEquals(expected, Parser.parse(input, delimiter));
@@ -44,11 +44,26 @@ public class ParserTest {
         new ArrayList<String>(Arrays.asList("2.0", "2.1", "2.2"))
       )
     );
-    ArrayList<String> content =  JunitHelper.arrayList.make(
+    ArrayList<String> input =  JunitHelper.arrayList.make(
       "0.0, 0.1, 0.2",
       "1.0, 1.1, 1.2",
       "2.0, 2.1, 2.2"
     );
-    assertEquals(expected, Parser.parse(content));
+    assertEquals(expected, Parser.parse(input));
+  }
+  
+  @Test
+  public void exludeHeader() {
+    ArrayList<ArrayList<String>> expected = new ArrayList<ArrayList<String>>(
+      Arrays.asList(
+        new ArrayList<String>(Arrays.asList("George Washington", "Feb 22 1732", "Dec 14 1799"))
+      )
+    );
+    ArrayList<String> input = JunitHelper.arrayList.make(
+      "PRESIDENT,  BIRTH DATE, DEATH DATE",
+      "George Washington,  Feb 22 1732,    Dec 14 1799"
+    );
+    assertEquals(expected, Parser.parseExcludingHeader(input));
+
   }
 }

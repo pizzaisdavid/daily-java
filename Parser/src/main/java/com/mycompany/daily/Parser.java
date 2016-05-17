@@ -5,6 +5,16 @@ import java.util.List;
 
 public class Parser {
   
+  public static ArrayList<ArrayList<String>> parseExcludingHeader(ArrayList<String> lines) {
+    String DEFAULT_SEPARATOR = ",";
+    return parseExcludingHeader(lines, DEFAULT_SEPARATOR);
+  }
+  
+  public static ArrayList<ArrayList<String>> parseExcludingHeader(ArrayList<String> lines, String delimiter) {
+    lines.remove(0);
+    return parse(lines, delimiter);
+  }
+  
   public static ArrayList<ArrayList<String>> parse(ArrayList<String> lines) {
     String DEFAULT_SEPARATOR = ",";
     return parse(lines, DEFAULT_SEPARATOR);
