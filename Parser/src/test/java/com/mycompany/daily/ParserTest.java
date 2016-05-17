@@ -3,7 +3,6 @@ package test.java.com.mycompany.daily;
 import static org.junit.Assert.*;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 
 import org.junit.Test;
 
@@ -37,13 +36,11 @@ public class ParserTest {
   
   @Test
   public void list() {
-    ArrayList<ArrayList<String>> expected = new ArrayList<ArrayList<String>>(
-      Arrays.asList(
-        new ArrayList<String>(Arrays.asList("0.0", "0.1", "0.2")),
-        new ArrayList<String>(Arrays.asList("1.0", "1.1", "1.2")),
-        new ArrayList<String>(Arrays.asList("2.0", "2.1", "2.2"))
-      )
-    );
+    ArrayList<ArrayList<String>> expected = JunitHelper.arrayList.make(
+        new String[] {"0.0","0.1", "0.2"},
+        new String[] {"1.0","1.1", "1.2"},
+        new String[] {"2.0","2.1", "2.2"}
+      );
     ArrayList<String> input =  JunitHelper.arrayList.make(
       "0.0, 0.1, 0.2",
       "1.0, 1.1, 1.2",
@@ -54,14 +51,14 @@ public class ParserTest {
   
   @Test
   public void exludeHeader() {
-    ArrayList<ArrayList<String>> expected = new ArrayList<ArrayList<String>>(
-      Arrays.asList(
-        new ArrayList<String>(Arrays.asList("George Washington", "Feb 22 1732", "Dec 14 1799"))
-      )
-    );
+    ArrayList<ArrayList<String>> expected = JunitHelper.arrayList.make(
+        new String[] {"George Washington", "Feb 22 1732", "Dec 14 1799"},
+        new String[] {"John Adams", "Oct 30 1735", "July 4 1826"}
+      );
     ArrayList<String> input = JunitHelper.arrayList.make(
       "PRESIDENT,  BIRTH DATE, DEATH DATE",
-      "George Washington,  Feb 22 1732,    Dec 14 1799"
+      "George Washington,  Feb 22 1732,    Dec 14 1799",
+      "John Adams,  Oct 30 1735,  July 4 1826"
     );
     assertEquals(expected, Parser.parseExcludingHeader(input));
 
