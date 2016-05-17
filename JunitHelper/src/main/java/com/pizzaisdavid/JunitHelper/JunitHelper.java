@@ -13,5 +13,13 @@ public class JunitHelper {
       }
       return expected;
     }
+    
+    public static ArrayList<Double> make(Double... numbers) {
+      ArrayList<Double> expected = new ArrayList<Double>();
+      for (Double number : numbers) {
+        expected.add(number);
+      }
+      return expected;
+    }
   }
 }
