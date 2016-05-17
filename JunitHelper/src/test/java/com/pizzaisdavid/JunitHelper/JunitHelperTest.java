@@ -10,7 +10,19 @@ import org.junit.Test;
 public class JunitHelperTest {
 
   @Test
-  public void test() {
+  public void arrayListOfStrings() {
+    ArrayList<String> actual = JunitHelper.arrayList.make("0.0", "0.1");
+    assertEquals(new ArrayList<String>(Arrays.asList("0.0", "0.1")), actual);
+  }
+  
+  @Test
+  public void arrayListOfDoubles() {
+    ArrayList<Double> actual = JunitHelper.arrayList.make(0.0, 0.1);
+    assertEquals(new ArrayList<Double>(Arrays.asList(0.0, 0.1)), actual);
+  }
+  
+  @Test
+  public void arrayListOfArrayListOfStrings() {
     ArrayList<ArrayList<String>> actual = JunitHelper.arrayList.make(
       new String[] {"0.0","0.1"},
       new String[] {"1.0","1.1"}
