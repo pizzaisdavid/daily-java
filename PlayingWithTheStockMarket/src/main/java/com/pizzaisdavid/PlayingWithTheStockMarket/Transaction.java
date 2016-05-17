@@ -18,4 +18,10 @@ public class Transaction {
   public String toString() {
     return this.buyPrice + " " + this.sellPrice;
   }
+  
+  public boolean equals(Transaction otherTranscation) {
+    return this.buyPrice == otherTranscation.buyPrice &&
+        this.sellPrice == otherTranscation.sellPrice &&
+        this.profit == otherTranscation.profit;
+  }
 }
