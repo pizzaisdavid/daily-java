@@ -43,4 +43,10 @@ public class TextFileTest {
     SpecializationTextFile file = new SpecializationTextFile("test.txt", input);
     assertEquals(expected, file.getLines());
   }
+  
+  @Test
+  public void fileNotFound() {
+    TextFile file = new TextFile("non-existing_file.txt");
+    file.getLines();
+  }
 }
