@@ -19,9 +19,21 @@ public class Nodes extends HashMap<String, ArrayList<String>> {
   }
   
   private void addConnection(String key, String value) {
-    if (this.containsKey(key) == false) {
-      this.put(key, new ArrayList<String>());
+    if (isNewKey(key)) {
+      initializeConnection(key);
     }
+    appendValue(key, value);
+  }
+  
+  private boolean isNewKey(String key) {
+    return this.containsKey(key) == false;
+  }
+  
+  private void initializeConnection(String key) {
+    this.put(key, new ArrayList<String>());
+  }
+  
+  private void appendValue(String key, String value) {
     ArrayList<String> values = this.get(key);
     values.add(value);
     this.put(key, values);
