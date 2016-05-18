@@ -39,7 +39,7 @@ public class GarageDoorOpenerTests {
 
 	@Test
 	public void startingStateIsClosed() {
-    ArrayList<GarageDoorOpener.State> expected = makeStates(
+    ArrayList<GarageDoorOpener.State> expected = JunitHelper.arrayList.make(
 	    GarageDoorOpener.State.CLOSED
 	  );	  
 		ArrayList<String> commands = new ArrayList<String>();
@@ -49,7 +49,7 @@ public class GarageDoorOpenerTests {
 	
 	@Test
   public void completeUninterruptedCycle() {
-    ArrayList<GarageDoorOpener.State> expected = makeStates(
+    ArrayList<GarageDoorOpener.State> expected = JunitHelper.arrayList.make(
       GarageDoorOpener.State.CLOSED,
       GarageDoorOpener.State.OPENING,
       GarageDoorOpener.State.OPEN
@@ -64,7 +64,7 @@ public class GarageDoorOpenerTests {
   
   @Test
   public void setDifferentStartingState() {
-    ArrayList<GarageDoorOpener.State> expected = makeStates(
+    ArrayList<GarageDoorOpener.State> expected = JunitHelper.arrayList.make(
       GarageDoorOpener.State.CLOSING
     ); 
     ArrayList<String> commands = new ArrayList<String>();
@@ -74,7 +74,7 @@ public class GarageDoorOpenerTests {
   
   @Test
   public void interruptedWhileClosing() {
-    ArrayList<GarageDoorOpener.State> expected = makeStates(
+    ArrayList<GarageDoorOpener.State> expected = JunitHelper.arrayList.make(
       GarageDoorOpener.State.CLOSING,
       GarageDoorOpener.State.STOPPED_WHILE_CLOSING
     ); 
@@ -85,7 +85,7 @@ public class GarageDoorOpenerTests {
   
   @Test
   public void interruptedWhileOpening() {
-    ArrayList<GarageDoorOpener.State> expected = makeStates(
+    ArrayList<GarageDoorOpener.State> expected = JunitHelper.arrayList.make(
       GarageDoorOpener.State.OPENING,
       GarageDoorOpener.State.STOPPED_WHILE_OPENING
     ); 
@@ -96,7 +96,7 @@ public class GarageDoorOpenerTests {
   
   @Test
   public void changeFromStoppedWhileOpeningToClosing() {
-    ArrayList<GarageDoorOpener.State> expected = makeStates(
+    ArrayList<GarageDoorOpener.State> expected = JunitHelper.arrayList.make(
       GarageDoorOpener.State.STOPPED_WHILE_OPENING,
       GarageDoorOpener.State.CLOSING
     ); 
@@ -107,7 +107,7 @@ public class GarageDoorOpenerTests {
   
   @Test
   public void changeFromStoppedWhileClosingToOpening() {
-    ArrayList<GarageDoorOpener.State> expected = makeStates(
+    ArrayList<GarageDoorOpener.State> expected = JunitHelper.arrayList.make(
       GarageDoorOpener.State.STOPPED_WHILE_CLOSING,
       GarageDoorOpener.State.OPENING
     ); 
@@ -118,7 +118,7 @@ public class GarageDoorOpenerTests {
   
   @Test
   public void changeFromOpenToClosing() {
-    ArrayList<GarageDoorOpener.State> expected = makeStates(
+    ArrayList<GarageDoorOpener.State> expected = JunitHelper.arrayList.make(
         GarageDoorOpener.State.OPEN,
         GarageDoorOpener.State.CLOSING
       );
@@ -129,21 +129,13 @@ public class GarageDoorOpenerTests {
   
   @Test
   public void changeFromClosingToClosed() {
-    ArrayList<GarageDoorOpener.State> expected = makeStates(
+    ArrayList<GarageDoorOpener.State> expected = JunitHelper.arrayList.make(
         GarageDoorOpener.State.CLOSING,
         GarageDoorOpener.State.CLOSED
       );
     ArrayList<String> commands = cycleComplete();
     SpecializationGarageDoor opener = makeOpener(commands, GarageDoorOpener.State.CLOSING);
     opener.validate(expected);
-  }
-  
-  public ArrayList<GarageDoorOpener.State> makeStates(GarageDoorOpener.State...states) {
-    ArrayList<GarageDoorOpener.State> expected = new ArrayList<GarageDoorOpener.State>();
-    for (GarageDoorOpener.State state: states) {
-      expected.add(state);
-    }
-    return expected;
   }
   
   public ArrayList<String> buttonClicked() {
