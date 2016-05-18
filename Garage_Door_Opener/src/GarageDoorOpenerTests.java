@@ -36,26 +36,6 @@ class SpecializationGarageDoor extends GarageDoorOpener {
 }
 
 public class GarageDoorOpenerTests {
-  
-  public ArrayList<GarageDoorOpener.State> makeStates(GarageDoorOpener.State...states) {
-    ArrayList<GarageDoorOpener.State> expected = new ArrayList<GarageDoorOpener.State>();
-    for (GarageDoorOpener.State state: states) {
-      expected.add(state);
-    }
-    return expected;
-  }
-  
-  public ArrayList<String> buttonClicked() {
-    return JunitHelper.arrayList.make("button_clicked");
-  }
-  
-  public ArrayList<String> cycleComplete() {
-    return JunitHelper.arrayList.make("cycle_complete");
-  }
-  
-  public SpecializationGarageDoor makeOpener(ArrayList<String> commands, GarageDoorOpener.State status) {
-    return new SpecializationGarageDoor(commands, status);
-  }
 
 	@Test
 	public void startingStateIsClosed() {
@@ -156,5 +136,25 @@ public class GarageDoorOpenerTests {
     ArrayList<String> commands = cycleComplete();
     SpecializationGarageDoor opener = makeOpener(commands, GarageDoorOpener.State.CLOSING);
     opener.validate(expected);
+  }
+  
+  public ArrayList<GarageDoorOpener.State> makeStates(GarageDoorOpener.State...states) {
+    ArrayList<GarageDoorOpener.State> expected = new ArrayList<GarageDoorOpener.State>();
+    for (GarageDoorOpener.State state: states) {
+      expected.add(state);
+    }
+    return expected;
+  }
+  
+  public ArrayList<String> buttonClicked() {
+    return JunitHelper.arrayList.make("button_clicked");
+  }
+  
+  public ArrayList<String> cycleComplete() {
+    return JunitHelper.arrayList.make("cycle_complete");
+  }
+  
+  public SpecializationGarageDoor makeOpener(ArrayList<String> commands, GarageDoorOpener.State status) {
+    return new SpecializationGarageDoor(commands, status);
   }
 }
