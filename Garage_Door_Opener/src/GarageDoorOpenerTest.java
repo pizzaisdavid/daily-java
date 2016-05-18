@@ -43,6 +43,7 @@ public class GarageDoorOpenerTest {
     ArrayList<String> NO_COMMAND = new ArrayList<String>();    
     return Arrays.asList(
       new Object[][] { 
+        
         {
           "verifyStartingStateIsClosed",
           JunitHelper.arrayList.make(
@@ -50,6 +51,7 @@ public class GarageDoorOpenerTest {
           ),
           NO_COMMAND
         },
+        
         {
           "rotateThroughCombinations",
           JunitHelper.arrayList.make(
@@ -74,6 +76,7 @@ public class GarageDoorOpenerTest {
             "cycle_complete"
           )
         }
+        
       }
     );
   }
