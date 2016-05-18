@@ -1,37 +1,41 @@
 import static org.junit.Assert.*;
 
 import org.junit.Test;
+
+import com.pizzaisdavid.JunitHelper.JunitHelper;
+
 import java.util.ArrayList;
 
-public class GarageDoorOpenerTests {
-	
-  private class SpecializationGarageDoor extends GarageDoorOpener {
 
-    private ArrayList<State> outputs;
-    
-    public SpecializationGarageDoor(ArrayList<String> commands) {
-      super(commands);
-    }
-    
-    public SpecializationGarageDoor(ArrayList<String> commands, State status) {
-      super(commands, status);
-    }
-    
-    protected void printStatus(State status) {
-      if (this.outputs == null) {
-        this.outputs = new ArrayList<State>();
-      }
-      this.outputs.add(status);
-    }
-    
-    protected void printCommand(String command) {
-      // Don't print things during testing.
-    }
-    
-    public void validate(ArrayList<GarageDoorOpener.State> expected) {
-      assertEquals(expected, this.outputs);
-    }
+class SpecializationGarageDoor extends GarageDoorOpener {
+
+  private ArrayList<State> outputs;
+  
+  public SpecializationGarageDoor(ArrayList<String> commands) {
+    super(commands);
   }
+  
+  public SpecializationGarageDoor(ArrayList<String> commands, State status) {
+    super(commands, status);
+  }
+  
+  protected void printStatus(State status) {
+    if (this.outputs == null) {
+      this.outputs = new ArrayList<State>();
+    }
+    this.outputs.add(status);
+  }
+  
+  protected void printCommand(String command) {
+    // Don't print things during testing.
+  }
+  
+  public void validate(ArrayList<GarageDoorOpener.State> expected) {
+    assertEquals(expected, this.outputs);
+  }
+}
+
+public class GarageDoorOpenerTests {
   
   public ArrayList<GarageDoorOpener.State> makeStates(GarageDoorOpener.State...states) {
     ArrayList<GarageDoorOpener.State> expected = new ArrayList<GarageDoorOpener.State>();
@@ -42,19 +46,11 @@ public class GarageDoorOpenerTests {
   }
   
   public ArrayList<String> buttonClicked() {
-    return makeCommands("button_clicked");
+    return JunitHelper.arrayList.make("button_clicked");
   }
   
   public ArrayList<String> cycleComplete() {
-    return makeCommands("cycle_complete");
-  }
-  
-  public ArrayList<String> makeCommands(String...commands) {
-    ArrayList<String> expected = new ArrayList<String>();
-    for (String command: commands) {
-      expected.add(command);
-    }
-    return expected;
+    return JunitHelper.arrayList.make("cycle_complete");
   }
   
   public SpecializationGarageDoor makeOpener(ArrayList<String> commands, GarageDoorOpener.State status) {
@@ -78,7 +74,7 @@ public class GarageDoorOpenerTests {
       GarageDoorOpener.State.OPENING,
       GarageDoorOpener.State.OPEN
 	  );  
-	  ArrayList<String> commands = makeCommands(
+	  ArrayList<String> commands = JunitHelper.arrayList.make(
 	    "button_clicked",
       "cycle_complete"
 	  );
