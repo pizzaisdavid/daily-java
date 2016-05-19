@@ -10,7 +10,7 @@ import org.junit.Test;
 public class SwitchesTest {
 
   @Test
-  public void init() {
+  public void initialize() {
     ArrayList<Boolean> expected = new ArrayList<Boolean>(
       Arrays.asList(
         false,

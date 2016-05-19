@@ -7,7 +7,7 @@ import org.junit.Test;
 public class AppTest {
 
   @Test
-  public void init() {
+  public void initialize() {
     @SuppressWarnings("unused")
     App app = new App();
     App.main(null);

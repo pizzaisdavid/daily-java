@@ -7,7 +7,7 @@ import org.junit.Test;
 public class MonkeyTest {
 
   @Test
-  public void init() {
+  public void initialize() {
     @SuppressWarnings("unused")
     Monkey monkey = new Monkey();
   }

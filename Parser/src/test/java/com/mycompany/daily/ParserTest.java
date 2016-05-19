@@ -13,7 +13,7 @@ import com.pizzaisdavid.JunitHelper.JunitHelper;
 public class ParserTest {
   
   @Test
-  public void init() {
+  public void initialize() {
     @SuppressWarnings("unused")
     Parser parser = new Parser();
   }
