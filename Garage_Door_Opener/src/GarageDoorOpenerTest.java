@@ -3,6 +3,7 @@ import static org.junit.Assert.*;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
+import org.junit.runners.Parameterized.Parameter;
 import org.junit.runners.Parameterized.Parameters;
 
 import com.pizzaisdavid.JunitHelper.JunitHelper;
@@ -81,13 +82,15 @@ public class GarageDoorOpenerTest {
     );
   }
   
-  private ArrayList<String> commands;
-  private ArrayList<GarageDoorOpener.State> expected;
+  @Parameter
+  public String testName;
+  
+  @Parameter(value = 1)
+  public ArrayList<String> commands;
+  
+  @Parameter(value = 2)
+  public ArrayList<GarageDoorOpener.State> expected;
 
-  public GarageDoorOpenerTest(String testName, ArrayList<String> commands, ArrayList<GarageDoorOpener.State> expected) {
-    this.commands = commands;
-    this.expected = expected;
-  }
 
   @Test
   public void test() {
