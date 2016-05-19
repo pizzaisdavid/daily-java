@@ -46,14 +46,24 @@ public class GarageDoorOpenerTest {
         
         {
           "verifyStartingStateIsClosed",
+          NO_COMMAND,
           JunitHelper.arrayList.make(
             GarageDoorOpener.State.CLOSED
-          ),
-          NO_COMMAND
+          )
         },
         
         {
           "rotateThroughCombinations",
+          JunitHelper.arrayList.make(
+            "button_clicked",
+            "cycle_complete",
+            "button_clicked",
+            "button_clicked",
+            "button_clicked",
+            "button_clicked",
+            "button_clicked",
+            "cycle_complete"
+          ),
           JunitHelper.arrayList.make(
             GarageDoorOpener.State.CLOSED,
             GarageDoorOpener.State.OPENING,
@@ -64,16 +74,6 @@ public class GarageDoorOpenerTest {
             GarageDoorOpener.State.STOPPED_WHILE_OPENING,
             GarageDoorOpener.State.CLOSING,
             GarageDoorOpener.State.CLOSED
-          ),
-          JunitHelper.arrayList.make(
-            "button_clicked",
-            "cycle_complete",
-            "button_clicked",
-            "button_clicked",
-            "button_clicked",
-            "button_clicked",
-            "button_clicked",
-            "cycle_complete"
           )
         }
         
@@ -81,12 +81,12 @@ public class GarageDoorOpenerTest {
     );
   }
   
-  private ArrayList<GarageDoorOpener.State> expected;
   private ArrayList<String> commands;
+  private ArrayList<GarageDoorOpener.State> expected;
 
-  public GarageDoorOpenerTest(String testName, ArrayList<GarageDoorOpener.State> expected, ArrayList<String> commands) {
-    this.expected = expected;
+  public GarageDoorOpenerTest(String testName, ArrayList<String> commands, ArrayList<GarageDoorOpener.State> expected) {
     this.commands = commands;
+    this.expected = expected;
   }
 
   @Test
