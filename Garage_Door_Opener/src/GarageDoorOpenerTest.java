@@ -14,25 +14,25 @@ import java.util.Arrays;
 
 class SpecializationGarageDoor extends GarageDoorOpener {
 
-  public ArrayList<State> outputs;
+  public ArrayList<State_> outputs_;
   
   public SpecializationGarageDoor(ArrayList<String> commands) {
     super(commands);
   }
   
-  protected void printStatus(State status) {
-    if (this.outputs == null) {
-      this.outputs = new ArrayList<State>();
+  protected void printStatus(State_ status) {
+    if (outputs_ == null) {
+      outputs_ = new ArrayList<State_>();
     }
-    this.outputs.add(status);
+    outputs_.add(status);
   }
   
   protected void printCommand(String command) {
     // Don't print things during testing.
   }
   
-  public void validate(ArrayList<GarageDoorOpener.State> expected) {
-    assertEquals(expected, this.outputs);
+  public void validate(ArrayList<GarageDoorOpener.State_> expected) {
+    assertEquals(expected, outputs_);
   }
 }
 
@@ -49,7 +49,7 @@ public class GarageDoorOpenerTest {
           "verifyStartingStateIsClosed",
           NO_COMMAND,
           JunitHelper.arrayList.make(
-            GarageDoorOpener.State.CLOSED
+            GarageDoorOpener.State_.CLOSED
           )
         },
         
@@ -66,15 +66,15 @@ public class GarageDoorOpenerTest {
             "cycle_complete"
           ),
           JunitHelper.arrayList.make(
-            GarageDoorOpener.State.CLOSED,
-            GarageDoorOpener.State.OPENING,
-            GarageDoorOpener.State.OPEN,
-            GarageDoorOpener.State.CLOSING,
-            GarageDoorOpener.State.STOPPED_WHILE_CLOSING,
-            GarageDoorOpener.State.OPENING,
-            GarageDoorOpener.State.STOPPED_WHILE_OPENING,
-            GarageDoorOpener.State.CLOSING,
-            GarageDoorOpener.State.CLOSED
+            GarageDoorOpener.State_.CLOSED,
+            GarageDoorOpener.State_.OPENING,
+            GarageDoorOpener.State_.OPEN,
+            GarageDoorOpener.State_.CLOSING,
+            GarageDoorOpener.State_.STOPPED_WHILE_CLOSING,
+            GarageDoorOpener.State_.OPENING,
+            GarageDoorOpener.State_.STOPPED_WHILE_OPENING,
+            GarageDoorOpener.State_.CLOSING,
+            GarageDoorOpener.State_.CLOSED
           )
         }
         
@@ -83,18 +83,18 @@ public class GarageDoorOpenerTest {
   }
   
   @Parameter
-  public String testName;
+  public String testName_;
   
   @Parameter(value = 1)
-  public ArrayList<String> commands;
+  public ArrayList<String> commands_;
   
   @Parameter(value = 2)
-  public ArrayList<GarageDoorOpener.State> expected;
+  public ArrayList<GarageDoorOpener.State_> expected_;
 
 
   @Test
   public void test() {
-    SpecializationGarageDoor opener = new SpecializationGarageDoor(this.commands);
-    opener.validate(this.expected);
+    SpecializationGarageDoor opener = new SpecializationGarageDoor(commands_);
+    opener.validate(expected_);
   }
 }

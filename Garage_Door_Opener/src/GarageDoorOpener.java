@@ -2,24 +2,24 @@
 import java.util.ArrayList;
 
 public class GarageDoorOpener {
-  enum State {CLOSED, OPENING, OPEN, CLOSING, STOPPED_WHILE_CLOSING, STOPPED_WHILE_OPENING}
-	private String BUTTON_CLICK = "button_clicked";
-	private State status;
+  enum State_ {CLOSED, OPENING, OPEN, CLOSING, STOPPED_WHILE_CLOSING, STOPPED_WHILE_OPENING}
+	private String BUTTON_CLICK_ = "button_clicked";
+	private State_ status_;
 			
   public GarageDoorOpener(ArrayList<String> commands) {
-    this.status = State.CLOSED;
+    status_ = State_.CLOSED;
     process(commands);	}
   
   private void process(ArrayList<String> commands) {
     for (String command : commands) {
-      printStatus(status);
+      printStatus(status_);
       printCommand(command);
-      status = processState(status, command);
+      status_ = processState(status_, command);
     }
-    printStatus(status);
+    printStatus(status_);
   }
 
-  private State processState(State status, String command) {
+  private State_ processState(State_ status, String command) {
 	  switch (status) {
   	  case CLOSED:
   	    return doorInClosedState();
@@ -38,37 +38,37 @@ public class GarageDoorOpener {
 	  }
 	}
 	
-	public State doorInClosedState() {
-		return State.OPENING;
+	public State_ doorInClosedState() {
+		return State_.OPENING;
 	}
 	
-	public State doorInOpenState() {
-		return State.CLOSING;
+	public State_ doorInOpenState() {
+		return State_.CLOSING;
 	}
 	
-	public State doorInClosingState(String command) {
-		if (command == this.BUTTON_CLICK) {
-			return State.STOPPED_WHILE_CLOSING;
+	public State_ doorInClosingState(String command) {
+		if (command == BUTTON_CLICK_) {
+			return State_.STOPPED_WHILE_CLOSING;
 		}
-		return State.CLOSED;
+		return State_.CLOSED;
 	}
 	
-	public State doorInOpeningState(String command) {
-		if (command == this.BUTTON_CLICK) {
-			return State.STOPPED_WHILE_OPENING;
+	public State_ doorInOpeningState(String command) {
+		if (command == BUTTON_CLICK_) {
+			return State_.STOPPED_WHILE_OPENING;
 		}
-		return State.OPEN;
+		return State_.OPEN;
 	}
 	
-	public State doorInStoppedWhileClosingState() {
-		return State.OPENING;
+	public State_ doorInStoppedWhileClosingState() {
+		return State_.OPENING;
 	}
 	
-	public State doorInStoppedWhileOpeningState() {
-		return State.CLOSING;
+	public State_ doorInStoppedWhileOpeningState() {
+		return State_.CLOSING;
 	}
 	
-	protected void printStatus(State status) {
+	protected void printStatus(State_ status) {
     System.out.println("Door: " + status);
 	}
 	
