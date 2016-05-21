@@ -25,5 +25,4 @@ public class AppTest {
     assertEquals("112th", App.formatWithModifier(112));
     assertEquals("113th", App.formatWithModifier(113));
   }
-
 }

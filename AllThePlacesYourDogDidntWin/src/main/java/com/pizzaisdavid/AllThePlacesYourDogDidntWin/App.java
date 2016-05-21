@@ -9,10 +9,10 @@ public class App
         System.out.println(computeThePlacesYourDogDidNotWin(1));
     }
     
-    public static ArrayList<String> computeThePlacesYourDogDidNotWin(int place) {
+    public static ArrayList<String> computeThePlacesYourDogDidNotWin(int placeWon) {
       ArrayList<String> placesNotWon = new ArrayList<String>();
       for (int i = 1; i < 100; i++) {
-        if (i != place) {
+        if (i != placeWon) {
           placesNotWon.add(formatWithModifier(i));
         }
       }
@@ -23,12 +23,18 @@ public class App
       String modifier = "th";
       if (place % 100 == 11 || place % 100 == 12 || place % 100 == 13) {
         modifier = "th";
-      } else if (place % 10 == 1) {
-        modifier = "st";
-      } else if (place % 10 == 2) {
-        modifier = "nd";
-      } else if (place % 10 == 3) {
-        modifier = "rd";
+      } else {
+        switch (place % 10) {
+          case 1:
+            modifier = "st";
+            break;
+          case 2:
+            modifier = "nd";
+            break;
+          case 3:
+            modifier = "rd";
+            break;
+        }
       }
       return place + modifier;
     }
