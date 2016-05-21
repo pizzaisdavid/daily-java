@@ -6,15 +6,15 @@ import java.util.Scanner;
 
 public class TextFile {
   
-  private String relativePath;
+  private String relativePath_;
   
   public TextFile(String relativePath) {
-    this.relativePath = relativePath;
+    relativePath_ = relativePath;
   }
   
   public ArrayList<String> getLines() {
     try {
-      return load(this.relativePath);
+      return load(relativePath_);
     } catch (FileNotFoundException e) {
       return noFileFound(e);
     }
