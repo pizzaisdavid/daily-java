@@ -1,16 +1,16 @@
 import java.util.ArrayList;
 
 public class CodeSort {
-	private ArrayList<String> program;
+	private ArrayList<String> program_;
 	
 	public CodeSort(ArrayList<String> program) {
-		this.program = program;
+		program_ = program;
 	}
 	
 	public ArrayList<String> sort() {
-		this.program = initializeVariablesBeforeUse(this.program);
-    this.program = putIncludeStatementsFirst(this.program);
-		return this.program;
+		program_ = initializeVariablesBeforeUse(program_);
+    program_ = putIncludeStatementsFirst(program_);
+		return program_;
 	}
 	
   private ArrayList<String> putIncludeStatementsFirst(ArrayList<String> program) {
