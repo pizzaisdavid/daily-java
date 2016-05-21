@@ -21,7 +21,7 @@ public class GraphTest {
     input.add(new ArrayList<String>(Arrays.asList("1", "2")));
     input.add(new ArrayList<String>(Arrays.asList("1", "3")));
     Graph graph = new Graph(input);
-    assertEquals(expected, graph.nodes);
+    assertEquals(expected, graph.getNodes());
   }
 
 }
