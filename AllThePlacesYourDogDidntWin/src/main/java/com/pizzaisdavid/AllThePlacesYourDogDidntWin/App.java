@@ -12,16 +12,14 @@ public class App
     public static ArrayList<String> computeThePlacesYourDogDidNotWin(int place) {
       ArrayList<String> placesNotWon = new ArrayList<String>();
       for (int i = 1; i < 100; i++) {
-        if (i == place) {
-          // do nothing
-        } else {
+        if (i != place) {
           placesNotWon.add(formatWithModifier(i));
         }
       }
       return placesNotWon;
     }
 
-    private static String formatWithModifier(int place) {
+    public static String formatWithModifier(int place) {
       String modifier = "th";
       if (place % 100 == 11 || place % 100 == 12 || place % 100 == 13) {
         modifier = "th";
