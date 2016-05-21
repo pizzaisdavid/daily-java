@@ -1,21 +1,25 @@
 package com.pizzaisdavid.SailorsMonkeysCoconuts;
 
 public class CoconutPile {
-  public double total;
+  public double total_;
   
   public CoconutPile(double total) {
     setAmount(total);
   }
   
   public double getAmount() {
-    return this.total;
+    return total_;
   }
   
   public void setAmount(double total) {
-    this.total = total;
+    total_ = total;
   }
   
-  public  boolean isDecimal() {
-    return this.total % 1 != 0;
+  public boolean hasDecimalValue() {
+    return isWholeNumber() == false;
+  }
+  
+  public boolean isWholeNumber() {
+    return total_ % 1 == 0;
   }
 }

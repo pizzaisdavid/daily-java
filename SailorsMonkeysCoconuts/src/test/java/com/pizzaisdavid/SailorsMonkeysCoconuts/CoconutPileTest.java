@@ -9,9 +9,9 @@ public class CoconutPileTest {
   @Test
   public void test() {
     CoconutPile coconutPile = new CoconutPile(5.0);
-    assertFalse(coconutPile.isDecimal());
+    assertFalse(coconutPile.hasDecimalValue());
     coconutPile = new CoconutPile(5.5);
-    assertTrue(coconutPile.isDecimal());
+    assertTrue(coconutPile.hasDecimalValue());
   }
 
 }

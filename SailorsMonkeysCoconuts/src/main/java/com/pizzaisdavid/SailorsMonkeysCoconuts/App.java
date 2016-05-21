@@ -24,7 +24,7 @@ public class App
     for (int i = 0; i < sailorCount; i++) {
       Monkey.takeBribe(pile);
       sailor.takeFairShare(pile);
-      if (pile.isDecimal()) {
+      if (pile.hasDecimalValue()) {
         return false;
       }
     }
