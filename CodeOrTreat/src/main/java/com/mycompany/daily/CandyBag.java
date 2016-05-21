@@ -6,15 +6,15 @@ import java.util.Map;
 
 public class CandyBag {
   
-  ArrayList<String> items;
-  Map<String, Integer> statisitcs = new HashMap<String, Integer>();
+  ArrayList<String> items_;
+  Map<String, Integer> statisitcs_ = new HashMap<String, Integer>();
   
   public CandyBag(ArrayList<String> items) {
-    this.items = items;
-    this.statisitcs = calculateStatistics(this.items);
+    items_ = items;
+    statisitcs_ = computeStatistics(items);
   }
   
-  private Map<String, Integer> calculateStatistics(ArrayList<String> items) {
+  private Map<String, Integer> computeStatistics(ArrayList<String> items) {
     Map<String, Integer> statisitcs = new HashMap<String, Integer>();
     for (String item: items) {
       if (statisitcs.containsKey(item) == false) {
@@ -27,18 +27,18 @@ public class CandyBag {
   }
   
   public Map<String, Integer> statisitcs() {
-    return this.statisitcs;
+    return statisitcs_;
     
   }
 
   public int count() {
-    return this.items.size();
+    return items_.size();
   }
   
   public String toString() {
     int total = count();
     String message = "total: " + total + "\n";
-    for (Map.Entry<String, Integer> entry : this.statisitcs.entrySet()) {
+    for (Map.Entry<String, Integer> entry : statisitcs_.entrySet()) {
       message += entryToString(entry, total) + "\n";
     }
     return message;
