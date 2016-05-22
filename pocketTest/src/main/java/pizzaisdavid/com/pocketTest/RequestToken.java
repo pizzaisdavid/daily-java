@@ -24,11 +24,10 @@ public class RequestToken {
     connection.setDoInput(true);
     connection.setRequestMethod("POST");
     connection.setRequestProperty("Content-Type", "application/json; charset=UTF-8");
-    connection.setRequestProperty("X-Accept", "application/x-www-form-urlencoded");
+    connection.setRequestProperty("X-Accept", "application/json");
 
-    String payload="{\"consumer_key\":\""
-    + ConsumerKey.getMac() 
-    + "\",\"redirect_uri\":\"https://www.google.com\"}";
+    String redirect = "https://www.google.com";
+    String payload = formatParameters(ConsumerKey.getMac(), redirect);
 
     OutputStreamWriter writer = new OutputStreamWriter(connection.getOutputStream(), "UTF-8");
     writer.write(payload);
@@ -44,5 +43,13 @@ public class RequestToken {
     in.close();
     
     return response.toString();
+  }
+  
+  private String formatParameters(String key, String address) {
+    return "{\"consumer_key\":\""
+        + ConsumerKey.getMac() 
+        + "\",\"redirect_uri\":\""
+        + address
+        + "\"}";
   }
 }

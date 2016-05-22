@@ -6,8 +6,8 @@ public class App
   {
     try {
       RequestToken token = new RequestToken();
-      String t = token.get();
-      System.out.println("Code: " + t);
+      String respsonse = token.get();
+      System.out.println(respsonse);
 
     } catch (Exception e) {
       e.printStackTrace();
