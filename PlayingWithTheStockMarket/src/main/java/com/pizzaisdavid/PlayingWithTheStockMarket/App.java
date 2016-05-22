@@ -21,7 +21,7 @@ public class App
       for (int k = i; k < length; k++) {
         double sellPrice = prices.get(k);
         Transaction transaction = new Transaction(buyPrice, sellPrice);
-        if (highestProfit == null || transaction.profit > highestProfit.profit) {
+        if (highestProfit == null || transaction.getProfit() > highestProfit.getProfit()) {
           highestProfit = transaction;
         }
       }
