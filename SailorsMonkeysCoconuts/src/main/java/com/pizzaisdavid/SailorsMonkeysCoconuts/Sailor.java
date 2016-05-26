@@ -14,10 +14,12 @@ public class Sailor {
     return count_;
   }
 
-  public void takeFairShare(CoconutPile coconutPile) {
+  public CoconutPile takeFairShare(CoconutPile coconutPile) {
     double total = coconutPile.getAmount();
     double sailorsFairShare = total * fairShareRatio_;
     double remaining = total - sailorsFairShare;
     coconutPile.setAmount(remaining);
+    return coconutPile;
+    
   }
 }

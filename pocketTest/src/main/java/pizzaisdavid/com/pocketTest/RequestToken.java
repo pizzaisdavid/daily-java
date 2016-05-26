@@ -24,7 +24,7 @@ public class RequestToken {
     connection.setDoInput(true);
     connection.setRequestMethod("POST");
     connection.setRequestProperty("Content-Type", "application/json; charset=UTF-8");
-    connection.setRequestProperty("X-Accept", "application/json");
+    connection.setRequestProperty("X-Accept", "application/x-www-form-urlencoded");
 
     String redirect = "https://www.google.com";
     String payload = formatParameters(ConsumerKey.getMac(), redirect);
@@ -42,7 +42,7 @@ public class RequestToken {
     }
     in.close();
     
-    return response.toString();
+    return response.toString().substring(5);
   }
   
   private String formatParameters(String key, String address) {

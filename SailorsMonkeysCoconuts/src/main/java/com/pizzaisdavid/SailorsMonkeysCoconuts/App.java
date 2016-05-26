@@ -22,8 +22,8 @@ public class App
     CoconutPile pile = new CoconutPile(coconutCount);
     Sailor sailor = new Sailor(sailorCount);
     for (int i = 0; i < sailorCount; i++) {
-      Monkey.takeBribe(pile);
-      sailor.takeFairShare(pile);
+      pile = Monkey.takeBribe(pile);
+      pile = sailor.takeFairShare(pile);
       if (pile.hasDecimalValue()) {
         return false;
       }
