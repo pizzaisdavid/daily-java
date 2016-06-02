@@ -23,14 +23,14 @@ public class App
         } else if (shouldDecreaseIndentLevel(line)) {
           indentLevel--;
         }
-        formattedCode.add(indentLevel + "");
+        formattedCode.add(indentCode(indentLevel, line));
       }
       return formattedCode;
     }
     
     public static String stripIndentation(String line) {
-      line.replace("·", "");
-      line.replace("»", "");
+      line = line.replace("·", "");
+      line = line.replace("»", "");
       return line;
     }
     
@@ -56,10 +56,24 @@ public class App
     }
     
     public static String parseFirstWord(String line) {
-      return line.split(" ", 1)[0];
+      int THERE_ISNT_A_SPACE = -1;
+      int firstSpace = line.indexOf(' ');
+      if (firstSpace == THERE_ISNT_A_SPACE) {
+        return line;
+      }
+      return line.substring(0, firstSpace);
     }
     
     public static boolean isElementInArray(String element, ArrayList<String> sequence) {
       return sequence.contains(element);
+    }
+    
+    public static String indentCode(int indentLevel, String line) {
+      String TAB_SPACING = "····";
+      String indentation = "";
+      for (int i = 0; i < indentLevel; i++) {
+        indentation +=  TAB_SPACING;
+      }
+      return indentation + line;
     }
 }
