@@ -19,11 +19,14 @@ public class App
       for (String line: code) {
         line = stripIndentation(line);
         if (shouldIncreaseIndentLevel(line)) {
+          formattedCode.add(indentCode(indentLevel, line));
           indentLevel++;
         } else if (shouldDecreaseIndentLevel(line)) {
           indentLevel--;
+          formattedCode.add(indentCode(indentLevel, line));
+        } else {
+          formattedCode.add(indentCode(indentLevel, line));
         }
-        formattedCode.add(indentCode(indentLevel, line));
       }
       return formattedCode;
     }

@@ -30,6 +30,23 @@ public class AppTest {
   }
   
   @Test
+  public void format_decreaseIndent() {
+    ArrayList<String> expected = JunitHelper.arrayList.make(
+      "VAR I",
+      "IF !(I MOD 3) THEN",
+      "····PRINT \"FIZZ\"",
+      "ENDIF"
+    );
+    ArrayList<String> input = JunitHelper.arrayList.make(
+      "VAR I",
+      "IF !(I MOD 3) THEN",
+      "PRINT \"FIZZ\"",
+      "ENDIF"
+    );  
+    assertEquals(expected, App.format(input));
+  }
+  
+  @Test
   public void stripIndentation() {
     assertEquals("ENDIF", App.stripIndentation("··»»ENDIF"));
   }
