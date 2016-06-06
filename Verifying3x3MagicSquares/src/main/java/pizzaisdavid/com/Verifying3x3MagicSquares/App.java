@@ -11,7 +11,7 @@ public class App
     }
     
     public static boolean isMagicSquare(List<Integer> square) {
-      return false;
+      return areRowsMagic(square) && areColumnsMagic(square) && areDiagonalsMagic(square);
     }
     
     public static boolean areRowsMagic(List<Integer> square) {
@@ -53,6 +53,43 @@ public class App
         column.add(cell);
       }
       return column;
+    }
+    
+    public static boolean areDiagonalsMagic(List<Integer> square) {
+      return isUpperLeftToLowerRightDiagonalMagic(square) && isUpperRightToLowerLeftDiagonalMagic(square);
+    }
+    
+    public static boolean isUpperLeftToLowerRightDiagonalMagic(List<Integer> square) {
+      List<Integer> diagonal = getUpperLeftToLowerRightDiagonal(square);
+      return isMagicList(diagonal);
+    }
+    
+    public static boolean isUpperRightToLowerLeftDiagonalMagic(List<Integer> square) {
+      List<Integer> diagonal = getUpperRightToLowerLeftDiagonal(square);
+      return isMagicList(diagonal);
+    }
+    
+    public static List<Integer> getUpperLeftToLowerRightDiagonal(List<Integer> square) {
+      int DIAGONAL_FACTOR = 1;
+      List<Integer> diagonal = new ArrayList<Integer>();
+      int length = computeDimensionLength(square);
+      for (int i = 0; i < square.size(); i = i + length + DIAGONAL_FACTOR) {
+        int cell = square.get(i);
+        diagonal.add(cell);
+      }
+      return diagonal;
+    }
+    
+    public static List<Integer> getUpperRightToLowerLeftDiagonal(List<Integer> square) {
+      int DIAGONAL_FACTOR = -1;
+      List<Integer> diagonal = new ArrayList<Integer>();
+      int length = computeDimensionLength(square);
+      for (int i = length + DIAGONAL_FACTOR; i < square.size(); i = i + length + DIAGONAL_FACTOR) {
+        int cell = square.get(i);
+        diagonal.add(cell);
+      }
+      diagonal.remove(diagonal.size() - 1);
+      return diagonal;
     }
     
     public static boolean isMagicList(List<Integer> list) {

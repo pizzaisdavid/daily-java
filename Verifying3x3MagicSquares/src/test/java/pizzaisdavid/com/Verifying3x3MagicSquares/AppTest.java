@@ -12,13 +12,21 @@ public class AppTest {
   
   @Test
   public void validInput() {
-    List<Integer> square = JunitHelper.arrayList.make(8, 1, 6, 3, 5, 7, 4, 9, 2);
+    List<Integer> square = JunitHelper.arrayList.make(
+        8, 1, 6,
+        3, 5, 7,
+        4, 9, 2
+    );
     assertTrue(App.isMagicSquare(square));
   }
   
   @Test
   public void invalidInput() {
-    List<Integer> square = JunitHelper.arrayList.make(3, 5, 7, 8, 1, 6, 4, 9, 2);
+    List<Integer> square = JunitHelper.arrayList.make(
+        3, 5, 7,
+        8, 1, 6,
+        4, 9, 2
+    );
     assertFalse(App.isMagicSquare(square));
   }
   
@@ -92,7 +100,6 @@ public class AppTest {
     assertEquals(column2, App.getColumn(square, 2));
   }
   
-  
   @Test
   public void computeDimensionLength_validInput() {
     List<Integer> square = JunitHelper.arrayList.make(
@@ -101,5 +108,76 @@ public class AppTest {
         1, 1, 1
     );
     assertEquals(3, App.computeDimensionLength(square)); 
+  }
+  
+  @Test
+  public void areDiagonalsMagic_bothTrue() {
+    List<Integer> square = JunitHelper.arrayList.make(
+        5, 0, 5,
+        0, 5, 0,
+        5, 0, 5
+    );
+    assertTrue(App.areDiagonalsMagic(square)); 
+  }
+  
+  @Test
+  public void areDiagonalsMagic_onlyUpperLeftToLowerRightDiagonal() {
+    List<Integer> square = JunitHelper.arrayList.make(
+        5, 0, 0,
+        0, 5, 0,
+        0, 0, 5
+    );
+    assertFalse(App.areDiagonalsMagic(square)); 
+  }
+  
+  @Test
+  public void areDiagonalsMagic_onlyUpperRightToLowerLeftDiagonal() {
+    List<Integer> square = JunitHelper.arrayList.make(
+        0, 0, 5,
+        0, 5, 0,
+        5, 0, 0
+    );
+    assertFalse(App.areDiagonalsMagic(square)); 
+  }
+  
+  @Test
+  public void areDiagonalsMagic_bothFalse() {
+    List<Integer> square = JunitHelper.arrayList.make(
+        0, 0, 0,
+        0, 0, 0,
+        0, 0, 0
+    );
+    assertFalse(App.areDiagonalsMagic(square)); 
+  }
+  
+  @Test
+  public void isUpperLeftToLowerRightDiagonalMagic_validInput() {
+    List<Integer> square = JunitHelper.arrayList.make(
+        5, 0, 0,
+        0, 5, 0,
+        0, 0, 5
+    );
+    assertTrue(App.isUpperLeftToLowerRightDiagonalMagic(square));
+  }
+  
+  @Test
+  public void isUpperRightToLowerLeftDiagonalMagic_validInput() {
+    List<Integer> square = JunitHelper.arrayList.make(
+        0, 0, 5,
+        0, 5, 0,
+        5, 0, 0
+    );
+    assertTrue(App.isUpperRightToLowerLeftDiagonalMagic(square));
+  }
+  
+  @Test
+  public void getUpperRightToLowerLeftDiagonal_validInput() {
+    List<Integer> square = JunitHelper.arrayList.make(
+        0, 1, 2,
+        3, 4, 5,
+        6, 7, 8
+    );
+    List<Integer> diagonal = JunitHelper.arrayList.make(2, 4, 6);
+    assertEquals(diagonal, App.getUpperRightToLowerLeftDiagonal(square));
   }
 }
