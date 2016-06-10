@@ -15,12 +15,12 @@ public class App
   }
   
   public static Object transpose(List<ArrayList<String>> input) {
-    List<ArrayList<String>> matrix = new ArrayList<ArrayList<String>>();
     int rowLength = getLengthOfLongestRow(input);
+    Matrix matrix = new Matrix(rowLength);
     for (ArrayList<String> row : input) {
-      matrix = makeColumn(matrix, row, rowLength);
+      matrix.appendColumn(row);
     }
-    return matrix; 
+    return matrix.getContent(); 
   }
   
   private static int getLengthOfLongestRow(List<ArrayList<String>> table) {
@@ -39,29 +39,5 @@ public class App
       }
     }
     return highest;
-  }
-  
-  private static List<ArrayList<String>> makeColumn(List<ArrayList<String>> matrix, ArrayList<String> row, int maxLength) {
-    for (int i = 0; i < maxLength; i++) {
-      String entry = "";
-      try {
-        entry = row.get(i);
-      } catch (IndexOutOfBoundsException e) {
-        entry = " ";
-      }
-      try {
-        ArrayList<String> updatedRow = matrix.get(i);
-        updatedRow.add(entry);
-        matrix.set(i, updatedRow);
-      } catch (Exception e) {
-        ArrayList<String> newRow = new ArrayList<String>();
-        newRow.add(entry);
-        matrix.add(newRow);
-      }
-    }
-    return matrix;
-  }
-    
-    
-    
+  }  
 }
