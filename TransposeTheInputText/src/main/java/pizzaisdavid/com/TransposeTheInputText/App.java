@@ -55,7 +55,7 @@ public class App
         matrix.set(i, updatedRow);
       } catch (Exception e) {
         ArrayList<String> newRow = new ArrayList<String>();
-        newRow.add(" ");
+        newRow.add(entry);
         matrix.add(newRow);
       }
     }
