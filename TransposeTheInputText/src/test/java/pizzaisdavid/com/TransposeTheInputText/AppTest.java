@@ -21,7 +21,9 @@ public class AppTest {
       new String[] {"B", "E"},
       new String[] {"C", "F"}
     );
-    assertEquals(expected, App.transpose(input));
+    Matrix matrix = new Matrix(input);
+    matrix.transpose();
+    assertEquals(expected, matrix.getContent());
   }
   
   @Test
@@ -35,7 +37,9 @@ public class AppTest {
       new String[] {"B", "E"},
       new String[] {"C", " "}
     );
-    assertEquals(expected, App.transpose(input));
+    Matrix matrix = new Matrix(input);
+    matrix.transpose();
+    assertEquals(expected, matrix.getContent());
   }
 
 }
