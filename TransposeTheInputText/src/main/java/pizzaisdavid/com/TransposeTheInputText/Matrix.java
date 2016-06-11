@@ -5,23 +5,21 @@ import java.util.List;
 
 public class Matrix extends ArrayList<ArrayList<String>> {
   private static final long serialVersionUID = 1L;
-  // private List<ArrayList<String>> table_;
   private int rowLength_;
   
   public Matrix(int rowLength) {
-    // this = new ArrayList<ArrayList<String>>();
     rowLength_ = rowLength;
   }
   
   public Matrix(ArrayList<ArrayList<String>> input) {
+    this.clear();
     this.addAll(input);
   }
   
   public void transpose() {
     int rowLength = getLengthOfLongestRow();
     Matrix matrix = new Matrix(rowLength);
-    for (int i = 0; i < this.size(); i++) {
-      ArrayList<String> row = this.get(i);
+    for (ArrayList<String> row : this) {
       matrix.appendColumn(row);
     }
     this.clear();
@@ -54,6 +52,7 @@ public class Matrix extends ArrayList<ArrayList<String>> {
   }
   
   private String getEntryFromRowOrSpace(ArrayList<String> row, int position) {
+    // TODO make better names
     String entry = " ";
     try {
       entry = row.get(position);
