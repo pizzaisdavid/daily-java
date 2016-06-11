@@ -27,7 +27,7 @@ public class MatrixTest {
   }
   
   @Test
-  public void test_differentLengths() {
+  public void transpose_differentLengths() {
     ArrayList<ArrayList<String>> input = JunitHelper.arrayList.make(
       new String[] {"A", "B", "C"},
       new String[] {"D", "E"}
@@ -41,5 +41,23 @@ public class MatrixTest {
     matrix.transpose();
     assertEquals(expected, matrix);
   }
-
+  
+  @Test
+  public void appendColumn_differentLengths() {
+    ArrayList<ArrayList<String>> input = JunitHelper.arrayList.make(
+      new String[] {"A"},
+      new String[] {"B"}
+    );
+    ArrayList<String> newColumn = JunitHelper.arrayList.make(
+      new String[] {"C", "D", "E"}
+    );
+    ArrayList<ArrayList<String>> expected = JunitHelper.arrayList.make(
+      new String[] {"A", "C"},
+      new String[] {"B", "E"},
+      new String[] {" ", "F"}
+    );
+    Matrix matrix = new Matrix(input);
+    matrix.appendColumn(newColumn);
+    assertEquals(expected, matrix);
+  }
 }
