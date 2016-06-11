@@ -53,8 +53,8 @@ public class MatrixTest {
     );
     ArrayList<ArrayList<String>> expected = JunitHelper.arrayList.make(
       new String[] {"A", "C"},
-      new String[] {"B", "E"},
-      new String[] {" ", "F"}
+      new String[] {"B", "D"},
+      new String[] {" ", "E"}
     );
     Matrix matrix = new Matrix(input);
     matrix.appendColumn(newColumn);

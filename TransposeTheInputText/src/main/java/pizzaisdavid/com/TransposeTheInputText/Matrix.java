@@ -14,6 +14,8 @@ public class Matrix extends ArrayList<ArrayList<String>> {
   public Matrix(ArrayList<ArrayList<String>> input) {
     this.clear();
     this.addAll(input);
+    rowLength_ = getLengthOfLongestRow();
+
   }
   
   public void transpose() {
@@ -45,6 +47,10 @@ public class Matrix extends ArrayList<ArrayList<String>> {
   }  
 
   public void appendColumn(ArrayList<String> row) {
+    if (row.size() > rowLength_) {
+      rowLength_ = row.size();
+      // TODO then go back and add whitespace
+    }
     for (int i = 0; i < rowLength_; i++) {
       String entry = getEntryFromRowOrSpace(row, i);
       appendToRow(entry, i);
