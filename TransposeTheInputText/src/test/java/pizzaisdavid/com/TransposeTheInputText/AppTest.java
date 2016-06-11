@@ -23,7 +23,7 @@ public class AppTest {
     );
     Matrix matrix = new Matrix(input);
     matrix.transpose();
-    assertEquals(expected, matrix.getContent());
+    assertEquals(expected, matrix);
   }
   
   @Test
@@ -39,7 +39,7 @@ public class AppTest {
     );
     Matrix matrix = new Matrix(input);
     matrix.transpose();
-    assertEquals(expected, matrix.getContent());
+    assertEquals(expected, matrix);
   }
 
 }

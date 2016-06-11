@@ -3,32 +3,34 @@ package pizzaisdavid.com.TransposeTheInputText;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Matrix {
-  
-  private List<ArrayList<String>> table_;
+public class Matrix extends ArrayList<ArrayList<String>> {
+  private static final long serialVersionUID = 1L;
+  // private List<ArrayList<String>> table_;
   private int rowLength_;
   
   public Matrix(int rowLength) {
-    table_ = new ArrayList<ArrayList<String>>();
+    // this = new ArrayList<ArrayList<String>>();
     rowLength_ = rowLength;
   }
   
   public Matrix(ArrayList<ArrayList<String>> input) {
-    table_ = input;
+    this.addAll(input);
   }
   
   public void transpose() {
-    int rowLength = getLengthOfLongestRow(table_);
+    int rowLength = getLengthOfLongestRow();
     Matrix matrix = new Matrix(rowLength);
-    for (ArrayList<String> row : table_) {
+    for (int i = 0; i < this.size(); i++) {
+      ArrayList<String> row = this.get(i);
       matrix.appendColumn(row);
     }
-    table_ = matrix.getContent(); 
+    this.clear();
+    this.addAll(matrix); 
   }
   
-  private int getLengthOfLongestRow(List<ArrayList<String>> table) {
+  private int getLengthOfLongestRow() {
     List<Integer> lengths = new ArrayList<Integer>();
-    for (ArrayList<String> row : table) {
+    for (ArrayList<String> row : this) {
       lengths.add(row.size());
     }
     return max(lengths);
@@ -45,7 +47,6 @@ public class Matrix {
   }  
 
   public void appendColumn(ArrayList<String> row) {
-    // TODO detect the need to make " " on its own. 
     for (int i = 0; i < rowLength_; i++) {
       String entry = getEntryFromRowOrSpace(row, i);
       appendToRow(entry, i);
@@ -71,16 +72,12 @@ public class Matrix {
   public void startNewColumn(String entry) {
     ArrayList<String> newRow = new ArrayList<String>();
     newRow.add(entry);
-    table_.add(newRow);
+    this.add(newRow);
   }
   
   public void appendEntryToRow(String entry, int position) throws Exception {
-    ArrayList<String> updatedRow = table_.get(position);
+    ArrayList<String> updatedRow = this.get(position);
     updatedRow.add(entry);
-    table_.set(position, updatedRow);
-  }
-  
-  public List<ArrayList<String>> getContent() {
-    return table_;
+    this.set(position, updatedRow);
   }
 }
