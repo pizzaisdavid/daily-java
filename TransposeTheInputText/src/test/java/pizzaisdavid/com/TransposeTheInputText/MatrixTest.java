@@ -8,7 +8,7 @@ import org.junit.Test;
 
 import com.pizzaisdavid.JunitHelper.JunitHelper;
 
-public class AppTest {
+public class MatrixTest {
 
   @Test
   public void transpose_SameLength() {
