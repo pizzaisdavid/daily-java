@@ -6,6 +6,7 @@ import java.util.List;
 public class Matrix extends ArrayList<ArrayList<String>> {
   private static final long serialVersionUID = 1L;
   private int columnLength_;
+  String PLACEHOLDER_CELL_VALUE = " ";
   
   public Matrix() {
     columnLength_ = 0;
@@ -28,44 +29,37 @@ public class Matrix extends ArrayList<ArrayList<String>> {
   public void appendColumn(ArrayList<String> column) {
     if (column.size() > columnLength_) {
       columnLength_ = column.size();
-      appendWhiteSpaceToOldColumns();
     }
     for (int i = 0; i < columnLength_; i++) {
-      String entry = getEntryFromRowOrSpace(column, i);
-      appendToRow(entry, i);
+      String cell = getCellOrPlaceholder(column, i);
+      appendColumnCell(cell, i);
     }
-  }
-  
-  private void appendWhiteSpaceToOldColumns() {
-    // TODO
   }
 
-  private String getEntryFromRowOrSpace(ArrayList<String> row, int position) {
-    // TODO make better names
-    String entry = " ";
-    try {
-      entry = row.get(position);
-    } catch (IndexOutOfBoundsException e) {}
-    return entry;
+  private String getCellOrPlaceholder(ArrayList<String> list, int index) {
+    if (list.size() < index + 1) {
+      return PLACEHOLDER_CELL_VALUE;
+    }
+    return list.get(index);
   }
   
-  public void appendToRow(String entry, int position) {
+  public void appendColumnCell(String cell, int index) {
     try {
-      appendEntryToRow(entry, position);
+      appendEntryToRow(cell, index);
     } catch (Exception e) {
-      startNewColumn(entry);
+      startColumn(cell);
     }
   }
   
-  public void startNewColumn(String entry) {
-    ArrayList<String> newRow = new ArrayList<String>();
-    newRow.add(entry);
-    add(newRow);
+  public void startColumn(String cell) {
+    ArrayList<String> newColumn = new ArrayList<String>();
+    newColumn.add(cell);
+    add(newColumn);
   }
   
-  public void appendEntryToRow(String entry, int position) throws Exception {
-    ArrayList<String> updatedRow = get(position);
-    updatedRow.add(entry);
-    set(position, updatedRow);
+  public void appendEntryToRow(String cell, int index) throws Exception {
+    ArrayList<String> updatedRow = get(index);
+    updatedRow.add(cell);
+    set(index, updatedRow);
   }
 }
