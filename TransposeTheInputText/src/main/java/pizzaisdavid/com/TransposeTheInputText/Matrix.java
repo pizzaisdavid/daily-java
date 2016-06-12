@@ -12,8 +12,8 @@ public class Matrix extends ArrayList<ArrayList<String>> {
   }
   
   public Matrix(ArrayList<ArrayList<String>> input) {
-    this.clear();
-    this.addAll(input);
+    clear();
+    addAll(input);
     rowLength_ = getLengthOfLongestRow();
 
   }
@@ -24,8 +24,8 @@ public class Matrix extends ArrayList<ArrayList<String>> {
     for (ArrayList<String> row : this) {
       matrix.appendColumn(row);
     }
-    this.clear();
-    this.addAll(matrix); 
+    clear();
+    addAll(matrix); 
   }
   
   private int getLengthOfLongestRow() {
@@ -77,12 +77,12 @@ public class Matrix extends ArrayList<ArrayList<String>> {
   public void startNewColumn(String entry) {
     ArrayList<String> newRow = new ArrayList<String>();
     newRow.add(entry);
-    this.add(newRow);
+    add(newRow);
   }
   
   public void appendEntryToRow(String entry, int position) throws Exception {
-    ArrayList<String> updatedRow = this.get(position);
+    ArrayList<String> updatedRow = get(position);
     updatedRow.add(entry);
-    this.set(position, updatedRow);
+    set(position, updatedRow);
   }
 }
