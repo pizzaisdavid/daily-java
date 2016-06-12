@@ -5,58 +5,41 @@ import java.util.List;
 
 public class Matrix extends ArrayList<ArrayList<String>> {
   private static final long serialVersionUID = 1L;
-  private int rowLength_;
+  private int columnLength_;
   
-  public Matrix(int rowLength) {
-    rowLength_ = rowLength;
+  public Matrix() {
+    columnLength_ = 0;
   }
   
   public Matrix(ArrayList<ArrayList<String>> input) {
     clear();
     addAll(input);
-    rowLength_ = getLengthOfLongestRow();
-
   }
   
   public void transpose() {
-    int rowLength = getLengthOfLongestRow();
-    Matrix matrix = new Matrix(rowLength);
+    Matrix matrix = new Matrix();
     for (ArrayList<String> row : this) {
       matrix.appendColumn(row);
     }
     clear();
     addAll(matrix); 
   }
-  
-  private int getLengthOfLongestRow() {
-    List<Integer> lengths = new ArrayList<Integer>();
-    for (ArrayList<String> row : this) {
-      lengths.add(row.size());
-    }
-    return max(lengths);
-  }
-  
-  private int max(List<Integer> values) {
-    int highest = values.get(0);
-    for (int value : values) {
-      if (value > highest) {
-        highest = value;
-      }
-    }
-    return highest;
-  }  
 
-  public void appendColumn(ArrayList<String> row) {
-    if (row.size() > rowLength_) {
-      rowLength_ = row.size();
-      // TODO then go back and add whitespace
+  public void appendColumn(ArrayList<String> column) {
+    if (column.size() > columnLength_) {
+      columnLength_ = column.size();
+      appendWhiteSpaceToOldColumns();
     }
-    for (int i = 0; i < rowLength_; i++) {
-      String entry = getEntryFromRowOrSpace(row, i);
+    for (int i = 0; i < columnLength_; i++) {
+      String entry = getEntryFromRowOrSpace(column, i);
       appendToRow(entry, i);
     }
   }
   
+  private void appendWhiteSpaceToOldColumns() {
+    // TODO
+  }
+
   private String getEntryFromRowOrSpace(ArrayList<String> row, int position) {
     // TODO make better names
     String entry = " ";
