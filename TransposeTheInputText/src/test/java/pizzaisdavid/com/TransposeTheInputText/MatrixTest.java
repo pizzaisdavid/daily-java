@@ -59,7 +59,7 @@ public class MatrixTest {
       new String[] {" ", "E"}
     );
     Matrix matrix = new Matrix(input);
-    matrix.appendColumn(newColumn);
+    matrix.append(newColumn);
     assertEquals(expected, matrix);
   }
   
@@ -80,7 +80,7 @@ public class MatrixTest {
       new String[] {" ", "E"}
     );
     Matrix matrix = new Matrix(input);
-    matrix.appendColumn(newColumn);
+    matrix.append(newColumn);
     assertEquals(expected, matrix);
   }
 }
