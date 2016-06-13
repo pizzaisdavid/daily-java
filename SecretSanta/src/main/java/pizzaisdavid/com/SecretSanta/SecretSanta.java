@@ -20,6 +20,12 @@ public class SecretSanta {
     ArrayList<Family> families = parseFamiles(input);
     HashMap<String, String> assignments = new HashMap<String, String>();
     
+    for (Family family : families) {
+      for (String person : family) {
+        // TODO rando
+      }
+    }
+    
   }
 
   private ArrayList<Family> parseFamiles(ArrayList<String> rawFamilies) {
