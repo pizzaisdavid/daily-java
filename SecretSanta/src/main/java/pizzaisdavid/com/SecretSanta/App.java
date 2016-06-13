@@ -1,13 +1,15 @@
 package pizzaisdavid.com.SecretSanta;
 
-/**
- * Hello world!
- *
- */
+import java.util.ArrayList;
+import java.util.List;
+
 public class App 
 {
     public static void main( String[] args )
     {
-        System.out.println( "Hello World!" );
+        List<String> input = new ArrayList<String>();
+        input.add("Joe");
+        input.add("Jeff Jerry");
+        input.add("Johnson");
     }
 }
