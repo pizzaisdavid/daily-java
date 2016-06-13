@@ -22,10 +22,23 @@ public class SecretSanta {
     
   }
 
-  private ArrayList<Family> parseFamiles(ArrayList<String> input) {
-    // TODO Auto-generated method stub
-    return null;
+  private ArrayList<Family> parseFamiles(ArrayList<String> rawFamilies) {
+    ArrayList<Family> families = new ArrayList<Family>();
+    for (String rawFamily : rawFamilies) {
+      families.add(parseFamily(rawFamily));
+    }
+    return families;
   }
+
+  private Family parseFamily(String rawFamily) {
+    Family family = new Family();
+    String[] people = rawFamily.split(" ");
+    for (String person : people) {
+      family.add(person);
+    }
+    return family;
+  }
+  
   
   
 }

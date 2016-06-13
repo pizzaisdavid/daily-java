@@ -1,5 +1,7 @@
 package pizzaisdavid.com.SecretSanta;
 
-public class Family {
+import java.util.ArrayList;
+
+public class Family extends ArrayList<String> {
 
 }
