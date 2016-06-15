@@ -3,7 +3,7 @@ package pizzaisdavid.com.CriticalHit;
 public class CriticalHit {
   
   
-  public double killProbability(int newSidesOnDie, int newEnemyHp) {
+  public double computeKillProbability(int newSidesOnDie, int newEnemyHp) {
     double sidesOnDie = newSidesOnDie;
     double enemyHp = newEnemyHp;
     
