@@ -12,8 +12,8 @@ public class SecretSanta {
     rng = new RandomNumberGenerator();
   }
   
-  public SecretSanta(RandomNumberGenerator newRng) {
-    rng = newRng;
+  public SecretSanta(RandomNumberGenerator rng) {
+    this.rng = rng;
   }
   
   public void assign(ArrayList<String> input) {
