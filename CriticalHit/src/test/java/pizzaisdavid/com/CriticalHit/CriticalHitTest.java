@@ -35,10 +35,9 @@ public class CriticalHitTest {
   @Parameter(value = 3)
   public double killProbability;
   
-
   @Test
   public void test() {
-    CriticalHit critical = new CriticalHit();
-    assertEquals(killProbability, critical.computeKillProbability(sidesOnDie, hp), .0001);
+    Player player = new Player(sidesOnDie);
+    assertEquals(killProbability, player.computeKillProbability(hp), .0001);
   }
 }
