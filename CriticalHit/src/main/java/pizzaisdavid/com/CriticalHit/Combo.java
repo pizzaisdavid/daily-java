@@ -26,7 +26,7 @@ public class Combo {
     return enemy.getHealth() >= dice.sides;
   }
   
-  protected void killEnemy() {
+  protected void dealFinishingBlow() {
     if (enemy.isAlive()) {
       int remainingHealth = enemy.getHealth();
       double rollProbability = dice.computeProbabilityToRollAtLeast(remainingHealth);

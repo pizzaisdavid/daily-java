@@ -13,7 +13,7 @@ public class Player {
     Enemy enemy = new Enemy(health);
     combo = new Combo(dice, enemy);
     combo.attackEnemyUntilHealthBelowCriticalRoll();
-    combo.killEnemy();
+    combo.dealFinishingBlow();
     return combo.getProbability();
   }
 }
