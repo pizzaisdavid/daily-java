@@ -19,21 +19,11 @@ public class Matrix extends ArrayList<ArrayList<String>> {
   public void transpose() {
     Matrix matrix = new Matrix();
     for (ArrayList<String> row : this) {
-      ArrayList<ArrayList<String>> column = convertRowToColumn(row);
+      Column column = Column.convertRowToColumn(row);
       matrix.append(column);
     }
     clear();
     addAll(matrix); 
-  }
-
-  private ArrayList<ArrayList<String>> convertRowToColumn(ArrayList<String> row) {
-    ArrayList<ArrayList<String>> column = new ArrayList<ArrayList<String>>();
-    for (String cell : row) {
-      ArrayList<String> singleCellRow = new ArrayList<String>();
-      singleCellRow.add(cell);
-      column.add(singleCellRow);
-    }
-    return column;
   }
 
   public void append(ArrayList<ArrayList<String>> column) {
