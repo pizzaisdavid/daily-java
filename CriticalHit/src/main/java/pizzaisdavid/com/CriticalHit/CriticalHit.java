@@ -6,6 +6,10 @@ public class CriticalHit {
     Enemy enemy = new Enemy(health);
     GameDice dice = new GameDice(sides);
     Combo combo = new Combo(dice, enemy);
+    // TODO consider
+    // Combo combo = new Combo(dice);
+    // combo.attackEnemyUntilHealthBelowCriticalRoll(enemy);
+    // combo.dealFinishingBlow(enemy);
     combo.attackEnemyUntilHealthBelowCriticalRoll();
     combo.dealFinishingBlow();
     return combo.getProbability();
