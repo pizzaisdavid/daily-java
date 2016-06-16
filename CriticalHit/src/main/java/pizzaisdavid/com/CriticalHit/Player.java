@@ -2,11 +2,11 @@ package pizzaisdavid.com.CriticalHit;
 
 public class Player {
   
-  private Dice dice;
+  private GameDice dice;
   private Combo combo;
   
   public Player(int sides) {
-    dice = new Dice(sides);
+    dice = new GameDice(sides);
   }
   
   public double computeKillProbability(int health) {
