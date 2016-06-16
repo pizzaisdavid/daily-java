@@ -37,7 +37,6 @@ public class CriticalHitTest {
   
   @Test
   public void test() {
-    Player player = new Player(sidesOnDie);
-    assertEquals(killProbability, player.computeKillProbability(hp), .0001);
+    assertEquals(killProbability, CriticalHit.computeProbability(sidesOnDie, hp), .0001);
   }
 }
