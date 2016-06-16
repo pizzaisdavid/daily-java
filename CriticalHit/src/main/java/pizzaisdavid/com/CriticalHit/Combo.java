@@ -3,12 +3,13 @@ package pizzaisdavid.com.CriticalHit;
 public class Combo {
   private GameDice dice;
   private Enemy enemy;
-  private int criticalHitValue;
+  private int maximumDamage;
   private double probability;
   
   public Combo(GameDice dice) {
     probability = 1.0;
     this.dice = dice;
+    maximumDamage = dice.getCriticalHitValue();
   }
   
   public double getProbabilityOfKilling(Enemy enemy) {
@@ -19,15 +20,14 @@ public class Combo {
   }
 
   private void attackEnemyUntilHealthBelowCriticalRoll() {
-    criticalHitValue = dice.getCriticalHitValue();
     while (isCriticalRollNeeded()) {
       stack(dice.computeCriticalHitProbability());
-      enemy.takeDamage(criticalHitValue);
+      enemy.takeDamage(maximumDamage);
     }
   }
   
   private boolean isCriticalRollNeeded() {
-    return enemy.isHealthAtleast(criticalHitValue);
+    return enemy.isHealthAtleast(maximumDamage);
   }
   
   private void dealFinishingAttack() {
