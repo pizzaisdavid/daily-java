@@ -12,7 +12,7 @@ public class Combo {
     maximumDamage = dice.getCriticalHitValue();
   }
   
-  public double getProbabilityOfKilling(Enemy enemy) {
+  public double killAndGetProbability(Enemy enemy) {
     this.enemy = enemy;
     attackEnemyUntilHealthBelowCriticalRoll();
     dealFinishingAttack();
@@ -35,6 +35,7 @@ public class Combo {
       int remainingHealth = enemy.getHealth();
       double rollProbability = dice.computeProbabilityToRollAtLeast(remainingHealth);
       stack(rollProbability);
+      enemy.takeDamage(remainingHealth);
     }
   }
   

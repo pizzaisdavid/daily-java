@@ -6,6 +6,6 @@ public class CriticalHit {
     Enemy enemy = new Enemy(health);
     GameDice dice = new GameDice(sides);
     Combo combo = new Combo(dice);
-    return combo.getProbabilityOfKilling(enemy);
+    return combo.killAndGetProbability(enemy);
   }
 }
