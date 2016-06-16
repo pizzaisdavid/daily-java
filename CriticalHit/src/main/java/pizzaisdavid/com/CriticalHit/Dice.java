@@ -2,7 +2,7 @@ package pizzaisdavid.com.CriticalHit;
 
 public class Dice {
   
-  public int sides;
+  private int sides;
 
   public Dice(int sides) {
     this.sides = sides;
@@ -24,5 +24,9 @@ public class Dice {
   
   public double computeProbabilityToRollLessThanOrEqual(int value) {
     return value / (double) sides;
+  }
+  
+  protected int getHighestValue() {
+    return sides;
   }
 }
