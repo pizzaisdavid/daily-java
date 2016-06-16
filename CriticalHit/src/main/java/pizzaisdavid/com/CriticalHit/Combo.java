@@ -1,29 +1,36 @@
 package pizzaisdavid.com.CriticalHit;
 
 public class Combo {
-  private double probability;
   private GameDice dice;
   private Enemy enemy;
+  private int criticalHitValue;
+  private double probability;
   
-  public Combo(GameDice dice, Enemy enemy) {
-    probability = 1;
+  public Combo(GameDice dice) {
+    probability = 1.0;
     this.dice = dice;
-    this.enemy = enemy;
   }
   
-  public double getProbability() {
+  public double getProbabilityOfKilling(Enemy enemy) {
+    this.enemy = enemy;
+    attackEnemyUntilHealthBelowCriticalRoll();
+    dealFinishingAttack();
     return probability;
   }
 
-  public void attackEnemyUntilHealthBelowCriticalRoll() {
-    while (dice.isCriticalHitRollNeeded(enemy)) {
+  private void attackEnemyUntilHealthBelowCriticalRoll() {
+    criticalHitValue = dice.getCriticalHitValue();
+    while (isCriticalRollNeeded()) {
       stack(dice.computeCriticalHitProbability());
-      int damage = dice.getCriticalHitValue();
-      enemy.takeDamage(damage);
+      enemy.takeDamage(criticalHitValue);
     }
   }
   
-  protected void dealFinishingBlow() {
+  private boolean isCriticalRollNeeded() {
+    return enemy.isHealthAtleast(criticalHitValue);
+  }
+  
+  private void dealFinishingAttack() {
     if (enemy.isAlive()) {
       int remainingHealth = enemy.getHealth();
       double rollProbability = dice.computeProbabilityToRollAtLeast(remainingHealth);
@@ -31,7 +38,7 @@ public class Combo {
     }
   }
   
-  public void stack(double rollProbability) {
+  private void stack(double rollProbability) {
     probability *= rollProbability;
   }
 }

@@ -5,13 +5,7 @@ public class CriticalHit {
   public static double computeProbability(int sides, int health) {
     Enemy enemy = new Enemy(health);
     GameDice dice = new GameDice(sides);
-    Combo combo = new Combo(dice, enemy);
-    // TODO consider
-    // Combo combo = new Combo(dice);
-    // combo.attackEnemyUntilHealthBelowCriticalRoll(enemy);
-    // combo.dealFinishingBlow(enemy);
-    combo.attackEnemyUntilHealthBelowCriticalRoll();
-    combo.dealFinishingBlow();
-    return combo.getProbability();
+    Combo combo = new Combo(dice);
+    return combo.getProbabilityOfKilling(enemy);
   }
 }
