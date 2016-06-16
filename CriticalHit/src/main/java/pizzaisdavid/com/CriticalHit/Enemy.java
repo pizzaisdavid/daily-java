@@ -19,4 +19,8 @@ public class Enemy {
   public int getHealth() {
     return health;
   }
+
+  public boolean isHealthAtleast(int minimumValue) {
+    return health >= minimumValue;
+  }
 }
