@@ -26,7 +26,7 @@ public class Matrix extends ArrayList<ArrayList<String>> {
     addAll(matrix); 
   }
 
-  public void append(ArrayList<ArrayList<String>> column) {
+  public void append(Column column) {
     if (column.size() > longestColumnLength) {
       longestColumnLength = column.size();
     }
@@ -36,12 +36,11 @@ public class Matrix extends ArrayList<ArrayList<String>> {
     }
   }
 
-  private String getCellOrPlaceholder(ArrayList<ArrayList<String>> column, int index) {
+  private String getCellOrPlaceholder(Column column, int index) {
     if (column.size() < index + 1) {
       return PLACEHOLDER_CELL_VALUE;
     }
-    int FIRST_VALUE = 0;
-    return column.get(index).get(FIRST_VALUE);
+    return column.get_(index);
   }
   
   public void appendCellToColumn(String cell, int index) {

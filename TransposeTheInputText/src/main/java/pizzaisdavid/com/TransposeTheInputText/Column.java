@@ -22,6 +22,8 @@ public class Column extends ArrayList<ArrayList<String>> {
     add(singleCellRow);
   }
   
-  
-
+  public String get_(int index) {
+    int FIRST_VALUE = 0;
+    return get(index).get(FIRST_VALUE);
+  }
 }
