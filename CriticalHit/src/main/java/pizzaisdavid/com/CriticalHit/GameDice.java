@@ -13,5 +13,4 @@ public class GameDice extends Dice {
   public int getCriticalHitValue() {
     return getHighestValue();
   }
-
 }
