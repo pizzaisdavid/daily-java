@@ -2,10 +2,10 @@ package pizzaisdavid.com.CriticalHit;
 
 public class Combo {
   private double probability;
-  private Dice dice;
+  private GameDice dice;
   private Enemy enemy;
   
-  public Combo(Dice dice, Enemy enemy) {
+  public Combo(GameDice dice, Enemy enemy) {
     probability = 1;
     this.dice = dice;
     this.enemy = enemy;
@@ -16,14 +16,11 @@ public class Combo {
   }
 
   public void attackEnemyUntilHealthBelowCriticalRoll() {
-    while (isCriticalRollNeeded(enemy)) {
-      stack(dice.computeRollProbability());
-      enemy.takeDamage(dice.sides);
+    while (dice.isCriticalHitRollNeeded(enemy)) {
+      stack(dice.computeCriticalHitProbability());
+      int damage = dice.getCriticalHitValue();
+      enemy.takeDamage(damage);
     }
-  }
-  
-  public boolean isCriticalRollNeeded(Enemy enemy) {
-    return enemy.getHealth() >= dice.sides;
   }
   
   protected void dealFinishingBlow() {
