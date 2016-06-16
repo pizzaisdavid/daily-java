@@ -62,25 +62,4 @@ public class MatrixTest {
     matrix.append(newColumn);
     assertEquals(expected, matrix);
   }
-  
-  @Test
-  public void appendColumn_test() {
-    ArrayList<ArrayList<String>> input = JunitHelper.arrayList.make(
-      new String[] {"A"},
-      new String[] {"B"}
-    );
-    ArrayList<ArrayList<String>> newColumn = JunitHelper.arrayList.make(
-        new String[] {"C"},
-        new String[] {"D"},
-        new String[] {"E"}
-      );
-    ArrayList<ArrayList<String>> expected = JunitHelper.arrayList.make(
-      new String[] {"A", "C"},
-      new String[] {"B", "D"},
-      new String[] {" ", "E"}
-    );
-    Matrix matrix = new Matrix(input);
-    matrix.append(newColumn);
-    assertEquals(expected, matrix);
-  }
 }
