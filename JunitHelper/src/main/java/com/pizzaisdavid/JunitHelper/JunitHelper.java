@@ -8,19 +8,19 @@ public class JunitHelper {
   public static class arrayList {
   
     public static <E> ArrayList<E> make(E...items) {
-      ArrayList<E> expected = new ArrayList<E>();
-      for (E item: items) {
-        expected.add(item);
+      ArrayList<E> output = new ArrayList<E>();
+      for (E each : items) {
+        output.add(each);
       }
-      return expected;
+      return output;
     }
     
     public static ArrayList<ArrayList<String>> make(String[]... lists) {
-      ArrayList<ArrayList<String>> expected = new ArrayList<ArrayList<String>>();
-      for (String[] list : lists) {
-        expected.add(new ArrayList<String>(Arrays.asList(list)));
+      ArrayList<ArrayList<String>> output = new ArrayList<ArrayList<String>>();
+      for (String[] each : lists) {
+        output.add(new ArrayList<String>(Arrays.asList(each)));
       }
-      return expected;
+      return output;
     }
   }
 }
