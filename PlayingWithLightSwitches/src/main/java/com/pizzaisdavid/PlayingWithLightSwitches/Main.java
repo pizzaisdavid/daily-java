@@ -15,7 +15,7 @@ public class Main {
     for (ArrayList<String> range : content) {
       int number1 = Integer.parseInt(range.get(0));
       int number2 = Integer.parseInt(range.get(1));
-      switches.flipLightsBetween(number1, number2);
+      switches.flipSwitchesThroughRange(number1, number2);
     }
   }
 }

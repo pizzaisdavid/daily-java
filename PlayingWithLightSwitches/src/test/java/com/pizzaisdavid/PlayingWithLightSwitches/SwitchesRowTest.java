@@ -34,7 +34,7 @@ public class SwitchesRowTest {
       )
     );
     SwitchesRow switches = new SwitchesRow(4);
-    switches.flipLightsBetween(2, 1);
+    switches.flipSwitchesThroughRange(2, 1);
     assertEquals(expected, switches);
   }
   
@@ -49,7 +49,7 @@ public class SwitchesRowTest {
       )
     );
     SwitchesRow switches = new SwitchesRow(4);
-    switches.flipLightsBetween(1, 2);
+    switches.flipSwitchesThroughRange(1, 2);
     assertEquals(expected, switches);
   }
 
