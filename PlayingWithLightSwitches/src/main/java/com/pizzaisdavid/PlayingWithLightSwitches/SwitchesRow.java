@@ -19,9 +19,9 @@ public class SwitchesRow extends ArrayList<Boolean> {
       upper = temp;
     }
     for (int i = lower; i <= upper; i++) {
-      boolean s = this.get(i);
+      boolean s = get(i);
       s = flip(s);
-      this.set(i, s);
+      set(i, s);
     }
   }
   
