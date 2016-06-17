@@ -11,14 +11,16 @@ public class JunitHelperTest {
 
   @Test
   public void arrayListOfStrings() {
+    ArrayList<String> expected = new ArrayList<String>(Arrays.asList("0.0", "0.1"));
     ArrayList<String> actual = JunitHelper.arrayList.make("0.0", "0.1");
-    assertEquals(new ArrayList<String>(Arrays.asList("0.0", "0.1")), actual);
+    assertEquals(expected, actual);
   }
   
   @Test
   public void arrayListOfDoubles() {
+    ArrayList<Double> expected = new ArrayList<Double>(Arrays.asList(0.0, 0.1));
     ArrayList<Double> actual = JunitHelper.arrayList.make(0.0, 0.1);
-    assertEquals(new ArrayList<Double>(Arrays.asList(0.0, 0.1)), actual);
+    assertEquals(expected, actual);
   }
   
   @Test
