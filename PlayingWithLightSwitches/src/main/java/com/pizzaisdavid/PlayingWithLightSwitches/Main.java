@@ -11,7 +11,7 @@ public class Main {
     TextFile file = new TextFile("switches.txt");
     ArrayList<ArrayList<String>> content = Parser.parse(file.getLines(), " ");
     int length = Integer.parseInt(content.remove(0).get(0));
-    Switches switches = new Switches(length);
+    SwitchesRow switches = new SwitchesRow(length);
     for (ArrayList<String> range : content) {
       int number1 = Integer.parseInt(range.get(0));
       int number2 = Integer.parseInt(range.get(1));

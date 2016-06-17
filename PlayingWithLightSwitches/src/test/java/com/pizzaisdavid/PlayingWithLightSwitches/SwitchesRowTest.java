@@ -7,7 +7,7 @@ import java.util.Arrays;
 
 import org.junit.Test;
 
-public class SwitchesTest {
+public class SwitchesRowTest {
 
   @Test
   public void initialize() {
@@ -19,7 +19,7 @@ public class SwitchesTest {
       )
     );
     int length = 3;
-    Switches switches = new Switches(length);
+    SwitchesRow switches = new SwitchesRow(length);
     assertEquals(expected, switches);
   }
   
@@ -33,7 +33,7 @@ public class SwitchesTest {
         false
       )
     );
-    Switches switches = new Switches(4);
+    SwitchesRow switches = new SwitchesRow(4);
     switches.flip(2, 1);
     assertEquals(expected, switches);
   }
@@ -48,7 +48,7 @@ public class SwitchesTest {
         false
       )
     );
-    Switches switches = new Switches(4);
+    SwitchesRow switches = new SwitchesRow(4);
     switches.flip(1, 2);
     assertEquals(expected, switches);
   }

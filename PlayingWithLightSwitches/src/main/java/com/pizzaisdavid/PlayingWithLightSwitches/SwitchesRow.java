@@ -2,16 +2,14 @@ package com.pizzaisdavid.PlayingWithLightSwitches;
 
 import java.util.ArrayList;
 
-public class Switches extends ArrayList<Boolean> {
+public class SwitchesRow extends ArrayList<Boolean> {
 
   private static final long serialVersionUID = 6324319387231541496L;
   
-  public Switches(int length) {
-    ArrayList<Boolean> states = new ArrayList<Boolean>();
+  public SwitchesRow(int length) {
     for (int i = 0; i < length; i++) {
-      states.add(false);
+      add(false);
     }
-    this.addAll(states);
   }
   
   public void flip(int upper, int lower) {
@@ -21,15 +19,13 @@ public class Switches extends ArrayList<Boolean> {
       upper = temp;
     }
     for (int i = lower; i <= upper; i++) {
-      boolean state = this.get(i);
-      this.set(i, swap(state));
+      boolean s = this.get(i);
+      s = flip(s);
+      this.set(i, s);
     }
   }
-
-  private boolean swap(boolean state) {
-    if (state) {
-      return false;
-    }
-    return true;
+  
+  public boolean flip(boolean state) {
+    return !state;
   }
 }
