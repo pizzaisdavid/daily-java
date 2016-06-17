@@ -8,10 +8,10 @@ public class SwitchesRow extends ArrayList<Boolean> {
   
   public SwitchesRow(int length) {
     this.length = length;
-    setAllSwitchesToOff();
+    initializeAllSwitchesToOff();
   }
   
-  private void setAllSwitchesToOff() {
+  private void initializeAllSwitchesToOff() {
     for (int i = 0; i < length; i++) {
       add(false);
     }
