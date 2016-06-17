@@ -19,14 +19,14 @@ public class StockMarket {
       for (int k = i; k < length; k++) {
         double sellPrice = prices.get(k);
         Transaction transaction = new Transaction(buyPrice, sellPrice);
-        if (transaction.getProfit() > highestProfitTrade.getProfit()) {
+        if (transaction.isMoreProfitableThan(highestProfitTrade)) {
           highestProfitTrade = transaction;
         }
       }
     }
     return highestProfitTrade;
   }
-  
+
   public static ArrayList<Double> parsePrices(String rawInput) {
     ArrayList<Double> prices = new ArrayList<Double>();
     for (String each: Parser.parse(rawInput, " ")) {
