@@ -7,6 +7,11 @@ public class SwitchesRow extends ArrayList<Boolean> {
   private int length;
   
   public SwitchesRow(int length) {
+    this.length = length;
+    setAllSwitchesToOff();
+  }
+  
+  private void setAllSwitchesToOff() {
     for (int i = 0; i < length; i++) {
       add(false);
     }
