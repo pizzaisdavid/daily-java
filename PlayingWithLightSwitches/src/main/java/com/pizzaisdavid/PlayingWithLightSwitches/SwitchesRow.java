@@ -23,13 +23,17 @@ public class SwitchesRow extends ArrayList<Boolean> {
       lower = upper;
       upper = temp;
     }
-    for (int i = lower; i <= upper; i++) {
-      boolean s = get(i);
-      s = flip(s);
-      set(i, s);
-    }
+    flipSwitchesThroughRange(upper, lower);
   }
   
+  private void flipSwitchesThroughRange(int upper, int lower) {
+    for (int i = lower; i <= upper; i++) {
+      boolean lightSwitch = get(i);
+      lightSwitch = flip(lightSwitch);
+      set(i, lightSwitch);
+    }
+  }
+
   public boolean flip(boolean state) {
     return !state;
   }
