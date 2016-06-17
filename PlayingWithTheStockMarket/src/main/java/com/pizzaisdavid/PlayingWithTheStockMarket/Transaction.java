@@ -16,7 +16,7 @@ public class Transaction {
   }
   
   public String toString() {
-    return buyPrice_ + " " + sellPrice_;
+    return buy + " " + sell;
   }
   
   public boolean equals(Transaction otherTranscation) {
@@ -25,20 +25,20 @@ public class Transaction {
         getProfitAsShort() == otherTranscation.getProfitAsShort();
   }
   
-  public void setProfit(double profit) {
-    profit_ = profit;
+  public void setProfit(Price profit) {
+    this.profit = profit;
   }
   
-    return buyPrice_;
   public Price getBuyPrice() {
+    return buy;
   }
   
-    return sellPrice_;
   public Price getSellPrice() {
+    return sell;
   }
   
-    return profit_;
   public Price getProfit() {
+    return profit;
   }
   
   public short getProfitAsShort() {
