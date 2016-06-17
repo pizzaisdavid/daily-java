@@ -13,4 +13,8 @@ public class Price extends BigDecimal {
   public Price(double d) {
     super(d);
   }
+
+  public boolean isHigherThan(Price otherProfit) {
+    return compareTo(otherProfit) == 1;
+  }
 }

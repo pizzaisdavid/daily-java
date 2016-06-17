@@ -46,7 +46,6 @@ public class Transaction {
   }
 
   public boolean isMoreProfitableThan(Transaction otherTranscation) {
-    Price otherProfit = otherTranscation.getProfit();
-    return profit.compareTo(otherProfit) == 1;
+    return profit.isHigherThan(otherTranscation.getProfit());
   }
 }
