@@ -5,8 +5,8 @@ public class AtbashCipher {
   public static String encrypt(String message) {
     char[] letters = message.toCharArray();
     String encryptedMessage = "";
-    for (char letter : letters) {
-      encryptedMessage += encrypt(letter);
+    for (char each : letters) {
+      encryptedMessage += encrypt(each);
     }
     return encryptedMessage;
   }
