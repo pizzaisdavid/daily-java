@@ -17,17 +17,13 @@ public class SwitchesRow extends ArrayList<Boolean> {
     }
   }
 
-  public void flipLightsBetween(int upper, int lower) {
-    if (upper < lower) {
-      int temp = lower;
-      lower = upper;
-      upper = temp;
-    }
-    flipSwitchesThroughRange(upper, lower);
+  public void flipSwitchesThroughRange(int upper, int lower) {
+    Range range = new Range(upper, lower);
+    flipSwitches(range);
   }
   
-  private void flipSwitchesThroughRange(int upper, int lower) {
-    for (int i = lower; i <= upper; i++) {
+  private void flipSwitches(Range range) {
+    for (int i = range.lower; i <= range.upper; i++) {
       boolean lightSwitch = get(i);
       lightSwitch = flip(lightSwitch);
       set(i, lightSwitch);
