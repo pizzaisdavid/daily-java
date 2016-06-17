@@ -48,7 +48,7 @@ public class MatrixTest {
       new String[] {"A"},
       new String[] {"B"}
     );
-    Column newColumn = Column.convertRowToColumn(JunitHelper.arrayList.make("C", "D", "E"));
+    Column newColumn = new Column(JunitHelper.arrayList.make("C", "D", "E"));
     ArrayList<ArrayList<String>> expected = JunitHelper.arrayList.make(
       new String[] {"A", "C"},
       new String[] {"B", "D"},

@@ -19,7 +19,7 @@ public class Matrix extends ArrayList<ArrayList<String>> {
   public void transpose() {
     Matrix matrix = new Matrix();
     for (ArrayList<String> row : this) {
-      Column column = Column.convertRowToColumn(row);
+      Column column = new Column(row);
       matrix.append(column);
     }
     clear();
@@ -27,37 +27,34 @@ public class Matrix extends ArrayList<ArrayList<String>> {
   }
 
   public void append(Column column) {
+    setLongestColumnLength(column);
+    for (int i = 0; i < longestColumnLength; i++) {
+      String cell = column.getCell(i);
+      appendToColumn(cell, i);
+    }
+  }
+  
+  private void setLongestColumnLength(Column column) {
     if (column.size() > longestColumnLength) {
       longestColumnLength = column.size();
     }
-    for (int i = 0; i < longestColumnLength; i++) {
-      String cell = getCellOrPlaceholder(column, i);
-      appendCellToColumn(cell, i);
+  }
+
+  private void appendToColumn(String cell, int index) {
+    if (size() < index + 1) {
+      startColumn(cell);
+    } else {
+      appendToRow(cell, index);
     }
   }
 
-  private String getCellOrPlaceholder(Column column, int index) {
-    if (column.size() < index + 1) {
-      return PLACEHOLDER_CELL_VALUE;
-    }
-    return column.get_(index);
-  }
-  
-  public void appendCellToColumn(String cell, int index) {
-    try {
-      appendEntryToRow(cell, index);
-    } catch (Exception e) {
-      startColumn(cell);
-    }
-  }
-  
   public void startColumn(String cell) {
     ArrayList<String> newColumn = new ArrayList<String>();
     newColumn.add(cell);
     add(newColumn);
   }
   
-  public void appendEntryToRow(String cell, int index) throws Exception {
+  public void appendToRow(String cell, int index) {
     ArrayList<String> updatedRow = get(index);
     updatedRow.add(cell);
     set(index, updatedRow);
