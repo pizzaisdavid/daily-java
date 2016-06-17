@@ -8,6 +8,10 @@ public class Enemy {
     this.health = health;
   }
   
+  public Enemy clone() {
+    return new Enemy(health);
+  }
+  
   public void takeDamage(int damage) {
     health -= damage;
   }

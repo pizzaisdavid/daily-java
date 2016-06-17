@@ -12,8 +12,8 @@ public class Combo {
     maximumDamage = dice.getCriticalHitValue();
   }
   
-  public double killAndGetProbability(Enemy enemy) {
-    this.enemy = enemy;
+  public double computeKillProbability(Enemy enemy) {
+    this.enemy = enemy.clone();
     attackEnemyUntilHealthBelowCriticalRoll();
     dealFinishingAttack();
     return probability;
