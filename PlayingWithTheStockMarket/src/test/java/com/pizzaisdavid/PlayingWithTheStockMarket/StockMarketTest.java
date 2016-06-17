@@ -19,7 +19,7 @@ public class StockMarketTest {
   @Test
   public void getBestStockTrade() {
     Transaction expected = new Transaction(18.88, 19.03);
-    assertTrue(expected.equals(StockMarket.getBestStockTrade("19.35 18.88 19.03 18.98")));
+    StockMarket market = new StockMarket();
+    assertTrue(expected.equals(market.getBestStockTrade("19.35 18.88 19.03 18.98")));
   }
-
 }
