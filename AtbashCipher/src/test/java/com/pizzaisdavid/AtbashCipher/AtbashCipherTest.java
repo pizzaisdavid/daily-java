@@ -4,7 +4,7 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
-public class MainTest {
+public class AtbashCipherTest {
 
   @Test
   public void initialize() {
@@ -15,26 +15,26 @@ public class MainTest {
   
   @Test
   public void cipherCharacter() {
-    assertEquals('z', Main.encrypt('a'));
+    assertEquals("z", AtbashCipher.encrypt("a"));
   }
   
   @Test
   public void preserveCaseCharacter() {
-    assertEquals('Z', Main.encrypt('A'));
+    assertEquals("Z", AtbashCipher.encrypt("A"));
   }
   
   @Test
   public void preserveSymbol() {
-    assertEquals('/', Main.encrypt('/'));
+    assertEquals("/", AtbashCipher.encrypt("/"));
   }
   
   @Test
   public void cipherString() {
-    assertEquals("draziw", Main.encrypt("wizard"));
+    assertEquals("draziw", AtbashCipher.encrypt("wizard"));
   }
   
   @Test
   public void preserveCaseString() {
-    assertEquals("Draziw", Main.encrypt("Wizard"));
+    assertEquals("Draziw", AtbashCipher.encrypt("Wizard"));
   }
 }
