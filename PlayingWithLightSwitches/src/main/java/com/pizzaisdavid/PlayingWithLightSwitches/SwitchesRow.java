@@ -3,7 +3,6 @@ package com.pizzaisdavid.PlayingWithLightSwitches;
 import java.util.ArrayList;
 
 public class SwitchesRow extends ArrayList<Boolean> {
-
   private static final long serialVersionUID = 6324319387231541496L;
   
   public SwitchesRow(int length) {
@@ -11,8 +10,8 @@ public class SwitchesRow extends ArrayList<Boolean> {
       add(false);
     }
   }
-  
-  public void flip(int upper, int lower) {
+
+  public void flipLightsBetween(int upper, int lower) {
     if (upper < lower) {
       int temp = lower;
       lower = upper;
