@@ -3,7 +3,8 @@ package com.pizzaisdavid.PlayingWithLightSwitches;
 import java.util.ArrayList;
 
 public class SwitchesRow extends ArrayList<Boolean> {
-  private static final long serialVersionUID = 6324319387231541496L;
+  private static final long serialVersionUID = 1L;
+  private int length;
   
   public SwitchesRow(int length) {
     for (int i = 0; i < length; i++) {
