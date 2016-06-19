@@ -20,7 +20,6 @@ public class App
     }
 
     public static String formatWithModifier(int place) {
-      String modifier = "th";
       if (place % 100 == 11 || place % 100 == 12 || place % 100 == 13) {
         modifier = "th";
       } else {
