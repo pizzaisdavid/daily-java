@@ -33,7 +33,7 @@ public class Nodes extends HashMap<String, ArrayList<String>> {
   }
   
   private void appendValue(String key, String value) {
-    ArrayList<String> values = this.get(key);
+    ArrayList<String> values = get(key);
     values.add(value);
     put(key, values);
   }
