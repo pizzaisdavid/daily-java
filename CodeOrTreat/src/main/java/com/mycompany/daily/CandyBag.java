@@ -14,13 +14,7 @@ public class CandyBag {
     statistics.compute(items);
   }
   
-  public int count() {
-    return items.size();
-  }
-  
   public String toString() {
-    int total = count();
-    String message = "total: " + total + "\n";
     Map<String, Integer> entries = statistics.getEntries();
     for (Map.Entry<String, Integer> entry : entries.entrySet()) {
       message += entryToString(entry, total) + "\n";
