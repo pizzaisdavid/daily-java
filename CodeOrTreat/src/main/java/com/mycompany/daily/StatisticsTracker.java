@@ -6,6 +6,9 @@ import java.util.Map;
 
 public class StatisticsTracker {
   private Map<String, Integer> entries;
+  private ArrayList<String> items;
+  private int total;
+
   
   public StatisticsTracker() {
     entries = new HashMap<String, Integer>();
@@ -25,5 +28,23 @@ public class StatisticsTracker {
     return entries;
   }
   
+  public String toString() {
+    String message = "";
+    for (Map.Entry<String, Integer> entry : entries.entrySet()) {
+      message += entryToString(entry, total) + "\n";
+    }
+    return message;
+  }
+  
+  private String entryToString(Map.Entry<String, Integer> entry, int total) {
+    String name = entry.getKey();
+    int candyCount = entry.getValue();
+    double precentage = percent(candyCount, total);
+    return String.format("name: %s, count: %d, precent: %f", name, candyCount, precentage);
+  }
+  
+  private double percent(int amount, int total) {
+    return (double) amount / (double) total;
+  }
   
 }

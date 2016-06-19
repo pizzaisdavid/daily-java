@@ -15,21 +15,7 @@ public class CandyBag {
   }
   
   public String toString() {
-    Map<String, Integer> entries = statistics.getEntries();
-    for (Map.Entry<String, Integer> entry : entries.entrySet()) {
-      message += entryToString(entry, total) + "\n";
-    }
-    return message;
-  }
-  
-  private String entryToString(Map.Entry<String, Integer> entry, int total) {
-    String name = entry.getKey();
-    int candyCount = entry.getValue();
-    double precentage = percent(candyCount, total);
-    return String.format("name: %s, count: %d, precent: %f", name, candyCount, precentage);
-  }
-  
-  private double percent(int amount, int total) {
-    return (double) amount / (double) total;
+    return "total: " + items.size() + "\n"
+        + statistics.toString();
   }
 }
