@@ -20,21 +20,25 @@ public class App
     }
 
     public static String formatWithModifier(int place) {
+      String modifier = "";
       if (place % 100 == 11 || place % 100 == 12 || place % 100 == 13) {
         modifier = "th";
       } else {
-        switch (place % 10) {
-          case 1:
-            modifier = "st";
-            break;
-          case 2:
-            modifier = "nd";
-            break;
-          case 3:
-            modifier = "rd";
-            break;
-        }
+        modifier = placeModifier(place);
       }
       return place + modifier;
+    }
+
+    private static String placeModifier(int place) {
+      switch (place % 10) {
+      case 1:
+        return "st";
+      case 2:
+        return "nd";
+      case 3:
+        return "rd";
+      default:
+        return "th";
+      }
     }
 }
