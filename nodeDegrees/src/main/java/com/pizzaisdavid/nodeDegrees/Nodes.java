@@ -5,7 +5,6 @@ import java.util.HashMap;
 
 
 public class Nodes extends HashMap<String, ArrayList<String>> {
-
   private static final long serialVersionUID = 7881267917720527545L;
   
   public Nodes() {
