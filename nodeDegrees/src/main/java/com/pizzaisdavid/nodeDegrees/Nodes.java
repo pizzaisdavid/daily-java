@@ -26,16 +26,16 @@ public class Nodes extends HashMap<String, ArrayList<String>> {
   }
   
   private boolean isNewKey(String key) {
-    return this.containsKey(key) == false;
+    return containsKey(key) == false;
   }
   
   private void initializeConnection(String key) {
-    this.put(key, new ArrayList<String>());
+    put(key, new ArrayList<String>());
   }
   
   private void appendValue(String key, String value) {
     ArrayList<String> values = this.get(key);
     values.add(value);
-    this.put(key, values);
+    put(key, values);
   }
 }
