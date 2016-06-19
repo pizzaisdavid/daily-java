@@ -7,11 +7,11 @@ import java.util.Map;
 public class CandyBag {
   
   ArrayList<String> items;
-  StatisticsTracker statisitcs = new StatisticsTracker();
+  StatisticsTracker statistics = new StatisticsTracker();
   
   public CandyBag(ArrayList<String> items) {
     this.items = items;
-    statisitcs.compute(items);
+    statistics.compute(items);
   }
   
   public int count() {
@@ -21,7 +21,7 @@ public class CandyBag {
   public String toString() {
     int total = count();
     String message = "total: " + total + "\n";
-    Map<String, Integer> entries = statisitcs.getEntries();
+    Map<String, Integer> entries = statistics.getEntries();
     for (Map.Entry<String, Integer> entry : entries.entrySet()) {
       message += entryToString(entry, total) + "\n";
     }
