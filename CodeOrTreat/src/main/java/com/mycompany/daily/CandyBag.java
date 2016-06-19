@@ -7,28 +7,13 @@ import java.util.Map;
 public class CandyBag {
   
   ArrayList<String> items;
-  Map<String, Integer> statisitcs = new HashMap<String, Integer>();
+  StatisticsTracker statisitcs = new StatisticsTracker();
   
   public CandyBag(ArrayList<String> items) {
     this.items = items;
-    computeStatistics();
+    statisitcs.compute(items);
   }
   
-  private void computeStatistics() {
-    for (String item: items) {
-      if (statisitcs.containsKey(item) == false) {
-        statisitcs.put(item, 0);
-      }
-      statisitcs.put(item, statisitcs.get(item) + 1);
-      //increment()
-    }
-  }
-  
-  public Map<String, Integer> statisitcs() {
-    return statisitcs;
-    
-  }
-
   public int count() {
     return items.size();
   }
@@ -36,7 +21,8 @@ public class CandyBag {
   public String toString() {
     int total = count();
     String message = "total: " + total + "\n";
-    for (Map.Entry<String, Integer> entry : statisitcs.entrySet()) {
+    Map<String, Integer> entries = statisitcs.getEntries();
+    for (Map.Entry<String, Integer> entry : entries.entrySet()) {
       message += entryToString(entry, total) + "\n";
     }
     return message;
