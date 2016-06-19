@@ -10,12 +10,11 @@ public class CandyBag {
   Map<String, Integer> statisitcs = new HashMap<String, Integer>();
   
   public CandyBag(ArrayList<String> items) {
-    statisitcs_ = computeStatistics(items);
     this.items = items;
+    computeStatistics(items);
   }
   
-  private Map<String, Integer> computeStatistics(ArrayList<String> items) {
-    Map<String, Integer> statisitcs = new HashMap<String, Integer>();
+  private void computeStatistics(ArrayList<String> items) {
     for (String item: items) {
       if (statisitcs.containsKey(item) == false) {
         statisitcs.put(item, 0);
@@ -23,7 +22,6 @@ public class CandyBag {
       statisitcs.put(item, statisitcs.get(item) + 1);
       //increment()
     }
-    return statisitcs;
   }
   
   public Map<String, Integer> statisitcs() {
