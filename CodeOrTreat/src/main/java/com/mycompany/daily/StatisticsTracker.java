@@ -16,7 +16,6 @@ public class StatisticsTracker {
 
   public void compute(ArrayList<String> items) {
     this.items = items;
-    this.total = items.size();
     for (String item: items) {
       if (entries.containsKey(item) == false) {
         entries.put(item, 0);
@@ -33,12 +32,12 @@ public class StatisticsTracker {
   public String toString() {
     String message = "";
     for (Map.Entry<String, Integer> entry : entries.entrySet()) {
-      message += entryToString(entry, total) + "\n";
+      message += entryToString(entry) + "\n";
     }
     return message;
   }
   
-  private String entryToString(Map.Entry<String, Integer> entry, int total) {
+  private String entryToString(Map.Entry<String, Integer> entry) {
     String name = entry.getKey();
     int candyCount = entry.getValue();
     double precentage = percent(candyCount, total);
