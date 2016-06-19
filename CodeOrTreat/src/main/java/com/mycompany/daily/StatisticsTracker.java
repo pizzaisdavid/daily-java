@@ -27,16 +27,16 @@ public class StatisticsTracker extends HashMap<String, Entry>{
   }
 
   public void increment(String item) {
-    com.mycompany.daily.Entry entry = get(item);
+    Entry entry = get(item);
     entry.increment();
     put(item, entry);    
   }
   
-  public com.mycompany.daily.Entry get(Object key) {
+  public Entry get(Object key) {
     return super.get(key);
   }
   
-  public com.mycompany.daily.Entry put(String key, com.mycompany.daily.Entry value) {
+  public Entry put(String key, Entry value) {
     return super.put(key, value);
   }
   
@@ -48,7 +48,7 @@ public class StatisticsTracker extends HashMap<String, Entry>{
     return message;
   }
 
-  public Collection<com.mycompany.daily.Entry> values() {
+  public Collection<Entry> values() {
     return super.values();
   }
 }
