@@ -4,15 +4,15 @@ import java.util.ArrayList;
 
 public class Graph {
     
-  public Nodes nodes_ = new Nodes();
+  public Nodes nodes = new Nodes();
   
   public Graph(ArrayList<ArrayList<String>> edges) {
     for (ArrayList<String> edge: edges) {
-      nodes_.addEdge(edge);
+      nodes.addEdge(edge);
     }
   }
   
   public Nodes getNodes() {
-    return nodes_;
+    return nodes;
   }
 }
