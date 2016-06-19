@@ -15,6 +15,8 @@ public class StatisticsTracker {
   }
 
   public void compute(ArrayList<String> items) {
+    this.items = items;
+    this.total = items.size();
     for (String item: items) {
       if (entries.containsKey(item) == false) {
         entries.put(item, 0);
