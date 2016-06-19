@@ -6,10 +6,10 @@ public class App
 {
     public static void main( String[] args )
     {
-        System.out.println(computeThePlacesYourDogDidNotWin(1));
+        System.out.println(computePlacesYourDogDidntWin(1));
     }
     
-    public static ArrayList<String> computeThePlacesYourDogDidNotWin(int placeWon) {
+    public static ArrayList<String> computePlacesYourDogDidntWin(int placeWon) {
       ArrayList<String> placesNotWon = new ArrayList<String>();
       for (int i = 1; i < 100; i++) {
         if (i != placeWon) {
