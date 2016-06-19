@@ -11,10 +11,10 @@ public class CandyBag {
   
   public CandyBag(ArrayList<String> items) {
     this.items = items;
-    computeStatistics(items);
+    computeStatistics();
   }
   
-  private void computeStatistics(ArrayList<String> items) {
+  private void computeStatistics() {
     for (String item: items) {
       if (statisitcs.containsKey(item) == false) {
         statisitcs.put(item, 0);
