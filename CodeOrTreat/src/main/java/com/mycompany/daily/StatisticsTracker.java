@@ -25,9 +25,12 @@ public class StatisticsTracker {
       if (entries.containsKey(item) == false) {
         entries.put(item, 0);
       }
-      entries.put(item, entries.get(item) + 1);
-      //increment()
-    }
+      increment(item);
+    }    
+  }
+
+  private void increment(String item) {
+    entries.put(item, entries.get(item) + 1);    
   }
 
   public Map<String, Integer> getEntries() {
