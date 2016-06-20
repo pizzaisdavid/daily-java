@@ -20,8 +20,7 @@ public class StatisticsTrackerTest {
         "green"
       )
     );
-    StatisticsTracker stats = new StatisticsTracker();
-    stats.compute(input);
+    StatisticsTracker stats = new StatisticsTracker(input);
     assertEquals(3, stats.size());
   }
 }

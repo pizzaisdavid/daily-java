@@ -8,6 +8,10 @@ public class StatisticsTracker extends HashMap<String, Entry> {
   private static final long serialVersionUID = 1L;
   private int total;
 
+  public StatisticsTracker(ArrayList<String> items) {
+    compute(items);
+  }
+
   public void compute(ArrayList<String> items) {
     total = items.size();
     for (String item: items) {
