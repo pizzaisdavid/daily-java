@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
 
-public class StatisticsTracker extends HashMap<String, Entry>{
+public class StatisticsTracker extends HashMap<String, Entry> {
   private static final long serialVersionUID = 1L;
   private int total;
 
