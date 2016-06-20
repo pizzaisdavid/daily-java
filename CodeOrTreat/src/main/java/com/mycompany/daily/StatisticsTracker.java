@@ -41,7 +41,7 @@ public class StatisticsTracker extends HashMap<String, Entry> {
   }
   
   public String toString() {
-    String message = "";
+    String message = "total: " + total + "\n";
     for (Entry each : values()) {
       message += each.toString(total) + "\n";
     }
