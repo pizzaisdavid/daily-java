@@ -9,7 +9,6 @@ public class Main {
       TextFile file = new TextFile("candy.txt");
       ArrayList<String> candies = file.getLines();
       StatisticsTracker bag = new StatisticsTracker(candies);
-      bag.compute(candies);
       System.out.println(bag); 
     }
 }
