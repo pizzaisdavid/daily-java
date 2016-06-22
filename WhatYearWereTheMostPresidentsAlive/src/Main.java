@@ -5,8 +5,8 @@ public class Main {
   
   public static void main(String[] args) {
     TextFile file = new TextFile("pres.txt");
-    ArrayList<String> lines = file.getLines();
-    StatisticsTracker tracker = new StatisticsTracker(lines);
+    ArrayList<String> presidents = file.getLines();
+    StatisticsTracker tracker = new StatisticsTracker(presidents);
     tracker.displayResults();
   }
 }
