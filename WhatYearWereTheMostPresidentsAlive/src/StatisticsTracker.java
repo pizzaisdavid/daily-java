@@ -15,7 +15,7 @@ public class StatisticsTracker extends ArrayList<Person>{
   }
 
 
-  public void displayResults() {
+  public void computeAndDisplayResults() {
     for (int i = 1732; i < 2016; i++) {
       int count = 0;
       Calendar year = Calendar.getInstance();
