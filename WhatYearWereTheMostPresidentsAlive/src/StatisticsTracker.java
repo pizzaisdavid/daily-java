@@ -1,14 +1,14 @@
 import java.util.ArrayList;
 import java.util.Calendar;
 
-public class StatisticsTracker {
+public class StatisticsTracker extends ArrayList<Person>{
+  private static final long serialVersionUID = 1L;
   private ArrayList<Person> presidents;
 
   public StatisticsTracker(ArrayList<ArrayList<String>> parsedPresidents) {
-    presidents = new ArrayList<Person>();
     for (ArrayList<String> each : parsedPresidents) {
-      Person president = new Person(each.get(1), each.get(3));
-      presidents.add(president);
+      Person president = Person.parse(each);
+      add(president);
     }
   }
 
