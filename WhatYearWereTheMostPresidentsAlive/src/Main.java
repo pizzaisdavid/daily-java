@@ -10,6 +10,6 @@ public class Main {
     ArrayList<String> lines = file.getLines();
     ArrayList<ArrayList<String>> parsedPresidents = Parser.parseExcludingHeader(lines);
     StatisticsTracker tracker = new StatisticsTracker(parsedPresidents);
-    tracker.displayResults();
+    tracker.computeAndDisplayResults();
   }
 }
