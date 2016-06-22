@@ -1,4 +1,6 @@
 import java.util.ArrayList;
+
+import main.java.com.mycompany.daily.Parser;
 import main.java.com.mycompany.daily.TextFile;
 
 public class Main {
@@ -6,7 +8,8 @@ public class Main {
   public static void main(String[] args) {
     TextFile file = new TextFile("pres.txt");
     ArrayList<String> presidents = file.getLines();
-    StatisticsTracker tracker = new StatisticsTracker(presidents);
+    ArrayList<ArrayList<String>> parsedPresidents = Parser.parseExcludingHeader(presidents);
+    StatisticsTracker tracker = new StatisticsTracker(parsedPresidents);
     tracker.displayResults();
   }
 }

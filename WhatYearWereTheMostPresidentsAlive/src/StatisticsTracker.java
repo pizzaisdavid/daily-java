@@ -1,16 +1,13 @@
 import java.util.ArrayList;
 import java.util.Calendar;
 
-import main.java.com.mycompany.daily.Parser;
-
 public class StatisticsTracker {
   private ArrayList<Person> presidents;
 
-  public StatisticsTracker(ArrayList<String> lines) {
-    ArrayList<ArrayList<String>> parsed = Parser.parseExcludingHeader(lines);
+  public StatisticsTracker(ArrayList<ArrayList<String>> parsedPresidents) {
     presidents = new ArrayList<Person>();
-    for (ArrayList<String> rawData : parsed) {
-      Person president = new Person(rawData.get(1), rawData.get(3));
+    for (ArrayList<String> each : parsedPresidents) {
+      Person president = new Person(each.get(1), each.get(3));
       presidents.add(president);
     }
   }
