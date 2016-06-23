@@ -2,12 +2,18 @@ package pizzaisdavid.com.WhatsInTheBag;
 
 import java.util.Arrays;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 
 public class ScrabbleBag extends HashMap<Character, Integer> {
   private static final long serialVersionUID = 1L;
+  private boolean isError;
+  private char errorCharacter;
 
   public ScrabbleBag() {
+    isError = false;
+    errorCharacter = ' ';
     List<Character> characters = Arrays.asList(
         'A', 'B', 'C', 'D', 'E',
         'F', 'G', 'H', 'I', 'J',
