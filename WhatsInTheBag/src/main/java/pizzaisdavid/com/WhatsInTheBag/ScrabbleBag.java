@@ -29,8 +29,42 @@ public class ScrabbleBag extends HashMap<Character, Integer> {
     }
   }
 
-  public void remove(String string) {
-    // TODO Auto-generated method stub
+  public void subtract(String string) {
+    for (int i = 0; i < string.length(); i++) {
+      char character = string.charAt(i);
+      subtract(character);
+    }
   }
 
+  private void subtract(char character) {
+    if (isError == false) {
+      iterateDown(character);
+    }
+  }
+  
+  private void iterateDown(char character) {
+    int value = get(character);
+    if (value > 0) {
+      value--;
+      put(character, value);
+    } else {
+      isError = true;
+      errorCharacter = character;
+    }    
+  }
+
+  public String toString() {
+    if (isError) {
+      return "Too many: " + errorCharacter;
+    } else {
+      String message = "";
+      Iterator it = entrySet().iterator();
+      while (it.hasNext()) {
+        Map.Entry pair = (Map.Entry)it.next();
+        message += pair.getKey() + ": " + pair.getValue() + "\n";
+      }
+      return message;
+    }
+    
+  }
 }
