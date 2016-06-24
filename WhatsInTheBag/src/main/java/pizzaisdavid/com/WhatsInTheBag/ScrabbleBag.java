@@ -71,6 +71,5 @@ public class ScrabbleBag extends HashMap<Character, Integer> {
       }
       return message;
     }
-    
   }
 }
