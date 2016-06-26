@@ -3,7 +3,7 @@ import java.util.ArrayList;
 
 public class GarageDoorOpener {
   enum State_ {CLOSED, OPENING, OPEN, CLOSING, STOPPED_WHILE_CLOSING, STOPPED_WHILE_OPENING}
-	private String BUTTON_CLICK_ = "button_clicked";
+	private String BUTTON_CLICK = "button_clicked";
 	private State_ status_;
 			
   public GarageDoorOpener(ArrayList<String> commands) {
@@ -47,14 +47,14 @@ public class GarageDoorOpener {
 	}
 	
 	public State_ doorInClosingState(String command) {
-		if (command == BUTTON_CLICK_) {
+		if (BUTTON_CLICK.equals(command)) {
 			return State_.STOPPED_WHILE_CLOSING;
 		}
 		return State_.CLOSED;
 	}
 	
 	public State_ doorInOpeningState(String command) {
-		if (command == BUTTON_CLICK_) {
+		if (BUTTON_CLICK.equals(command)) {
 			return State_.STOPPED_WHILE_OPENING;
 		}
 		return State_.OPEN;
