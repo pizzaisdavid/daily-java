@@ -13,21 +13,20 @@ import java.util.Arrays;
 
 
 class SpecializationGarageDoor extends GarageDoorOpener {
-
   public ArrayList<State> outputs;
   
   public SpecializationGarageDoor(ArrayList<String> commands) {
     super(commands);
   }
   
-  protected void printStatus(State status) {
+  protected void printStatus() {
     if (outputs == null) {
       outputs = new ArrayList<State>();
     }
     outputs.add(status);
   }
   
-  protected void printCommand(String command) {
+  protected void printCommand() {
     // Don't print things during testing.
   }
   
