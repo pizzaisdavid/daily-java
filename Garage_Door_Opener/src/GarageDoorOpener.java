@@ -6,16 +6,17 @@ public class GarageDoorOpener {
 	private String BUTTON_CLICK = "button_clicked";
 	protected State status;
 	private String command;
-	private ArrayList<String> unprocessedCommands;
+	private ArrayList<String> commands;
 			
-  public GarageDoorOpener(ArrayList<String> unprocessedCommands) {
-    this.unprocessedCommands = unprocessedCommands;
+  public GarageDoorOpener(ArrayList<String> commands) {
+    this.commands = commands;
     status = State.CLOSED;
   }
   
   public void process() {
-    for (String command : unprocessedCommands) {
+    for (String command : commands) {
       this.command = command;
+      displayInformation();
       printStatus();
       printCommand();
       processState();
