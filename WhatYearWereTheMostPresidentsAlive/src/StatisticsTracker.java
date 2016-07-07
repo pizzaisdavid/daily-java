@@ -1,3 +1,5 @@
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 
@@ -8,10 +10,23 @@ public class StatisticsTracker extends ArrayList<Person>{
   public StatisticsTracker(ArrayList<ArrayList<String>> parsedPresidents) {
     //yearMostPresidentsWereAlive = 0;
     for (ArrayList<String> each : parsedPresidents) {
-      Person president = Person.parse(each);
+    	Calendar birth = parseDate(each.get(1));
+    	Calendar death = parseDate(each.get(3));
+      Person president = new Person(birth, death);
       add(president);
       // TODO update();
     }
+  }
+  
+  private Calendar parseDate(String date) {
+    SimpleDateFormat format = new SimpleDateFormat("MMMM d yyyy");
+    Calendar calendar = Calendar.getInstance();
+      try {
+        calendar.setTime(format.parse(date));
+        return calendar;
+      } catch (ParseException e) {
+        return calendar;
+      }
   }
 
 
