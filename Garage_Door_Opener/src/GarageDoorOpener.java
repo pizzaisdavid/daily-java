@@ -17,14 +17,17 @@ public class GarageDoorOpener {
     for (String command : commands) {
       this.command = command;
       displayInformation();
-      printStatus();
-      printCommand();
       processState();
     }
     printStatus();
   }
 
-  private void processState() {
+  private void displayInformation() {
+    printStatus();
+    printCommand();
+	}
+
+	private void processState() {
 	  switch (status) {
   	  case CLOSED:
   	    doorInClosedState();
