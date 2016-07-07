@@ -9,4 +9,4 @@ ConsumerKey.java
 
 *.class
 
-bin/
+*/bin/
