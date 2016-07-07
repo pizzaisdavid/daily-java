@@ -17,7 +17,7 @@ public class SecretSanta {
   }
   
   public void assign(ArrayList<String> input) {
-    ArrayList<Family> families = parseFamiles(input);
+    //ArrayList<Family> families = parseFamiles(input);
     @SuppressWarnings("unused")
     HashMap<String, String> assignments = new HashMap<String, String>();
     
@@ -29,6 +29,7 @@ public class SecretSanta {
 //    
   }
 
+  @SuppressWarnings("unused")
   private ArrayList<Family> parseFamiles(ArrayList<String> rawFamilies) {
     ArrayList<Family> families = new ArrayList<Family>();
     for (String rawFamily : rawFamilies) {
