@@ -6,15 +6,15 @@ public class GarageDoorOpener {
 	private String BUTTON_CLICK = "button_clicked";
 	protected State status;
 	private String command;
+	private ArrayList<String> unprocessedCommands;
 			
-  public GarageDoorOpener(ArrayList<String> commands) {
+  public GarageDoorOpener(ArrayList<String> unprocessedCommands) {
+    this.unprocessedCommands = unprocessedCommands;
     status = State.CLOSED;
-    command = "";
-    process(commands);
   }
   
-  private void process(ArrayList<String> commands) {
-    for (String command : commands) {
+  public void process() {
+    for (String command : unprocessedCommands) {
       this.command = command;
       printStatus();
       printCommand();

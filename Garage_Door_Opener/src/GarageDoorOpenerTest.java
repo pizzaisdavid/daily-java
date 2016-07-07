@@ -94,6 +94,7 @@ public class GarageDoorOpenerTest {
   @Test
   public void test() {
     SpecializationGarageDoor opener = new SpecializationGarageDoor(commands);
+    opener.process();
     opener.validate(expected);
   }
 }

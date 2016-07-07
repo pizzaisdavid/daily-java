@@ -18,6 +18,7 @@ public class Main {
 		);
 		
 		GarageDoorOpener opener = new GarageDoorOpener(commands);
+		opener.process();
 	}
 }
 
