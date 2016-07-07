@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
 
-public class StatisticsTracker extends HashMap<String, Entry> {
+public class StatisticsTracker extends HashMap<String, CandyEntry> {
   private static final long serialVersionUID = 1L;
   private int total;
 
@@ -27,32 +27,32 @@ public class StatisticsTracker extends HashMap<String, Entry> {
   }
   
   public void create(String item) {
-    put(item, Entry.withName(item));
+    put(item, CandyEntry.withName(item));
   }
 
   public void increment(String item) {
-    Entry entry = get(item);
+  	CandyEntry entry = get(item);
     entry.increment();
     put(item, entry);    
   }
   
-  public Entry get(Object key) {
+  public CandyEntry get(Object key) {
     return super.get(key);
   }
   
-  public Entry put(String key, Entry value) {
+  public CandyEntry put(String key, CandyEntry value) {
     return super.put(key, value);
   }
   
   public String toString() {
     String message = "total: " + total + "\n";
-    for (Entry each : values()) {
+    for (CandyEntry each : values()) {
       message += each.toString(total) + "\n";
     }
     return message;
   }
 
-  public Collection<Entry> values() {
+  public Collection<CandyEntry> values() {
     return super.values();
   }
 }

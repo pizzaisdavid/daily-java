@@ -64,7 +64,7 @@ public class ScrabbleBag extends HashMap<Character, Integer> {
       return "Too many: " + errorCharacter;
     } else {
       String message = "";
-      Iterator it = entrySet().iterator();
+      Iterator<?> it = entrySet().iterator();
       while (it.hasNext()) {
         Map.Entry pair = (Map.Entry)it.next();
         message += pair.getKey() + ": " + pair.getValue() + "\n";

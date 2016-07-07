@@ -11,6 +11,6 @@ public class App
         input.add("Jeff Jerry");
         input.add("Johnson");
         
-        SecretSanta santa = new SecretSanta();
+        // TODO SecretSanta santa = new SecretSanta();
     }
 }

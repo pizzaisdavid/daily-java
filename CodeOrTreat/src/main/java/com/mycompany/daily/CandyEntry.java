@@ -1,19 +1,19 @@
 package com.mycompany.daily;
 
-public class Entry {
+public class CandyEntry {
   private int count;
   private String name;
   
-  public Entry() {
+  public CandyEntry() {
     count = 1;
   }
   
-  public Entry(String name) {
+  public CandyEntry(String name) {
     this.name = name;
   }
 
-  public static Entry withName(String name) {
-    return new Entry(name);
+  public static CandyEntry withName(String name) {
+    return new CandyEntry(name);
   }
 
   public void increment() {
