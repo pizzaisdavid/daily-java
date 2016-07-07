@@ -5,7 +5,8 @@ import java.util.HashMap;
 
 public class SecretSanta {
   
-  private RandomNumberGenerator rng;
+  @SuppressWarnings("unused")
+	private RandomNumberGenerator rng;
   
   public SecretSanta() {
     rng = new RandomNumberGenerator();
@@ -17,14 +18,15 @@ public class SecretSanta {
   
   public void assign(ArrayList<String> input) {
     ArrayList<Family> families = parseFamiles(input);
+    @SuppressWarnings("unused")
     HashMap<String, String> assignments = new HashMap<String, String>();
     
-    for (Family family : families) {
-      for (String person : family) {
-        // TODO rando
-      }
-    }
-    
+//    for (Family family : families) {
+//      for (String person : family) {
+//        // TODO rando
+//      }
+//    }
+//    
   }
 
   private ArrayList<Family> parseFamiles(ArrayList<String> rawFamilies) {
