@@ -6,6 +6,7 @@ TESTING_CENTER/
 ConsumerKey.java
 
 .DS_Store
-*.class
 
 *.class
+
+bin/
