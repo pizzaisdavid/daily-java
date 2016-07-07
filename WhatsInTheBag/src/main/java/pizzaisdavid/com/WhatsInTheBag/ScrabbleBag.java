@@ -5,6 +5,7 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.Map.Entry;
 
 public class ScrabbleBag extends HashMap<Character, Integer> {
   private static final long serialVersionUID = 1L;
@@ -64,9 +65,9 @@ public class ScrabbleBag extends HashMap<Character, Integer> {
       return "Too many: " + errorCharacter;
     } else {
       String message = "";
-      Iterator<?> it = entrySet().iterator();
+      Iterator<Entry<Character, Integer>> it = entrySet().iterator();
       while (it.hasNext()) {
-        Map.Entry pair = (Map.Entry)it.next();
+        Map.Entry<Character, Integer> pair = (Map.Entry<Character, Integer>)it.next();
         message += pair.getKey() + ": " + pair.getValue() + "\n";
       }
       return message;
