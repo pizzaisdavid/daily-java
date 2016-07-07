@@ -5,7 +5,6 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
-import java.util.Map.Entry;
 
 public class ScrabbleBag extends HashMap<Character, Integer> {
   private static final long serialVersionUID = 1L;
