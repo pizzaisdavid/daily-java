@@ -17,4 +17,12 @@ public class AppTest {
 		ArrayList<String> output = JunitHelper.arrayList.make("This", "is", "a", "test");
 		assertEquals(output, App.bealeCipher(message, key));
 	}
+	
+	@Test
+	public void BealeCipher_outOfOrder() {
+		ArrayList<String> message = JunitHelper.arrayList.make("is", "This", "a", "test");
+		ArrayList<Integer> key = JunitHelper.arrayList.make(2, 1, 3, 4);
+		ArrayList<String> output = JunitHelper.arrayList.make("This", "is", "a", "test");
+		assertEquals(output, App.bealeCipher(message, key));
+	}
 }
