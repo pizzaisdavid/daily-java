@@ -2,8 +2,6 @@ package pizza.TheBealeCipher;
 
 import java.util.ArrayList;
 
-import com.pizzaisdavid.JunitHelper.JunitHelper;
-
 public class App 
 {
 	
