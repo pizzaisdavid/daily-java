@@ -52,4 +52,14 @@ public class Parser {
     }
     return trimmed;
   }
+
+	public static ArrayList<Integer> integersFromList(String content) {
+		ArrayList<Integer> integers = new ArrayList<Integer>();
+		ArrayList<String> strings = parse(content, ",");
+		for (String stringNumber : strings) {
+			int integer = Integer.parseInt(stringNumber);
+			integers.add(integer);
+		}
+		return integers;
+	}
 }

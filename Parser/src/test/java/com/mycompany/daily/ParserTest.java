@@ -35,6 +35,13 @@ public class ParserTest {
   }
   
   @Test
+  public void numberList() {
+    ArrayList<Integer> expected = JunitHelper.arrayList.make(1, 2, 3);
+    String input = "1, 2, 3";
+    assertEquals(expected, Parser.integersFromList(input));
+  }
+  
+  @Test
   public void list() {
     ArrayList<ArrayList<String>> expected = JunitHelper.arrayList.make(
         new String[] {"0.0","0.1", "0.2"},
@@ -61,6 +68,5 @@ public class ParserTest {
       "John Adams,  Oct 30 1735,  July 4 1826"
     );
     assertEquals(expected, Parser.parseExcludingHeader(input));
-
   }
 }
