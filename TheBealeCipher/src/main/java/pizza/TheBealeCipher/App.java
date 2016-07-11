@@ -13,7 +13,8 @@ public class App
   	ArrayList<String> words = parseWordsFromFile();
   	ArrayList<Integer> key = parseKeyFromFile();
   	System.out.println(words);
-  	System.out.print(key);
+  	System.out.println(key);
+  	System.out.println(bealeCipher(words, key));
   }
 
 	private static ArrayList<String> parseWordsFromFile() {
@@ -30,10 +31,12 @@ public class App
   	return Parser.integersFromList(content);  	
 	}
 
-	public static ArrayList<String> bealeCipher(ArrayList<String> message, ArrayList<Integer> key) {
-		ArrayList<String> output = new ArrayList<String>();
+	public static String bealeCipher(ArrayList<String> message, ArrayList<Integer> key) {
+		String output = "";
 		for (int value : key) {
-			output.add(message.get(value - 1));
+			String word = message.get(value - 1);
+			char firstCharacter = word.charAt(0);
+			output += firstCharacter;
 		}
 		return output;
 	}
