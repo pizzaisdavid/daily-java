@@ -12,8 +12,6 @@ public class App
   public static void main( String[] args ) {
   	ArrayList<String> words = parseWordsFromFile();
   	ArrayList<Integer> key = parseKeyFromFile();
-  	System.out.println(words);
-  	System.out.println(key);
   	System.out.println(bealeCipher(words, key));
   }
 
