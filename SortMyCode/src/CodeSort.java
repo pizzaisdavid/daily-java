@@ -1,27 +1,27 @@
 import java.util.ArrayList;
 
 public class CodeSort {
-	private ArrayList<String> program_;
+	private ArrayList<String> program;
 	
 	public CodeSort(ArrayList<String> program) {
-		program_ = program;
+		this.program = program;
 	}
 	
 	public ArrayList<String> sort() {
-		program_ = initializeVariablesBeforeUse(program_);
-    program_ = putIncludeStatementsFirst(program_);
-		return program_;
+		initializeVariablesBeforeUse();
+    putIncludeStatementsFirst();
+		return program;
 	}
 	
-  private ArrayList<String> putIncludeStatementsFirst(ArrayList<String> program) {
-    return putStatementsWithKeywordFirst(program, "#include");
+  private void putIncludeStatementsFirst() {
+    putStatementsWithKeywordFirst("#include");
   }
   
-  private ArrayList<String> initializeVariablesBeforeUse(ArrayList<String> program) {
-    return putStatementsWithKeywordFirst(program, "var ");
+  private void initializeVariablesBeforeUse() {
+    putStatementsWithKeywordFirst("var ");
   }
   
-  private ArrayList<String> putStatementsWithKeywordFirst(ArrayList<String> program, String keyword) {
+  private void putStatementsWithKeywordFirst(String keyword) {
 		ArrayList<String> keywordStatements = new ArrayList<String>();
 		ArrayList<String> otherStatements = new ArrayList<String>();
 		for (String statement : program) {
@@ -31,10 +31,10 @@ public class CodeSort {
 				otherStatements.add(statement);
 			}
 		}
-		return append(keywordStatements, otherStatements);
+		program = combine(keywordStatements, otherStatements);
 	}
   
-  private ArrayList<String> append(ArrayList<String> leadingArray, ArrayList<String> trailingArray) {
+  private ArrayList<String> combine(ArrayList<String> leadingArray, ArrayList<String> trailingArray) {
     ArrayList<String> newArray = new ArrayList<String>();
     newArray.addAll(leadingArray);
     newArray.addAll(trailingArray);
