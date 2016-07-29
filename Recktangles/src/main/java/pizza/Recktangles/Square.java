@@ -41,9 +41,11 @@ public class Square {
 		return (dimension * length) - numberOfOverlappingCharacters;
 	}
 
-	private void appendRow(int i) {
+	private void appendRow(int rowIndex) {
 		ArrayList<String> row = new ArrayList<String>();
-		
+		for (int i = 0; i < numberOfCharactersWidth; i++) {
+			
+		}
 		grid.add(row);
 	}
 
