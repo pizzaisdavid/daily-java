@@ -8,18 +8,18 @@ public class FractionTest {
 
 	@Test
 	public void smallNumberTest() {
-		Fraction expected = new Fraction(1, 2);
+		Fraction simplifiedFraction = new Fraction(1, 2);
 		Fraction actual = new Fraction(4, 8);		
 		actual.simplify();
-		assertTrue(actual.equals(expected));
+		assertTrue(actual.equals(simplifiedFraction));
 	}
 	
 	@Test
 	public void largeNumberTest() {
-		Fraction expected = new Fraction(64, 3265);
+		Fraction simplifiedFraction = new Fraction(64, 3265);
 		Fraction actual = new Fraction(1536, 78360);
 		actual.simplify();
-		assertTrue(actual.equals(expected));
+		assertTrue(actual.equals(simplifiedFraction));
 	}
 
 }
