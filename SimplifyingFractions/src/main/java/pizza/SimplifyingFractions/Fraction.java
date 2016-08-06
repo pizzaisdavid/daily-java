@@ -10,21 +10,17 @@ public class Fraction {
 	}
 
 	public void simplify() {
-		int largerNumber = max(numerator, denominator);
-		for (int i = largerNumber; i != 0; i--) {
+		for (int i = numerator; i != 0; i--) {
 			if (numerator % i == 0 && denominator % i == 0) {
-				numerator = numerator / i;
-				denominator = denominator / i;
+				numerator /= i;
+				denominator /= i;
 				break;
 			}
 		}
 	}
-
-	private int max(int number1, int number2) {
-		if (number1 < number2) {
-			return number2;
-		}
-		return number1;
+	
+	public boolean isEqual(Fraction f) {
+		return numerator == f.getNumerator() && denominator == f.getDenominator();
 	}
 
 	public int getNumerator() {

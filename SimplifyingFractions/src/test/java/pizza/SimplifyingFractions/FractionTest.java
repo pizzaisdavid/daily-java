@@ -8,22 +8,18 @@ public class FractionTest {
 
 	@Test
 	public void smallNumberTest() {
-		Fraction fraction = new Fraction(4, 8);
-		fraction.simplify();
-		int numerator = fraction.getNumerator();
-		int denominator = fraction.getDenominator();
-		assertEquals(1, numerator);
-		assertEquals(2, denominator);
+		Fraction expected = new Fraction(1, 2);
+		Fraction actual = new Fraction(4, 8);		
+		actual.simplify();
+		assertTrue(actual.isEqual(expected));
 	}
 	
 	@Test
 	public void largeNumberTest() {
-		Fraction fraction = new Fraction(1536, 78360);
-		fraction.simplify();
-		int numerator = fraction.getNumerator();
-		int denominator = fraction.getDenominator();
-		assertEquals(64, numerator);
-		assertEquals(3265, denominator);
+		Fraction expected = new Fraction(64, 3265);
+		Fraction actual = new Fraction(1536, 78360);
+		actual.simplify();
+		assertTrue(actual.isEqual(expected));
 	}
 
 }
