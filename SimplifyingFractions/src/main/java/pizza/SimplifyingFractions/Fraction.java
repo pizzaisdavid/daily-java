@@ -19,8 +19,8 @@ public class Fraction {
 		}
 	}
 	
-	public boolean isEqual(Fraction f) {
-		return numerator == f.getNumerator() && denominator == f.getDenominator();
+	public boolean equals(Fraction other) {
+		return numerator == other.getNumerator() && denominator == other.getDenominator();
 	}
 
 	public int getNumerator() {
