@@ -8,7 +8,12 @@ public class FractionTest {
 
 	@Test
 	public void test() {
-		fail("Not yet implemented");
+		Fraction fraction = new Fraction(4, 8);
+		fraction.simplify();
+		int numerator = fraction.getNumerator();
+		int denominator = fraction.getDenominator();
+		assertEquals(1, numerator);
+		assertEquals(2, denominator);
 	}
 
 }

@@ -12,4 +12,12 @@ public class Fraction {
 	public void simplify() {
 	}
 
+	public int getNumerator() {
+		return numerator;
+	}
+
+	public int getDenominator() {
+		return denominator;
+	}
+
 }
