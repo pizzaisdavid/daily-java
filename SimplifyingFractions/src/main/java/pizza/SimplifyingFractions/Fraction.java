@@ -6,7 +6,11 @@ public class Fraction {
 
 	public Fraction(int numerator, int denominator) {
 		this.numerator = numerator;
-		this.denominator = denominator;
+		if (denominator != 0) {
+			this.denominator = denominator;
+		} else {
+			// TODO: no!
+		}
 	}
 
 	public void simplify() {
