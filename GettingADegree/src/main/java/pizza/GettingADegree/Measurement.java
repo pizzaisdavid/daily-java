@@ -15,6 +15,15 @@ public class Measurement {
 		}
 	}
 	
-	
+	public boolean equals(Measurement other) {
+		return type == other.getType() && amount == other.getAmount();
+	}
 
+	private String getType() {
+		return type;
+	}
+	
+	private double getAmount() {
+		return amount;
+	}
 }

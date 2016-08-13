@@ -11,6 +11,8 @@ public class MeasurementTest {
 		Measurement m = new Measurement("degree", 90);
 		Measurement expected = new Measurement("radians", 1.5708);
 		
+		m.convertTo("radians");
+		
 		assertTrue(m.equals(expected));
 	}
 
