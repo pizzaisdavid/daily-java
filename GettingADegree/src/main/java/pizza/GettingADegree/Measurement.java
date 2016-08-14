@@ -10,11 +10,25 @@ public class Measurement {
 	}
 	
 	public void convertTo(String newType) {
-		if (type == newType) {
-			
+		if (type == "degree" && newType == "radian") {
+			convertFromDegreeToRadian();
 		}
 	}
 	
+	private void convertFromDegreeToRadian() {
+		type = "radian";
+		amount = Math.toRadians(amount);
+		amount = roundDecimal(amount);
+	}
+
+	private double roundDecimal(double decimal) {
+		int DECIMAL_MULTIPLIER = 10000;
+		double movedDecimalRight = decimal * DECIMAL_MULTIPLIER;
+		double roundedDecimal = Math.round(movedDecimalRight);
+		double movedDecimalLeft = roundedDecimal / DECIMAL_MULTIPLIER;
+		return movedDecimalLeft;
+	}
+
 	public boolean equals(Measurement other) {
 		return type == other.getType() && amount == other.getAmount();
 	}

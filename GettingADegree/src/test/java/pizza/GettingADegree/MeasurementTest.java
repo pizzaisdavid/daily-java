@@ -8,10 +8,10 @@ public class MeasurementTest {
 
 	@Test
 	public void test() {
-		Measurement m = new Measurement("degree", 90);
-		Measurement expected = new Measurement("radians", 1.5708);
+		Measurement m = new Measurement("degree", 90.0);
+		Measurement expected = new Measurement("radian", 1.5708);
 		
-		m.convertTo("radians");
+		m.convertTo("radian");
 		
 		assertTrue(m.equals(expected));
 	}
